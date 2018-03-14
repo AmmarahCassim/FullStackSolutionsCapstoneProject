@@ -8,7 +8,7 @@ http.Server(app).listen(3000); // make server listen on port 80
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(upload()); // configure middleware
 
-console.log("Server Started at port 80");
+console.log("Server Started at port 3000");
 
 app.get('/',function(req,res){
   res.sendFile(__dirname+'/index.html');
