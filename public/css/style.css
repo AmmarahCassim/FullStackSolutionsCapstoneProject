@@ -1,0 +1,66 @@
+body{
+    		background-color: black;
+    	}
+    	
+    	#inner{
+    		background-color:grey;
+    		margin-bottom:5px;
+
+    		height:240px;
+    		border-radius:5px;
+    	}
+    input{
+    	display: block;
+    }
+    	button {
+    		background-color: black;
+		  margin:0 auto;
+		  display:block;
+		}
+
+    	.flex-center {
+    	margin-bottom:5px;
+		  background: #383838;
+		  border-radius:5px;
+		  color: white;
+		  
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  height: 250px;
+		  /*resize: vertical;*/
+		  overflow: auto;
+		}
+		.js-waveform{
+			margin-bottom:5px;
+		  background: #383838;
+		  border-radius:5px;
+		  color: white;
+		  
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  height: 250px;
+		  /*resize: vertical;*/
+		  overflow: auto;
+		}
+
+		footer {
+		margin-bottom:5px;
+		text-align: center;
+	    position: fixed;
+	    height: 20px;
+	    bottom: 0;
+	    width: 100%;
+		}
+
+		.js-waveform, .flex-center {
+		  box-shadow:none;
+		}
+		.js-waveform:hover, .js-waveform:active, .flex-center:hover, .flex-center:active {
+		  box-shadow: inset 0 0 10px #f5bd20;
+		}
+		#logo{
+			height:45px;
+			margin-top:2px;
+		}
