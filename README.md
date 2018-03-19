@@ -1,9 +1,7 @@
-File-upload-in-Node
-===================
-
-Download code and type 
-```node Server.js``` 
-Visit ```localhost:3000``` to view the app.
-
-```Tutorial link``` : http://wp.me/p4ISPV-cq
-
+# how to Run
+  * clone the repo
+  * npm install
+  * npm install express
+  * npm install multer
+  * npm install -g nodemon
+  * nodemon Server.js
