@@ -67,10 +67,6 @@
         mediaType: 'audio',
         scrollParent: true
     });
-
-       // wavesurfer.load('audio/letsparty.wav');
-
-   // wavesurfer.load('audio/letsparty.wav');
     </script>
   
               <% if(files) {%>
@@ -79,27 +75,16 @@
              <script>
               wavesurfer.load("audio/<%= files[0].filename %>");
                     console.log("<%= files[0].filename %>"); 
-                   var audio = new Audio("audio/<%= files[0].filename %>");
-                  //  audio.play();
-
+      
+       
                     $(".form-inline").hide('slow', function(){ $(".form-inline").remove(); });
                     var r= $('<button id ="PLAY" type="button" class="btn btn-info" style=" margin:0 auto;display:block;" onclick="wavesurfer.play()">PLAY</button>'); 
                       $('#addWave').append(r).show(slow); 
-                      
-                      
-                      
+            
+
               </script>
 
               <%}%>
-
-
-             
-    
-   
-
-   
-       
-   
 </div>
 
         <footer class="fixed-bottom">Full Stack Solutions</footer>
@@ -107,10 +92,5 @@
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-
-
-
-
- 
 </html>
 
