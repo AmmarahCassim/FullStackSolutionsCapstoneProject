@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const crypto = require('crypto');
@@ -7,7 +8,19 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-//const cons = require('consolidate');
+var watson = require('watson-developer-cloud');
+
+
+var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
+//speech to text
+var speech_to_text = new SpeechToTextV1 ({
+  version: 'v1',
+  "url": "https://stream.watsonplatform.net/speech-to-text/api",
+    "username": "44237460-ece1-477e-8912-f6552e8495b0",
+    "password": "TNmOa7lGouuS"
+});
+
+var soundFile  ='';
 
 const app = express();
 
@@ -73,7 +86,7 @@ app.get('/', (req, res) => {
       });
      
       //alert(soundfile);
-      res.render('index', { files: files});
+      res.render('index', { files: files });
     }
   });
 });
@@ -86,6 +99,8 @@ app.post('/upload', function(req, res){
       return res.end("Error uploading file.");
     }
     //res.json({ file: req.file });
+    //res.render('index', { files:files, upload: true});
+
     res.redirect('/');
 });
 
@@ -129,10 +144,39 @@ app.get('/audio/:filename', (req, res) => {
     }
 
     // Check if image
-    if (file.contentType === 'audio/wav' || file.contentType === 'audio/mpeg') {
+    if (file.contentType === 'audio/x-wav' || file.contentType === 'audio/mpeg') {
       // Read output to browser
+      
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
+      
+      soundFile = file.filename;
+      console.log(soundFile);
+      
+        var params = {
+          audio: gfs.createReadStream(file.filename),
+          content_type: 'audio/wav',
+          timestamps: true,
+          word_alternatives_threshold: 0.9,
+          keywords: ['party', 'boys', 'lets'],
+          keywords_threshold: 0.5
+        };
+
+        speech_to_text.recognize(params, function(error, transcript) {
+        if (error){
+          console.log('Error:', error);
+        }
+        else{
+          console.log(JSON.stringify(transcript, null, 2));
+          var text_translation = JSON.stringify(transcript, null, 2);
+          var data = fs.writeFile('file2', text_translation, 'utf8',function(error){
+            if(error) throw error;
+            console.log('file written');
+          });
+      }
+      });
+
+
     } else {
       res.status(404).json({
         err: 'Not an image'

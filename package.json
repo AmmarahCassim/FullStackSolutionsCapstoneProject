@@ -7,13 +7,15 @@
     "ejs": "^2.5.7",
     "express": "4.13.3",
     "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
     "gridfs-stream": "^1.1.1",
     "method-override": "^2.3.10",
     "mongodb": "3.0.4",
     "mongoose": "^5.0.11",
     "multer": "1.1.0",
     "multer-gridfs-storage": "^3.0.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "watson-developer-cloud": "^3.2.1"
   },
   "devDependencies": {
     "mocha": "~2.3.3",
