@@ -2,13 +2,23 @@
   "name": "fileupload",
   "version": "0.0.1",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "consolidate": "^0.15.1",
+    "ejs": "^2.5.7",
     "express": "4.13.3",
+    "express-session": "^1.15.6",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^2.3.10",
+    "mongodb": "3.0.4",
+    "mongoose": "^5.0.11",
     "multer": "1.1.0",
-    "mongodb": "3.0.4"
+    "multer-gridfs-storage": "^3.0.0",
+    "swig": "^1.4.2"
   },
   "devDependencies": {
-    "should": "~7.1.0",
     "mocha": "~2.3.3",
+    "nodemon": "^1.17.2",
+    "should": "~7.1.0",
     "supertest": "~1.1.0"
   },
   "description": "File-upload-in-Node ===================",
