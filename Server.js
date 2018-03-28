@@ -9,6 +9,8 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 var watson = require('watson-developer-cloud');
+var outPut = "";
+var filesFound;
 
 
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -69,7 +71,7 @@ var upload = multer({ storage : storage}).single('userPhoto');
 // @route GET /
 // @desc Loads form
 app.get('/', (req, res) => {
-  gfs.files.find().toArray((err, files) => {
+  filesFound = gfs.files.find().toArray((err, files) => {
     // Check if files
     if (!files || files.length === 0) {
       res.render('index', { files: false });
@@ -84,8 +86,7 @@ app.get('/', (req, res) => {
           file.isAudio = false;
         }
       });
-     
-      //alert(soundfile);
+
       res.render('index', { files: files });
     }
   });
@@ -167,14 +168,25 @@ app.get('/audio/:filename', (req, res) => {
           console.log('Error:', error);
         }
         else{
-          console.log(JSON.stringify(transcript, null, 2));
+          //console.log(JSON.stringify(transcript, null, 2));
+          //var obj = JSON.parse(transcript);
+          outPut = "";
+          for(var i =0; i < transcript.results.length;++i){
+                outPut += transcript.results[i].alternatives[0].transcript;
+          }
+          console.log(outPut);
+          //console.log(transcript.results[1].alternatives[0].transcript);
           var text_translation = JSON.stringify(transcript, null, 2);
           var data = fs.writeFile('file2', text_translation, 'utf8',function(error){
             if(error) throw error;
             console.log('file written');
           });
+
+         // res.render('index', { outPut : outPut});
       }
       });
+
+     
 
 
     } else {
@@ -182,7 +194,14 @@ app.get('/audio/:filename', (req, res) => {
         err: 'Not an image'
       });
     }
+
   });
+});
+
+app.get('/text',(req, res) =>{
+      console.log("YEEEEEESS");
+      res.send(outPut);
+      res.status(200);
 });
 
 app.delete('/files/:id', (req, res) => {

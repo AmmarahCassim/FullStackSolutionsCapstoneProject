@@ -3,14 +3,213 @@
     {
       "word_alternatives": [
         {
-          "start_time": 0.11,
+          "start_time": 1.13,
           "alternatives": [
             {
-              "confidence": 0.9957,
+              "confidence": 0.9999,
+              "word": "first"
+            }
+          ],
+          "end_time": 1.41
+        },
+        {
+          "start_time": 1.41,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "thing"
+            }
+          ],
+          "end_time": 1.56
+        },
+        {
+          "start_time": 1.56,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "you"
+            }
+          ],
+          "end_time": 1.64
+        },
+        {
+          "start_time": 1.64,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "have"
+            }
+          ],
+          "end_time": 1.75
+        },
+        {
+          "start_time": 1.75,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "to"
+            }
+          ],
+          "end_time": 1.86
+        },
+        {
+          "start_time": 1.86,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "do"
+            }
+          ],
+          "end_time": 1.97
+        },
+        {
+          "start_time": 1.97,
+          "alternatives": [
+            {
+              "confidence": 0.9999,
+              "word": "when"
+            }
+          ],
+          "end_time": 2.11
+        }
+      ],
+      "keywords_result": {},
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "first",
+              1.13,
+              1.41
+            ],
+            [
+              "thing",
+              1.41,
+              1.56
+            ],
+            [
+              "you",
+              1.56,
+              1.64
+            ],
+            [
+              "have",
+              1.64,
+              1.75
+            ],
+            [
+              "to",
+              1.75,
+              1.86
+            ],
+            [
+              "do",
+              1.86,
+              1.97
+            ],
+            [
+              "when",
+              1.97,
+              2.11
+            ],
+            [
+              "you",
+              2.11,
+              2.21
+            ],
+            [
+              "get",
+              2.21,
+              2.37
+            ],
+            [
+              "to",
+              2.37,
+              2.48
+            ],
+            [
+              "America",
+              2.48,
+              2.98
+            ],
+            [
+              "client",
+              3.04,
+              3.39
+            ],
+            [
+              "device",
+              3.39,
+              4.02
+            ],
+            [
+              "called",
+              4.16,
+              4.49
+            ],
+            [
+              "team",
+              4.57,
+              4.93
+            ]
+          ],
+          "confidence": 0.619,
+          "transcript": "first thing you have to do when you get to America client device called team "
+        }
+      ],
+      "final": true
+    },
+    {
+      "word_alternatives": [
+        {
+          "start_time": 5.53,
+          "alternatives": [
+            {
+              "confidence": 0.9979,
               "word": "okay"
             }
           ],
-          "end_time": 0.64
+          "end_time": 5.91
+        },
+        {
+          "start_time": 5.94,
+          "alternatives": [
+            {
+              "confidence": 0.9951,
+              "word": "freedom"
+            }
+          ],
+          "end_time": 6.32
+        },
+        {
+          "start_time": 6.32,
+          "alternatives": [
+            {
+              "confidence": 0.9951,
+              "word": "means"
+            }
+          ],
+          "end_time": 6.58
+        },
+        {
+          "start_time": 6.58,
+          "alternatives": [
+            {
+              "confidence": 0.9941,
+              "word": "nothing"
+            }
+          ],
+          "end_time": 6.95
+        },
+        {
+          "start_time": 6.95,
+          "alternatives": [
+            {
+              "confidence": 0.9834,
+              "word": "if"
+            }
+          ],
+          "end_time": 7.1
         }
       ],
       "keywords_result": {},
@@ -19,60 +218,67 @@
           "timestamps": [
             [
               "okay",
-              0.11,
-              0.64
-            ]
-          ],
-          "confidence": 0.994,
-          "transcript": "okay "
-        }
-      ],
-      "final": true
-    },
-    {
-      "word_alternatives": [
-        {
-          "start_time": 2.65,
-          "alternatives": [
-            {
-              "confidence": 0.9655,
-              "word": "party"
-            }
-          ],
-          "end_time": 3.03
-        }
-      ],
-      "keywords_result": {
-        "party": [
-          {
-            "normalized_text": "party",
-            "start_time": 2.65,
-            "confidence": 0.966,
-            "end_time": 3.03
-          }
-        ]
-      },
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "let's",
-              2.41,
-              2.65
+              5.53,
+              5.91
             ],
             [
-              "party",
-              2.65,
-              3.03
+              "freedom",
+              5.94,
+              6.32
             ],
             [
-              "and",
-              3.06,
-              3.38
+              "means",
+              6.32,
+              6.58
+            ],
+            [
+              "nothing",
+              6.58,
+              6.95
+            ],
+            [
+              "if",
+              6.95,
+              7.1
+            ],
+            [
+              "your",
+              7.1,
+              7.24
+            ],
+            [
+              "slave",
+              7.24,
+              7.52
+            ],
+            [
+              "to",
+              7.52,
+              7.62
+            ],
+            [
+              "regular",
+              7.62,
+              7.95
+            ],
+            [
+              "programming",
+              7.95,
+              8.48
+            ],
+            [
+              "approaching",
+              8.48,
+              8.96
+            ],
+            [
+              "them",
+              8.96,
+              9.25
             ]
           ],
-          "confidence": 0.858,
-          "transcript": "let's party and "
+          "confidence": 0.751,
+          "transcript": "okay freedom means nothing if your slave to regular programming approaching them "
         }
       ],
       "final": true
