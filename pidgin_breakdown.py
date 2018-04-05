@@ -38,7 +38,7 @@ alphabet in mind i.e a-z,sh,ch. In summary play just with this 28 sounds to spel
 """
 # from breakdowns.unicode_hammer import latin1_to_ascii as hammer
 from unicode_hammer import latin1_to_ascii as hammer
-import locale
+import locale, sys, json
 input_encoding = locale.getdefaultlocale()[1] # standard system encoding??
 # input_encoding = 'cp1252'
 # input_encoding = 'utf-8'
@@ -140,10 +140,31 @@ def breakdownWord(word, recursive=False):
         previous_phoneme = phoneme
     return temp_phonemes
 
+
+def read_in():
+    lines = sys.stdin.readlines()
+    return json.loads(lines[0])
+
+def main():
+    words = []
+    wordMapping = {}
+    temp = []
+    lines = read_in()
+    #print(lines)
+    total_sum_inArray = ""
+ 
+    words = [item.encode('ascii','ignore') for item in lines]
+
+    #print(words)
+    for word in words:
+        wordMapping[word] = breakdownWord(unicode(word, input_encoding))
+    print wordMapping
+
 if __name__ == "__main__":
-    testwords = ['okay','lets','party'
-                        ]
-    #test = array(sys.argv[1])
+   main()
+   ''' testwords = ['okay','lets','party']
+    #testwords = sys.argv[1]
     for word in testwords:
-        print(word, breakdownWord(unicode(word, input_encoding)))
-        # print(str(word, breakdownWord(unicode(word, input_encoding))))
+         #print(str(word, breakdownWord(unicode(word, input_encoding))))
+        print(word, breakdownWord(unicode(word, input_encoding))) '''
+       

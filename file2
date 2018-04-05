@@ -6,7 +6,7 @@
           "start_time": 1.13,
           "alternatives": [
             {
-              "confidence": 0.9999,
+              "confidence": 1,
               "word": "first"
             }
           ],
@@ -66,11 +66,21 @@
           "start_time": 1.97,
           "alternatives": [
             {
-              "confidence": 0.9999,
+              "confidence": 1,
               "word": "when"
             }
           ],
           "end_time": 2.11
+        },
+        {
+          "start_time": 2.37,
+          "alternatives": [
+            {
+              "confidence": 0.9017,
+              "word": "to"
+            }
+          ],
+          "end_time": 2.48
         }
       ],
       "keywords_result": {},
@@ -153,7 +163,7 @@
               4.93
             ]
           ],
-          "confidence": 0.619,
+          "confidence": 0.62,
           "transcript": "first thing you have to do when you get to America client device called team "
         }
       ],
@@ -205,7 +215,7 @@
           "start_time": 6.95,
           "alternatives": [
             {
-              "confidence": 0.9834,
+              "confidence": 0.9835,
               "word": "if"
             }
           ],

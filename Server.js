@@ -1,8 +1,8 @@
 const express = require('express');
 const connect = require('connect');
 const http = require('http');
-var cookieSession = require('cookie-session');
-//var session = require('express-session');
+var PythonShell = require('python-shell');
+const  cookieSession = require('cookie-session');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -16,6 +16,8 @@ const methodOverride = require('method-override');
 var watson = require('watson-developer-cloud');
 var outPut = "";
 var filesFound;
+var words = new Array();
+var temp;
 
 
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -28,6 +30,8 @@ var speech_to_text = new SpeechToTextV1 ({
 });
 
 var soundFile  ='';
+
+
 
 const app = express();
 
@@ -141,20 +145,7 @@ app.post('/upload', function(req, res){
  
 });
 
-app.get("/pidgin_breakdown.py", callPidgin);
 
-function callPidgin(req, res) {
-  // using spawn instead of exec, prefer a stream over a buffer
-  // to avoid maxBuffer issue
-  var spawn = require(“child_process”).spawn;
-  var process = spawn(‘python’, ['./pidgin_breakdown.py',
-    req.query.words
-  ]);
-
-  process.stdout.on(‘data’, function (data) {
-    res.send(data.toString());
-  });
-}
 
 
 
@@ -222,10 +213,26 @@ app.get('/audio/:filename', (req, res) => {
           //console.log(JSON.stringify(transcript, null, 2));
           //var obj = JSON.parse(transcript);
           outPut = "";
+          words = [];
           for(var i =0; i < transcript.results.length;++i){
-                outPut += transcript.results[i].alternatives[0].transcript;
+              outPut += transcript.results[i].alternatives[0].transcript;
+          
+            for(var j = 0; j < transcript.results[i].alternatives.length;++j){
+              for (var k = 0; k < transcript.results[i].alternatives[j].timestamps.length; k++){
+                words .push(transcript.results[i].alternatives[j].timestamps[k][0]);
+               
+              }
+            }
           }
-          console.log(outPut);
+          //console.log("OUTPUT " , outPut);
+          //console.log(words);
+          for(item in words){
+            //console.log(words[item]);
+            words[item] = words[item].replace("'", "");
+            //console.log(words[item]);
+          }
+          //Sconsole.log(words);
+        
           //console.log(transcript.results[1].alternatives[0].transcript);
           var text_translation = JSON.stringify(transcript, null, 2);
           var data = fs.writeFile('file2', text_translation, 'utf8',function(error){
@@ -248,6 +255,29 @@ app.get('/audio/:filename', (req, res) => {
 
   });
 });
+
+app.get("/pidgin_breakdown", callPidgin);
+
+function callPidgin(req, res) {
+
+var PythonShell = require('python-shell');
+var pyshell = new PythonShell('pidgin_breakdown.py');
+//res.redirect('/');
+pyshell.send(JSON.stringify(words));
+
+pyshell.on('message', function (message) {
+    console.log(message);
+});
+
+pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+
+    console.log('finished');
+});
+res.redirect('/');
+}
 
 app.get('/text',(req, res) =>{
       console.log("YEEEEEESS");
