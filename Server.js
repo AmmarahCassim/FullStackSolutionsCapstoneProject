@@ -1,8 +1,13 @@
 const express = require('express');
+const connect = require('connect');
+const http = require('http');
+var cookieSession = require('cookie-session');
+//var session = require('express-session');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
 const crypto = require('crypto');
+const uuid = require('node-uuid');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
@@ -31,6 +36,31 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+/*app.use(session({
+  genid: function(req){
+    return uuid.v1();
+  },
+  resave: false,
+  saveUnititialized: false,
+  secret: 'keyboard cat',
+  cookie : {maxAge: 6000}
+}))*/
+
+
+app.use(cookieSession({
+  genid: function(req){
+    return uuid.v1();
+  },
+    name: 'session',
+    maxAge: null,
+  keys: ['key1', 'key2']
+
+}));
+
+/*app.use(function(req,res){
+  req.session.cookie.expires = false;
+  console.log("session ended");
+})*/
 
 // Mongo URI
 const mongoURI = 'mongodb://localhost/myDB';
@@ -71,6 +101,9 @@ var upload = multer({ storage : storage}).single('userPhoto');
 // @route GET /
 // @desc Loads form
 app.get('/', (req, res) => {
+  if(req.session.views){
+    req.session.views ++;
+  }
   filesFound = gfs.files.find().toArray((err, files) => {
     // Check if files
     if (!files || files.length === 0) {
@@ -107,6 +140,8 @@ app.post('/upload', function(req, res){
 
  
 });
+
+
 
 app.get('/files', (req, res) => {
   gfs.files.find().toArray((err, files) => {
