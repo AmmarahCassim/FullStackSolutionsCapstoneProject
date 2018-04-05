@@ -5,7 +5,7 @@
   * nodemon Server.js
 # FUTURE FEATURES:
 
-[ ] export subtitles
+- [ ] export subtitles
 [ ] allow user to add mouths
 [ ] blender plugin
 [ ] add a video
