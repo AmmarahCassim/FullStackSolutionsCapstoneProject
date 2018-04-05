@@ -141,6 +141,22 @@ app.post('/upload', function(req, res){
  
 });
 
+app.get("/pidgin_breakdown.py", callPidgin);
+
+function callPidgin(req, res) {
+  // using spawn instead of exec, prefer a stream over a buffer
+  // to avoid maxBuffer issue
+  var spawn = require(“child_process”).spawn;
+  var process = spawn(‘python’, ['./pidgin_breakdown.py',
+    req.query.words
+  ]);
+
+  process.stdout.on(‘data’, function (data) {
+    res.send(data.toString());
+  });
+}
+
+
 
 
 app.get('/files', (req, res) => {
