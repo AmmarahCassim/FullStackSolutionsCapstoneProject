@@ -4,7 +4,7 @@
   * npm install -g nodemon
   * nodemon Server.js
 # FUTURE FEATURES:
-
+- [ ] convert wav and all other sound file types to the appropriate file type
 - [ ] export subtitles
 - [ ] allow user to add mouths
 - [ ] blender plugin
@@ -15,3 +15,4 @@
 - [ ] progessive 
 - [ ] allow user to send the .dat to an animator
 - [ ] mobile friendly (responsive)
+
