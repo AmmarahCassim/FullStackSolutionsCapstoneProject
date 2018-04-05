@@ -150,12 +150,8 @@ def main():
     wordMapping = {}
     temp = []
     lines = read_in()
-    #print(lines)
     total_sum_inArray = ""
- 
     words = [item.encode('ascii','ignore') for item in lines]
-
-    #print(words)
     for word in words:
         wordMapping[word] = breakdownWord(unicode(word, input_encoding))
     print wordMapping

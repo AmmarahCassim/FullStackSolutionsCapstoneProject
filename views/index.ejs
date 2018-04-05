@@ -133,6 +133,11 @@
               // alert('hey');
 
              });
+     $("#EXPORT").click(function(){
+    $.get("/pidgin_breakdown", function(data, status){
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+});
   </script>
 </html>
 

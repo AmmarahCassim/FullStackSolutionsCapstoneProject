@@ -267,6 +267,13 @@ pyshell.send(JSON.stringify(words));
 
 pyshell.on('message', function (message) {
     console.log(message);
+    fs.writeFile('message.dat', message, function (err) {
+
+        if (err) throw err;
+
+        console.log('It\'s saved! in same location.');
+
+    });
 });
 
 pyshell.end(function (err) {
@@ -275,8 +282,13 @@ pyshell.end(function (err) {
     };
 
     console.log('finished');
+  var file = __dirname + '/message.dat';
+  res.download(file);
+  console.log("downloaded");
+    res.status(200);
+
 });
-res.redirect('/');
+//res.redirect('/');
 }
 
 app.get('/text',(req, res) =>{
