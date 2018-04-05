@@ -11,3 +11,7 @@
 - [ ] add a video
 - [ ] user can record sound
 - [ ] customizable user interfaces
+- [ ] meme maker
+- [ ] progessive 
+- [ ] allow user to send the .dat to an animator
+- [ ] mobile friendly (responsive)
