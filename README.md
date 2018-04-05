@@ -6,7 +6,8 @@
 # FUTURE FEATURES:
 
 - [ ] export subtitles
-[ ] allow user to add mouths
-[ ] blender plugin
-[ ] add a video
-[ ] user can record sound
+- [ ] allow user to add mouths
+- [ ] blender plugin
+- [ ] add a video
+- [ ] user can record sound
+- [ ] customizable user interfaces
