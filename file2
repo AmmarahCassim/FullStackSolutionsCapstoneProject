@@ -3,84 +3,54 @@
     {
       "word_alternatives": [
         {
-          "start_time": 1.13,
+          "start_time": 0.25,
           "alternatives": [
             {
               "confidence": 1,
-              "word": "first"
+              "word": "are"
             }
           ],
-          "end_time": 1.41
+          "end_time": 0.44
         },
         {
-          "start_time": 1.41,
-          "alternatives": [
-            {
-              "confidence": 1,
-              "word": "thing"
-            }
-          ],
-          "end_time": 1.56
-        },
-        {
-          "start_time": 1.56,
+          "start_time": 0.44,
           "alternatives": [
             {
               "confidence": 1,
               "word": "you"
             }
           ],
-          "end_time": 1.64
+          "end_time": 0.55
         },
         {
-          "start_time": 1.64,
+          "start_time": 0.55,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "have"
+              "confidence": 0.9999,
+              "word": "feeling"
             }
           ],
-          "end_time": 1.75
+          "end_time": 1.1
         },
         {
-          "start_time": 1.75,
+          "start_time": 1.22,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "to"
+              "confidence": 0.9961,
+              "word": "lucky"
             }
           ],
           "end_time": 1.86
         },
         {
-          "start_time": 1.86,
+          "start_time": 1.96,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "do"
+              "confidence": 0.9849,
+              "word": "punk"
             }
           ],
-          "end_time": 1.97
-        },
-        {
-          "start_time": 1.97,
-          "alternatives": [
-            {
-              "confidence": 1,
-              "word": "when"
-            }
-          ],
-          "end_time": 2.11
-        },
-        {
-          "start_time": 2.37,
-          "alternatives": [
-            {
-              "confidence": 0.9017,
-              "word": "to"
-            }
-          ],
-          "end_time": 2.48
+          "end_time": 2.55
         }
       ],
       "keywords_result": {},
@@ -88,207 +58,33 @@
         {
           "timestamps": [
             [
-              "first",
-              1.13,
-              1.41
-            ],
-            [
-              "thing",
-              1.41,
-              1.56
+              "are",
+              0.25,
+              0.44
             ],
             [
               "you",
-              1.56,
-              1.64
+              0.44,
+              0.55
             ],
             [
-              "have",
-              1.64,
-              1.75
+              "feeling",
+              0.55,
+              1.1
             ],
             [
-              "to",
-              1.75,
+              "lucky",
+              1.22,
               1.86
             ],
             [
-              "do",
-              1.86,
-              1.97
-            ],
-            [
-              "when",
-              1.97,
-              2.11
-            ],
-            [
-              "you",
-              2.11,
-              2.21
-            ],
-            [
-              "get",
-              2.21,
-              2.37
-            ],
-            [
-              "to",
-              2.37,
-              2.48
-            ],
-            [
-              "America",
-              2.48,
-              2.98
-            ],
-            [
-              "client",
-              3.04,
-              3.39
-            ],
-            [
-              "device",
-              3.39,
-              4.02
-            ],
-            [
-              "called",
-              4.16,
-              4.49
-            ],
-            [
-              "team",
-              4.57,
-              4.93
+              "punk",
+              1.96,
+              2.55
             ]
           ],
-          "confidence": 0.62,
-          "transcript": "first thing you have to do when you get to America client device called team "
-        }
-      ],
-      "final": true
-    },
-    {
-      "word_alternatives": [
-        {
-          "start_time": 5.53,
-          "alternatives": [
-            {
-              "confidence": 0.9979,
-              "word": "okay"
-            }
-          ],
-          "end_time": 5.91
-        },
-        {
-          "start_time": 5.94,
-          "alternatives": [
-            {
-              "confidence": 0.9951,
-              "word": "freedom"
-            }
-          ],
-          "end_time": 6.32
-        },
-        {
-          "start_time": 6.32,
-          "alternatives": [
-            {
-              "confidence": 0.9951,
-              "word": "means"
-            }
-          ],
-          "end_time": 6.58
-        },
-        {
-          "start_time": 6.58,
-          "alternatives": [
-            {
-              "confidence": 0.9941,
-              "word": "nothing"
-            }
-          ],
-          "end_time": 6.95
-        },
-        {
-          "start_time": 6.95,
-          "alternatives": [
-            {
-              "confidence": 0.9835,
-              "word": "if"
-            }
-          ],
-          "end_time": 7.1
-        }
-      ],
-      "keywords_result": {},
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "okay",
-              5.53,
-              5.91
-            ],
-            [
-              "freedom",
-              5.94,
-              6.32
-            ],
-            [
-              "means",
-              6.32,
-              6.58
-            ],
-            [
-              "nothing",
-              6.58,
-              6.95
-            ],
-            [
-              "if",
-              6.95,
-              7.1
-            ],
-            [
-              "your",
-              7.1,
-              7.24
-            ],
-            [
-              "slave",
-              7.24,
-              7.52
-            ],
-            [
-              "to",
-              7.52,
-              7.62
-            ],
-            [
-              "regular",
-              7.62,
-              7.95
-            ],
-            [
-              "programming",
-              7.95,
-              8.48
-            ],
-            [
-              "approaching",
-              8.48,
-              8.96
-            ],
-            [
-              "them",
-              8.96,
-              9.25
-            ]
-          ],
-          "confidence": 0.751,
-          "transcript": "okay freedom means nothing if your slave to regular programming approaching them "
+          "confidence": 0.998,
+          "transcript": "are you feeling lucky punk "
         }
       ],
       "final": true

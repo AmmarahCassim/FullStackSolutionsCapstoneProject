@@ -89,7 +89,7 @@
                   mediaType: 'audio',
                   hideScrollbar: 'true'
               });
-              wavesurfer.load("audio/<%= files[0].filename %>");
+              wavesurfer.load("audio"); //get(audio/:filename)
               $("#addWave-timeline").css("display","inline");
               wavesurfer.on('ready', function () {
                 var timeline = Object.create(WaveSurfer.Timeline);

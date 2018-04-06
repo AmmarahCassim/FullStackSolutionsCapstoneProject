@@ -15,7 +15,8 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 var watson = require('watson-developer-cloud');
 var outPut = "";
-var filesFound;
+var fileUploaded = 0;
+var userFileName;
 var words = new Array();
 var temp;
 
@@ -32,7 +33,6 @@ var speech_to_text = new SpeechToTextV1 ({
 var soundFile  ='';
 
 
-
 const app = express();
 
 // Middleware
@@ -40,31 +40,6 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
-/*app.use(session({
-  genid: function(req){
-    return uuid.v1();
-  },
-  resave: false,
-  saveUnititialized: false,
-  secret: 'keyboard cat',
-  cookie : {maxAge: 6000}
-}))*/
-
-
-app.use(cookieSession({
-  genid: function(req){
-    return uuid.v1();
-  },
-    name: 'session',
-    maxAge: null,
-  keys: ['key1', 'key2']
-
-}));
-
-/*app.use(function(req,res){
-  req.session.cookie.expires = false;
-  console.log("session ended");
-})*/
 
 // Mongo URI
 const mongoURI = 'mongodb://localhost/myDB';
@@ -90,7 +65,8 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
+       filename = buf.toString('hex') + path.extname(file.originalname);
+   
         const fileInfo = {
           filename: filename,
           bucketName: 'uploads'
@@ -102,84 +78,38 @@ const storage = new GridFsStorage({
 });
 var upload = multer({ storage : storage}).single('userPhoto');
 
-// @route GET /
-// @desc Loads form
-app.get('/', (req, res) => {
-  if(req.session.views){
-    req.session.views ++;
-  }
-  filesFound = gfs.files.find().toArray((err, files) => {
-    // Check if files
-    if (!files || files.length === 0) {
-      res.render('index', { files: false });
-    } else {
-      files.map(file => {
-        if (
-          file.contentType === 'audio/wav' ||
-          file.contentType === 'audio/mp3'
-        ){
-          file.isAudio = true;
-        } else {
-          file.isAudio = false;
-        }
-      });
 
-      res.render('index', { files: files });
-    }
-  });
+app.get('/', (req, res) => {
+  //console.log("HEY THERE:",filename);
+  console.log("BOOOOLEAN: ",fileUploaded);
+if(fileUploaded == 1){
+ var singleFile = gfs.files.findOne({},{sort: {"uploadDate": -1}},function(err,file){
+      console.log("HEllo:",file.filename);
+      userFileName = file.filename;
+      fileUploaded = 0;
+      res.render('index', { files: file.filename});
+
+ });
+}else{
+  res.render('index', { files: false });
+}
 });
 
-// @route POST /upload
-// @desc  Uploads file to DB
 app.post('/upload', function(req, res){
   upload(req,res,function(err) {
     if(err) {
       return res.end("Error uploading file.");
     }
-    //res.json({ file: req.file });
-    //res.render('index', { files:files, upload: true});
-
+    fileUploaded = 1;
     res.redirect('/');
+    
+});
 });
 
- 
-});
-
-
-
-
-
-
-app.get('/files', (req, res) => {
-  gfs.files.find().toArray((err, files) => {
-    // Check if files
-    if (!files || files.length === 0) {
-      return res.status(404).json({
-        err: 'No files exist'
-      });
-    }
-
-    // Files exist
-    return res.json(files);
-  });
-});
-
-app.get('/files/:filename', (req, res) => {
-  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+app.get('/audio', (req, res) => {
+  gfs.files.findOne({ filename: userFileName}, (err, file) => {
     // Check if file
-    if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: 'No file exists'
-      });
-    }
-    // File exists
-    return res.json(file);
-  });
-});
-
-app.get('/audio/:filename', (req, res) => {
-  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-    // Check if file
+    console.log("YO MA",userFileName);
     if (!file || file.length === 0) {
       return res.status(404).json({
         err: 'No file exists'
@@ -188,16 +118,14 @@ app.get('/audio/:filename', (req, res) => {
 
     // Check if image
     if (file.contentType === 'audio/x-wav' || file.contentType === 'audio/mpeg') {
-      // Read output to browser
-      
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
       
       soundFile = file.filename;
-      console.log(soundFile);
+      console.log(soundFile); //----this is it
       
         var params = {
-          audio: gfs.createReadStream(file.filename),
+          audio: gfs.createReadStream(soundFile),
           content_type: 'audio/wav',
           timestamps: true,
           word_alternatives_threshold: 0.9,
@@ -210,8 +138,6 @@ app.get('/audio/:filename', (req, res) => {
           console.log('Error:', error);
         }
         else{
-          //console.log(JSON.stringify(transcript, null, 2));
-          //var obj = JSON.parse(transcript);
           outPut = "";
           words = [];
           for(var i =0; i < transcript.results.length;++i){
@@ -224,16 +150,10 @@ app.get('/audio/:filename', (req, res) => {
               }
             }
           }
-          //console.log("OUTPUT " , outPut);
-          //console.log(words);
+          console.log(outPut);
           for(item in words){
-            //console.log(words[item]);
             words[item] = words[item].replace("'", "");
-            //console.log(words[item]);
           }
-          //Sconsole.log(words);
-        
-          //console.log(transcript.results[1].alternatives[0].transcript);
           var text_translation = JSON.stringify(transcript, null, 2);
           var data = fs.writeFile('file2', text_translation, 'utf8',function(error){
             if(error) throw error;
