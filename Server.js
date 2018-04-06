@@ -18,6 +18,7 @@ var outPut = "";
 var fileUploaded = 0;
 var userFileName;
 var words = new Array();
+var tempWords = new Array();
 var temp;
 
 
@@ -37,6 +38,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -150,7 +152,10 @@ app.get('/audio', (req, res) => {
               }
             }
           }
-          console.log(outPut);
+          tempWords = outPut.split(" ");
+          console.log("TEMP WORDS: ", tempWords);
+          console.log("OUTPUT:",outPut);
+          console.log("WORDS: ", words);
           for(item in words){
             words[item] = words[item].replace("'", "");
           }
@@ -176,6 +181,7 @@ app.get('/audio', (req, res) => {
   });
 });
 
+
 app.get("/pidgin_breakdown", callPidgin);
 
 function callPidgin(req, res) {
@@ -183,7 +189,7 @@ function callPidgin(req, res) {
 var PythonShell = require('python-shell');
 var pyshell = new PythonShell('pidgin_breakdown.py');
 //res.redirect('/');
-pyshell.send(JSON.stringify(words));
+pyshell.send(JSON.stringify(tempWords));
 
 pyshell.on('message', function (message) {
     console.log(message);
@@ -216,6 +222,13 @@ app.get('/text',(req, res) =>{
       res.send(outPut);
       res.status(200);
 });
+
+app.post('/update',(req,res)=>{
+  outPut = req.body.output;
+  tempWords = outPut.split(" ");
+console.log(req.body.output);
+  res.status(200);
+})
 
 app.delete('/files/:id', (req, res) => {
   gfs.remove({ _id: req.params.id, root: 'uploads' }, (err, gridStore) => {

@@ -56,17 +56,17 @@
      
     </div>
         </div></div>
-        <div class="col-md-4" ><div class="flex-center"> <img src="images/Papagayo-Mouths-GIF.gif"></div></div>
+        <div class="col-md-4" ><div class="flex-center"><!-- <img src="images/Papagayo-Mouths-GIF.gif">--></div></div>
         <div class="col-md-8" ><div class ="js-waveform" style="justify-content: flex-start;">
           <div class="btn-group" style="margin: 0 auto;margin-top:5px;margin-bottom: 10px;">
             <button id ="generate" type="button" class="btn btn-info">GENERATE</button>
             <button type="button" class="btn btn-info" >BREAKDOWN</button>
           </div>
           <div style="width:80%; height: 80%;margin:0 auto;">
-          <textarea type="text" class="form-control" placeholder="Search" wrap="hard" rows="5"></textarea>
+          <textarea id = "speechtotext" type="text" class="form-control" placeholder="Search" wrap="hard" rows="5"></textarea>
            <div class="btn-group" style="float:right;">
-            <button type="button" class="btn btn-default" >EDIT</button>
-            <button type="button" class="btn btn-default" >SAVE</button>
+            <button id = "EDIT" type="button" class="btn btn-default" >EDIT</button>
+            <button id = "SAVE" type="button" class="btn btn-default" >SAVE</button>
           </div>
           </div>
         </div>
@@ -121,23 +121,28 @@
 
   <script>
      $("#generate").click(function(e){  
-                  e.preventDefault();
+                
 
                 $.get("/text", function(data, status){
               
                   $("textarea").append(data);  
                 });
-                          //alert("Data: " + data + "\nStatus: " + status);
-       // });
-               
-              // alert('hey');
-
              });
+
      $("#EXPORT").click(function(){
     $.get("/pidgin_breakdown", function(data, status){
         console.log("Data: " + data + "\nStatus: " + status);
     });
 });
+     $("#EDIT").click(function(){
+      console.log("heita");
+      var text = $("#speechtotext").val();
+      console.log(text);
+      $.post("/update",{output: text},function(data,status){
+        console.log("Data: " + data);
+      });
+      
+     });
   </script>
 </html>
 
