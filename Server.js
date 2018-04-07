@@ -2,7 +2,8 @@ const express = require('express');
 const connect = require('connect');
 const http = require('http');
 var PythonShell = require('python-shell');
-const  cookieSession = require('cookie-session');
+const  session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -41,6 +42,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
+
+ var store = new MongoDBStore(
+      {
+        uri: 'mongodb://localhost/myDB',
+        databaseName: 'myDB',
+        collection: 'mySessions'
+      });
+  store.on('error', function(error) {
+      assert.ifError(error);
+      assert.ok(false);
+    });
+
+app.use(session({
+  genid:function(req){
+    return uuid();
+  },
+     cookie: { maxAge: 60000},
+     resave: true,
+     saveUninitialized: true,
+     secret: "secret",
+     store: store
+ }));
 app.set('view engine', 'ejs');
 
 // Mongo URI
@@ -48,6 +71,7 @@ const mongoURI = 'mongodb://localhost/myDB';
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
+
 
 // Init gfs
 let gfs;
@@ -82,13 +106,16 @@ var upload = multer({ storage : storage}).single('userPhoto');
 
 
 app.get('/', (req, res) => {
-  //console.log("HEY THERE:",filename);
+  //var sessData = req.session;
+  req.session.output = new Array('');
+  var textOutPut = new Array(req.session.output);
+  console.log("SESSION: " + req.session.fileUploaded);
   console.log("BOOOOLEAN: ",fileUploaded);
-if(fileUploaded == 1){
+if(req.session.fileUploaded == 1){
  var singleFile = gfs.files.findOne({},{sort: {"uploadDate": -1}},function(err,file){
       console.log("HEllo:",file.filename);
       userFileName = file.filename;
-      fileUploaded = 0;
+      req.session.fileUploaded = 0;
       res.render('index', { files: file.filename});
 
  });
@@ -102,7 +129,9 @@ app.post('/upload', function(req, res){
     if(err) {
       return res.end("Error uploading file.");
     }
-    fileUploaded = 1;
+    req.session.fileUploaded = 1;
+    console.log("UPLOADED:", req.session.fileUploaded);
+    //req.session.fileUploaded = 1;
     res.redirect('/');
     
 });
@@ -148,12 +177,15 @@ app.get('/audio', (req, res) => {
             for(var j = 0; j < transcript.results[i].alternatives.length;++j){
               for (var k = 0; k < transcript.results[i].alternatives[j].timestamps.length; k++){
                 words .push(transcript.results[i].alternatives[j].timestamps[k][0]);
+                req.session.output.push(transcript.results[i].alternatives[j].timestamps[k][0]);
                
               }
             }
           }
-          tempWords = outPut.split(" ");
-          console.log("TEMP WORDS: ", tempWords);
+          //req.session.output = req.session.output.split(" ");
+          var index = req.session.output.indexOf('');
+          if(index > -1) req.session.output.splice(index,1);
+          console.log("TEMP WORDS: ", req.session.output);
           console.log("OUTPUT:",outPut);
           console.log("WORDS: ", words);
           for(item in words){
@@ -169,9 +201,6 @@ app.get('/audio', (req, res) => {
       }
       });
 
-     
-
-
     } else {
       res.status(404).json({
         err: 'Not an image'
@@ -182,14 +211,14 @@ app.get('/audio', (req, res) => {
 });
 
 
-app.get("/pidgin_breakdown", callPidgin);
-
-function callPidgin(req, res) {
-
+//app.get("/pidgin_breakdown", callPidgin);
+app.get('/pidgin_breakdown',(req, res) =>{
+//function callPidgin(req, res) {
+console.log("TEMMMMMMPPY: ",req.session.output);
 var PythonShell = require('python-shell');
 var pyshell = new PythonShell('pidgin_breakdown.py');
 //res.redirect('/');
-pyshell.send(JSON.stringify(tempWords));
+pyshell.send(JSON.stringify(words));
 
 pyshell.on('message', function (message) {
     console.log(message);
@@ -215,7 +244,7 @@ pyshell.end(function (err) {
 
 });
 //res.redirect('/');
-}
+});
 
 app.get('/text',(req, res) =>{
       console.log("YEEEEEESS");
@@ -225,8 +254,8 @@ app.get('/text',(req, res) =>{
 
 app.post('/update',(req,res)=>{
   outPut = req.body.output;
-  tempWords = outPut.split(" ");
-console.log(req.body.output);
+  req.session.output = outPut.split(" ");
+console.log(req.session.output);
   res.status(200);
 })
 
