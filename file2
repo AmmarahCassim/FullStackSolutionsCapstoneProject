@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.25,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "are"
+            }
+          ],
+          "end_time": 0.44
+        },
+        {
+          "start_time": 0.44,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "you"
+            }
+          ],
+          "end_time": 0.55
+        },
+        {
+          "start_time": 0.55,
+          "alternatives": [
+            {
+              "confidence": 0.9999,
+              "word": "feeling"
+            }
+          ],
+          "end_time": 1.1
+        },
+        {
+          "start_time": 1.22,
+          "alternatives": [
+            {
+              "confidence": 0.9961,
+              "word": "lucky"
+            }
+          ],
+          "end_time": 1.86
+        },
+        {
+          "start_time": 1.96,
+          "alternatives": [
+            {
+              "confidence": 0.9849,
+              "word": "punk"
+            }
+          ],
+          "end_time": 2.55
+        }
+      ],
+      "keywords_result": {},
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "are",
+              0.25,
+              0.44
+            ],
+            [
+              "you",
+              0.44,
+              0.55
+            ],
+            [
+              "feeling",
+              0.55,
+              1.1
+            ],
+            [
+              "lucky",
+              1.22,
+              1.86
+            ],
+            [
+              "punk",
+              1.96,
+              2.55
+            ]
+          ],
+          "confidence": 0.998,
+          "transcript": "are you feeling lucky punk "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
+}

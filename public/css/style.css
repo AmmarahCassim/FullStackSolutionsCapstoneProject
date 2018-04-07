@@ -17,6 +17,53 @@ body{
 		  margin:0 auto;
 		  display:block;
 		}
+		.btn-group:nth-child(1){
+			margin-right:20px;
+		}
+
+		.btn-default{
+    		background-color: #111111;
+    		border: none;
+    		color: black;
+
+		}
+		.btn-default:visited{
+			background-color:black;
+			color:#111111;
+			border: none;
+		}
+		.btn-default:hover{
+			background-color: black;
+			color:#111111;
+			border: none;
+		}
+		.btn-default:active{
+			background-color: black;
+			color:#111111;
+			border: none;
+		}
+
+		.form-control
+		{
+			background-color: rgb(219, 219, 219);
+			color: black;
+			width: 100%;
+			height: 80%;
+			/*margin-left:10px;
+			margin-right:10px;*/
+			/*text-align: center;*/
+			margin:0 auto;
+			border: none;
+		}
+		#addWave{
+			padding: 5px;
+		}
+		#addWave-timeline{
+			display: none;
+			background: rgba(245, 189, 32, .3);
+			box-shadow: inset 0 0 10px #f5bd20;
+			padding: 5px;
+		}
 		
 
     	.flex-center {
