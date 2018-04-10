@@ -9,5 +9,4 @@ install:
     - npm install
 script: 
 - node Server.js
-after_script:
-  - curl http://localhost:3000/close
+- curl http://localhost:3000/close
