@@ -9,4 +9,4 @@ install:
     - npm install
 script: 
 - node Server.js
-- curl http://localhost:3000/close
+- pkill node
