@@ -2,8 +2,8 @@
   * clone the repo
   * npm install
   * npm install -g nodemon
-  * get a local mongodb running
-  * nodemon Server.js
+  * you need to have a local mongo db running
+  * nodemon Server.js
 # FUTURE FEATURES:
 - [ ] convert wav and all other sound file types to the appropriate file type
 - [ ] export subtitles
