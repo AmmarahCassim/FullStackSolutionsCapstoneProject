@@ -4,6 +4,7 @@
   * npm install -g nodemon
   * you need to have a local mongo db running
   * you need to be connected to the internet so that all the cdns can be downloaded
+  * you need to have python installed on your system
   * nodemon Server.js
 # FUTURE FEATURES:
 - [ ] convert wav and all other sound file types to the appropriate file type
