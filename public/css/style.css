@@ -17,6 +17,53 @@ body{
 		  margin:0 auto;
 		  display:block;
 		}
+		.btn-group:nth-child(1){
+			margin-right:20px;
+		}
+
+		.btn-default{
+    		background-color: #111111;
+    		border: none;
+    		color: black;
+
+		}
+		.btn-default:visited{
+			background-color:black;
+			color:#111111;
+			border: none;
+		}
+		.btn-default:hover{
+			background-color: black;
+			color:#111111;
+			border: none;
+		}
+		.btn-default:active{
+			background-color: black;
+			color:#111111;
+			border: none;
+		}
+
+		.form-control
+		{
+			background-color: rgb(219, 219, 219);
+			color: black;
+			width: 100%;
+			height: 80%;
+			/*margin-left:10px;
+			margin-right:10px;*/
+			/*text-align: center;*/
+			margin:0 auto;
+			border: none;
+		}
+		#addWave{
+			padding: 5px;
+		}
+		#addWave-timeline{
+			display: none;
+			background: rgba(245, 189, 32, .3);
+			box-shadow: inset 0 0 10px #f5bd20;
+			padding: 5px;
+		}
 		
 
     	.flex-center {
@@ -65,3 +112,87 @@ body{
 			height:45px;
 			margin-top:2px;
 		}
+			#myProgress {
+		  width: 50%;
+		  background-color: red;
+			display: none;
+		}
+
+		#myBar {
+		  width: 1%;
+		  height: 30px;
+		  background-color: grey;
+		}
+			
+			#loadie{
+				display: none;
+			}
+
+		.loader {
+		  border: 16px solid #f3f3f3;
+		  border-radius: 50%;
+		  border-top: 16px solid #3498db;
+		  width: 50px;
+		  height: 50px;
+		  -webkit-animation: spin 2s linear infinite; /* Safari */
+		  animation: spin 2s linear infinite;
+		}
+
+		/* Safari */
+		@-webkit-keyframes spin {
+		  0% { -webkit-transform: rotate(0deg); }
+		  100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		}
+
+	.popup {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+	}
+
+	.popup .popuptext {
+		visibility: hidden;
+		width: 160px;
+		background-color:grey;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 8px 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		margin-left: -80px;
+	}
+
+	.popup .popuptext::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #555 transparent transparent transparent;
+	}
+
+	.popup .show {
+		visibility: visible;
+		-webkit-animation: fadeIn 1s;
+		animation: fadeIn 1s;
+	}
+
+	@-webkit-keyframes fadeIn {
+		from {opacity: 0;} 
+		to {opacity: 1;}
+	}
+
+	@keyframes fadeIn {
+		from {opacity: 0;}
+		to {opacity:1 ;}
+	}

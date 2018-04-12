@@ -2,13 +2,37 @@
   "name": "fileupload",
   "version": "0.0.1",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "childprocess": "^2.0.2",
+    "connect": "^3.6.6",
+    "connect-mongodb-session": "^2.0.2",
+    "consolidate": "^0.15.1",
+    "ejs": "^2.5.7",
     "express": "4.13.3",
+    "express-session": "^1.15.6",
+    "express-sessions": "^1.0.6",
+    "fs": "0.0.1-security",
+    "gridfs-stream": "^1.1.1",
+    "http": "0.0.0",
+    "method-override": "^2.3.10",
+    "mongodb": "3.0.4",
+    "mongoose": "^5.0.11",
     "multer": "1.1.0",
-    "mongodb": "3.0.4"
+    "multer-gridfs-storage": "^3.0.0",
+    "node-uuid": "^1.4.8",
+    "pkill": "^2.0.0",
+    "path": "^0.12.7",
+    "python-shell": "^0.5.0",
+    "swig": "^1.4.2",
+    "watson-developer-cloud": "^3.2.1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   },
   "devDependencies": {
-    "should": "~7.1.0",
     "mocha": "~2.3.3",
+    "nodemon": "^1.17.2",
+    "should": "~7.1.0",
     "supertest": "~1.1.0"
   },
   "description": "File-upload-in-Node ===================",
@@ -18,12 +42,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject.git"
+    "url": "git+https://github.com/davebehr1/FullStackSolutionsCapstoneProject.git"
   },
   "author": "david behr",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject/issues"
+    "url": "https://github.com/davebehr1/FullStackSolutionsCapstoneProject/issues"
   },
-  "homepage": "https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject#readme"
+  "homepage": "https://github.com/davebehr1/FullStackSolutionsCapstoneProject#readme"
 }
