@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myProgress {
+  width: 50%;
+  background-color: red;
+    display: none;
+    border-radius: 10px;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: grey;
+    border-radius: 10px;
+}
+    
+    #loadie{
+        display: none;
+    }
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color:red;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
+<body >
+
+	
+ <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/upload"
+          method="POST">
+          <div class="form-group">
+            <label class="btn btn-info btn-file">
+                Browse <input type="file" style="display: none;" name="userPhoto" >
+           </label>
+          
+         
+      <span id = "status"></span>
+    </div>
+    </form>
+	<center><div id="myProgress">
+		<div class="progress-bar progress-bar-striped active" role="progressbar" id="myBar" ></div>
+	</div>
+	<br><div class="loader" id="loadie"></div></center>
+	<input  onclick="move()" type="submit" class="btn btn-info" value="Upload Audio">
+     <button  onclick="generate()"id ="generate" type="button" class="btn btn-info">GENERATE</button>
+	 <button class="popup"  class="btn btn-info"onclick="exportFile()">EXPORT
+		<span onclick="stopTimer()"class="popuptext" id="myPopup">File Saved in your Downloads</span>
+	 </button>
+ 
+
+<script>
+    
+    var xLoading = false;
+    
+function move() {
+
+    document.getElementById('myProgress').style.display = "inherit";
+    document.getElementById('myBar').style.display = "inherit";
+  var elem = document.getElementById("myBar");  
+  var width = 0;
+//    alert(document.getElementById('myProgress').style.display);
+    if (xLoading == false)
+    {
+        var id = setInterval(frame, 10);
+        xLoading = true;
+      function frame() 
+      {
+        if (width >= 100) 
+        {
+          clearInterval(id);
+        } else 
+        {
+          width+= 0.34; 
+          elem.style.width = width + '%'; 
+        }
+      }
+  setTimeout(hide, 3000);
+    }
+}
+    
+ function hide()
+ {
+     xLoading = false;
+     document.getElementById('myProgress').style.display = "none";
+ }
+ 
+ function generate()
+ {
+     document.getElementsByClassName('loader')[0].style.webkitAnimationPlayState = "running";
+	document.getElementById('loadie').style.display = "inherit";
+	setTimeout(loadieHide, 3000);
+ }
+ 
+ function loadieHide()
+ {
+     document.getElementsByClassName('loader')[0].style.webkitAnimationPlayState = "paused";
+	document.getElementById('loadie').style.display='none';
+ }
+			function exportFile()
+			 {
+				var myVar =setInterval(allGood,5000)
+			 }
+			 
+			 function allGood()
+			 {
+				  var popup = document.getElementById("myPopup");
+					popup.classList.toggle("show");
+					
+			}
+			function stopTimer()
+			{
+				clearInterval(myVar);
+			 }
+ 
+</script>
+
+</body>
+</html>
