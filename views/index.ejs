@@ -1,148 +1,147 @@
 <html>
   <head>
-    <title>File upload Node.</title>
+    <title>PidgeySync Prototype</title>
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-     
-
-
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
       <!--<script src ="dist/wavesurfer.js"></script>
       <script src ="dist/plugin/wavesurfer.timeline.js"></script>
       <script src="dist/plugin/wavesurfer.regions.js"></script>
-       <script src="dist/plugin/wavesurfer.minimap.js"></script>-->
-
+      <script src="dist/plugin/wavesurfer.minimap.js"></script>-->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.min.css">
       <link rel="stylesheet" href="css/style.css">
+      <link rel="icon" href="images/favicon.png" type="image/png">
   </head>
   <body>
-
-   
-
     <nav class="navbar navbar-inverse">
-    <a href="#" class="navbar-left"><img src="images/apple.png" id = "logo"></a>
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">LIPSYNC</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-     
-    </ul>
-  </div>
-</nav>
-<div class="container-fluid">
+      <a href="#" class="navbar-left"><img src="images/logo.png" id = "logo"></a>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a id="pidgy" class="navbar-brand" href="#">PidgeySync</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li class="default"><a onclick="javascript:introJs().setOption('showProgress',true).start();">Start Tour</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container-fluid">
-    <div class="d-flex flex-row" style="">
-        <div class="col-md-8 text-center" >
-          
-          <div class="flex-center" id="addWave">
-            <div id="addWave-timeline"></div>
-        <div class="form-inline" id="dynamicRemove">
-        <form id="uploadForm"
-          enctype="multipart/form-data"
-          action="/upload"
-          method="POST">
-          <div class="form-group">
-            <label class="btn btn-info btn-file">
-                Browse <input type="file" style="display: none;" name="userPhoto" >
-           </label>
-          <input type="submit" class="btn btn-info" value="Upload Audio">
-         
-      <span id = "status"></span>
-    </div>
-    </form>
-     
-    </div>
-        </div></div>
-        <div class="col-md-4" ><div class="flex-center"><!-- <img src="images/Papagayo-Mouths-GIF.gif">--></div></div>
-        <div class="col-md-8" ><div class ="js-waveform" style="justify-content: flex-start;">
-          <div class="btn-group" style="margin: 0 auto;margin-top:5px;margin-bottom: 10px;">
-            <button id ="generate" type="button" class="btn btn-info">GENERATE</button>
-            <button type="button" class="btn btn-info" >BREAKDOWN</button>
+      <div class="container-fluid">
+        <div class="d-flex flex-row" style="">
+          <!--TOP LEFT BLOCK-->
+          <div class="col-md-8 text-center" >
+            <div class="flex-center" id="addWave">
+              <div id="addWave-timeline"></div>
+              <div class="form-inline" id="dynamicRemove">
+                <form id="uploadForm"
+                  enctype="multipart/form-data"
+                  action="/upload"
+                  method="POST">
+                  <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
+                    <label class="btn btn-info btn-file">
+                      BROWSE <input type="file" style="display: none;" name="userPhoto" >
+                    </label>
+                    <input type="submit" class="btn btn-info" value="UPLOAD">
+                    <span id = "status"></span>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-          <div style="width:80%; height: 80%;margin:0 auto;">
-          <textarea id = "speechtotext" type="text" class="form-control" placeholder="Search" wrap="hard" rows="5"></textarea>
-           <div class="btn-group" style="float:right;">
-            <button id = "EDIT" type="button" class="btn btn-default" >EDIT</button>
-            <button id = "SAVE" type="button" class="btn btn-default" >SAVE</button>
+          <!--TOP RIGHT BLOCK-->
+          <div class="col-md-4" >
+            <div class="flex-center">
+              <img src="images/Papagayo-Mouths-GIF.gif">
+            </div>
           </div>
+          <!--BOTTOM LEFT BLOCK-->
+          <div class="col-md-8" >
+            <div class ="js-waveform" style="justify-content: flex-start;">
+              <div class="btn-group" style="margin: 0 auto;margin-top:5px;margin-bottom: 10px;">
+                <button id ="generate" type="button" class="btn btn-info" data-step="2" data-intro="Then, click on generate and the speech to text magic will happen in a flash!">GENERATE</button>
+                <button type="button" class="btn btn-info" data-step="3" data-intro="By clicking Breakdown, annotations will be added to the timeline so that you can see exactly where what phonemes are being pronounced.">BREAKDOWN</button>
+              </div>
+              <div style="width:80%; height: 80%;margin:0 auto;">
+                <textarea id = "speechtotext" type="text" class="form-control" placeholder="" wrap="hard" rows="5"></textarea>
+                <div class="btn-group" style="float:right;">
+                  <button id = "EDIT" type="button" class="btn btn-default" data-step="4" data-intro="How did that turn out? If you are not happy with what was generated, you're more than welcome to edit the text.">EDIT</button>
+                  <button id = "SAVE" type="button" class="btn btn-default" data-step="5" data-intro="You can now save what you have edited.">SAVE</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div></div>
-        <div class="col-md-4"><div class="flex-center"><button id = "EXPORT" type="button" class="btn btn-info">EXPORT</button></div></div></div>
+        <!--BOTTOM RIGHT BLOCK-->
+        <div class="col-md-4">
+          <div class="flex-center">
+            <button id = "EXPORT" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!">EXPORT</button>
+          </div>
+        </div>
+      </div>
     </div>
-              <% if(files) {%>
-             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-              <script src ="dist/wavesurfer.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
-             <script>
-               var wavesurfer = WaveSurfer.create({ 
-                container: '#addWave',
-                  pixelRatio: 1,
-                  barWidth: 2,
-                  progressColor: "#756330",
-                  backend: 'MediaElement',
-                  mediaType: 'audio',
-                  hideScrollbar: 'true'
-              });
-              wavesurfer.load("audio"); //get(audio/:filename)
-              $("#addWave-timeline").css("display","inline");
-              wavesurfer.on('ready', function () {
-                var timeline = Object.create(WaveSurfer.Timeline);
 
-                timeline.init({
-                  wavesurfer: wavesurfer,
-                  container: '#addWave-timeline'
-                });
-              });
+    <% if(files) {%>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src ="dist/wavesurfer.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
+      <script>
+        var wavesurfer = WaveSurfer.create({ 
+          container: '#addWave',
+          pixelRatio: 1,
+          barWidth: 2,
+          progressColor: "#756330",
+          backend: 'MediaElement',
+          mediaType: 'audio',
+          hideScrollbar: 'true'
+          });
 
-                    $(".form-inline").hide('slow', function(){ $(".form-inline").remove(); });
-                    var r= $('<button id ="PLAY" type="button" class="btn btn-info" style=" margin:0 auto;display:block;" onclick="wavesurfer.play()">PLAY</button>'); 
-                      $('#addWave').append(r).show(slow);  
+        wavesurfer.load("audio"); //get(audio/:filename)
+        $("#addWave-timeline").css("display","inline");
+        wavesurfer.on('ready', function () {
+          var timeline = Object.create(WaveSurfer.Timeline);
+          timeline.init({
+          wavesurfer: wavesurfer,
+          container: '#addWave-timeline'
+          });
+        });
 
-           
-            
+        $(".form-inline").hide('slow', function(){ $(".form-inline").remove(); });
+        var r= $('<button id ="PLAY" type="button" class="btn btn-info" style=" margin:0 auto;display:block;" onclick="wavesurfer.play()">PLAY</button>'); 
+        $('#addWave').append(r).show(slow);  
 
-              </script>
-
-              <%}%>
-</div>
-
-
-        <footer class="fixed-bottom">Full Stack Solutions</footer>
+      </script>
+    <%}%>
+<!--</div>-->
+    <footer class="fixed-bottom">Full Stack Solutions</footer>
   </body>
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
+   
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
   <script>
-     $("#generate").click(function(e){  
-                
-
-                $.get("/text", function(data, status){
-              
-                  $("textarea").append(data);  
-                });
-             });
-
-     $("#EXPORT").click(function(){
-    $.get("/pidgin_breakdown", function(data, status){
-        console.log("Data: " + data + "\nStatus: " + status);
+    $("#generate").click(function(e){  
+      $.get("/text", function(data, status){
+        $("textarea").append(data);  
+      });
     });
-});
-     $("#EDIT").click(function(){
+
+    $("#EXPORT").click(function(){
+      $.get("/pidgin_breakdown", function(data, status){
+          console.log("Data: " + data + "\nStatus: " + status);
+      });
+    });
+
+    $("#EDIT").click(function(){
       console.log("heita");
       var text = $("#speechtotext").val();
       console.log(text);
       $.post("/update",{output: text},function(data,status){
         console.log("Data: " + data);
-      });
-      
-     });
+      });  
+    });
   </script>
 </html>
 
