@@ -1,129 +1,163 @@
+/*FONTS*/
 @font-face{
 	font-family: birdHouse;
 	src:url(../fonts/AnotherBirdhouse.ttf);
 }
-
-
+/*================================*/
+/*ELEMENTS*/
 body{
-    		background-color: black;
-    }
-    .form-group{
-    margin: 0 auto;
-   
-	}
-	#pidgy{
-		font-family: birdHouse;
-		color: #f5bd20;
-		font-size: 200%;
-	}
-	.forLastStep{
-		background-color: #505050;
-		color: black;
-	}
-    	#inner{
-    		background-color:grey;
-    		margin-bottom:5px;
+    background-color: black;
+}
 
-    		height:240px;
-    		border-radius:5px;
-    	}
-    
-    	#EXPORT{
-		  margin:0 auto;
-		  display:block;
-		}
-		.btn-group:nth-child(1){
-			margin-right:20px;
-		}
+footer {
+	margin-bottom:5px;
+	text-align: center;
+	position: fixed;
+	height: 20px;
+	bottom: 0;
+	width: 100%;
+}
+/*================================*/
+/*ID's*/
+#addWave{
+	padding: 5px;
+}
 
-		.btn-default{
-    		background-color: #111111;
-    		border: none;
-    		color: black;
+#addWave-timeline{
+	display: none;
+	background: rgba(245, 189, 32, .3);
+	box-shadow: inset 0 0 10px #f5bd20;
+	padding: 5px;
+}
 
-		}
-		.btn-default:visited{
-			background-color:black;
-			color:#111111;
-			border: none;
-		}
-		.btn-default:hover{
-			background-color: black;
-			color:#111111;
-			border: none;
-		}
-		.btn-default:active{
-			background-color: black;
-			color:#111111;
-			border: none;
-		}
+#EXPORT{
+	margin:0 auto;
+	display:block;
+}
 
-		.form-control
-		{
-			background-color: rgb(219, 219, 219);
-			color: black;
-			width: 100%;
-			height: 80%;
-			/*margin-left:10px;
-			margin-right:10px;*/
-			/*text-align: center;*/
-			margin:0 auto;
-			border: none;
-		}
-		#addWave{
-			padding: 5px;
-		}
-		#addWave-timeline{
-			display: none;
-			background: rgba(245, 189, 32, .3);
-			box-shadow: inset 0 0 10px #f5bd20;
-			padding: 5px;
-		}
-		
+#EDIT{
+	color: #f5bd20;
+}
 
-    	.flex-center {
-    	margin-bottom:5px;
-		  background: #383838;
-		  border-radius:5px;
-		  color: white;
-		  
-		  display: flex;
-		  flex-direction: column;
-		  justify-content: center;
-		  height: 250px;
-		  /*resize: vertical;*/
-		  overflow: auto;
-		}
-		.js-waveform{
-			margin-bottom:5px;
-		  background: #383838;
-		  border-radius:5px;
-		  color: white;
-		  
-		  display: flex;
-		  flex-direction: column;
-		  justify-content: center;
-		  height: 250px;
-		  /*resize: vertical;*/
-		  overflow: auto;
-		}
+#inner{
+	background-color:grey;
+	margin-bottom:5px;
 
-		footer {
-		margin-bottom:5px;
-		text-align: center;
-	    position: fixed;
-	    height: 20px;
-	    bottom: 0;
-	    width: 100%;
-		}
+	height:240px;
+	border-radius:5px;
+}
 
-		.js-waveform, .flex-center {
-		  box-shadow:none;
-		}
-		.js-waveform:hover, .js-waveform:active, .flex-center:hover, .flex-center:active {
-		  box-shadow: inset 0 0 10px #f5bd20;
-		}
-		#logo{
-			height:45px;
-			margin-top:2px;
-		}
+#logo{
+	height:45px;
+	margin-top:2px;
+}
+
+#pidgy{
+	font-family: birdHouse;
+	color: #f5bd20;
+	font-size: 200%;
+}
+
+#SAVE{
+	color: #f5bd20;
+}
+
+#speechtotext{
+	background-color:grey;
+}
+/*================================*/
+/*CLASSES*/
+.btn-group:nth-child(1){
+	margin-right:20px;
+}
+
+.btn-default{
+	background-color: #111111;
+	border: none;
+	color: black;
+	font-family: birdHouse;
+	font-size: 150%;
+}
+
+.btn-default:visited{
+	background-color:black;
+	color:#111111;
+	border: none;
+}
+
+.btn-default:hover{
+	background-color: black;
+	color:#111111;
+	border: none;
+}
+
+.btn-default:active{
+	background-color: black;
+	color:#111111;
+	border: none;
+}
+
+.btn-info{
+	background-color: #111111;
+	border: none;
+	color: #f5bd20;
+	font-family: birdHouse;
+	font-size: 150%;
+}
+
+.form-control
+{
+	background-color: rgb(219, 219, 219);
+	color: black;
+	width: 100%;
+	height: 80%;
+	/*margin-left:10px;
+	margin-right:10px;*/
+	/*text-align: center;*/
+	margin:0 auto;
+	border: none;
+}
+
+.form-group{
+	margin: 0 auto;
+}
+
+.forLastStep{
+	background-color: #505050;
+	color: black;
+}
+
+.flex-center {
+	margin-bottom:5px;
+	background: #383838;
+	border-radius:5px;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 250px;
+	/*resize: vertical;*/
+	overflow: auto;
+}
+.js-waveform{
+	margin-bottom:5px;
+	background: #383838;
+	border-radius:5px;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 250px;
+	/*resize: vertical;*/
+	overflow: auto;
+}
+
+.js-waveform, .flex-center {
+	box-shadow:none;
+}
+.js-waveform:hover, .js-waveform:active, .flex-center:hover, .flex-center:active {
+	box-shadow: inset 0 0 10px #f5bd20;
+}
+/*================================*/
