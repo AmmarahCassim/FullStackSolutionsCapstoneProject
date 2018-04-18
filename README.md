@@ -19,3 +19,7 @@
 - [ ] allow user to send the .dat to an animator
 - [ ] mobile friendly (responsive)
 
+# Testing Tools
+ * Travis CI
+ * Open Sauce
+ [![Sauce Test Status](https://saucelabs.com/buildstatus/AmmarahCassim)](https://saucelabs.com/u/AmmarahCassim)
