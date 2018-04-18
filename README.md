@@ -20,5 +20,9 @@
 - [ ] mobile friendly (responsive)
 
 # Testing Tools
- * ![alt text](FullStackSolutionsCapstoneProject/images/serveimage.png) Travis CI
- * ![alt text](FullStackSolutionsCapstoneProject/images/Sauce-Labs_Horiz_Red-Grey_RGB_250x35.png) Open Sauce [![Sauce Test Status](https://saucelabs.com/buildstatus/AmmarahCassim)](https://saucelabs.com/u/AmmarahCassim)
+ ![Travis Logo](https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject/blob/master/images/serveimage.png)
+ ### Travis CI
+ ![Sauce Labs Logo](https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject/blob/master/images/Sauce-Labs_Horiz_Red-Grey_RGB_250x35.png)
+ ### Sauce Labs
+ 
+ [![Sauce Test Status](https://saucelabs.com/buildstatus/AmmarahCassim)](https://saucelabs.com/u/AmmarahCassim)
