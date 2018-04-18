@@ -20,6 +20,5 @@
 - [ ] mobile friendly (responsive)
 
 # Testing Tools
- * Travis CI
- * Open Sauce
- [![Sauce Test Status](https://saucelabs.com/buildstatus/AmmarahCassim)](https://saucelabs.com/u/AmmarahCassim)
+ * ![alt text](FullStackSolutionsCapstoneProject/images/serveimage.png) Travis CI
+ * ![alt text](FullStackSolutionsCapstoneProject/images/Sauce-Labs_Horiz_Red-Grey_RGB_250x35.png) Open Sauce [![Sauce Test Status](https://saucelabs.com/buildstatus/AmmarahCassim)](https://saucelabs.com/u/AmmarahCassim)
