@@ -4,15 +4,18 @@
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-      <!--<script src ="dist/wavesurfer.js"></script>
-      <script src ="dist/plugin/wavesurfer.timeline.js"></script>
-      <script src="dist/plugin/wavesurfer.regions.js"></script>
-      <script src="dist/plugin/wavesurfer.minimap.js"></script>-->
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.min.css">
       <link rel="stylesheet" href="css/style.css">
       <link rel="icon" href="images/favicon.png" type="image/png">
   </head>
   <body>
+    <script>
+      $(function() {
+        $(document).on("change", "#files", function() {
+            $("#fileName").append($(this).val());
+        });
+      });
+    </script>
     <nav class="navbar navbar-inverse">
       <a href="#" class="navbar-left"><img src="images/logo.png" id = "logo"></a>
       <div class="container-fluid">
@@ -40,10 +43,10 @@
                   method="POST">
                   <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
                     <label class="btn btn-info btn-file">
-                      BROWSE <input type="file" style="display: none;" name="userPhoto" >
+                      BROWSE <input id="files" type="file" style="display: none;" name="userPhoto" >
                     </label>
                     <input type="submit" class="btn btn-info" value="UPLOAD">
-                    <span id = "status"></span>
+                    <div id="fileName" style='color:black;'></div>
                   </div>
                 </form>
               </div>
@@ -52,8 +55,6 @@
           <!--TOP RIGHT BLOCK-->
           <div class="col-md-4" >
             <div class="flex-center">
-              <!-- <img src="images/Papagayo-Mouths-GIF.gif"> -->
-                            <!-- <img src="images/Papagayo-Mouths-GIF.gif"> -->
                             <img class="slides" src="images/rest.jpg">
                             <img class="slides" src="images/AI.jpg">
                             <img class="slides" src="images/E.jpg">
@@ -72,13 +73,14 @@
             <div class ="js-waveform" style="justify-content: flex-start;">
               <div class="btn-group" style="margin: 0 auto;margin-top:5px;margin-bottom: 10px;">
                 <button id ="generate" type="button" class="btn btn-info" data-step="2" data-intro="Then, click on generate and the speech to text magic will happen in a flash!">GENERATE</button>
-                <button type="button" class="btn btn-info" data-step="3" data-intro="By clicking Breakdown, annotations will be added to the timeline so that you can see exactly where what phonemes are being pronounced.">BREAKDOWN</button>
+                <button id ="breakdown" type="button" class="btn btn-info" data-step="3" data-intro="By clicking Breakdown, annotations will be added to the timeline so that you can see exactly where what phonemes are being pronounced." disabled="disabled">BREAKDOWN</button>
               </div>
               <div style="width:80%; height: 80%;margin:0 auto;">
-                <textarea id = "speechtotext" type="text" class="form-control" placeholder="" wrap="hard" rows="5"></textarea>
+                <div id="loading"></div>
+                <textarea id = "speechtotext" type="text" class="form-control" placeholder="" wrap="hard" rows="5" style="position: relative;z-index:0;"></textarea>
                 <div class="btn-group" style="float:right;">
-                  <button id = "EDIT" type="button" class="btn btn-default" data-step="4" data-intro="How did that turn out? If you are not happy with what was generated, you're more than welcome to edit the text.">EDIT</button>
-                  <button id = "SAVE" type="button" class="btn btn-default" data-step="5" data-intro="You can now save what you have edited.">SAVE</button>
+                  <button id = "EDIT" type="button" class="btn btn-default" data-step="4" data-intro="How did that turn out? If you are not happy with what was generated, you're more than welcome to edit the text." disabled="disabled">SAVE</button>
+                  <!--<button id = "SAVE" type="button" class="btn btn-default" data-step="5" data-intro="You can now save what you have edited.">SAVE</button>-->
                 </div>
               </div>
             </div>
@@ -87,7 +89,9 @@
         <!--BOTTOM RIGHT BLOCK-->
         <div class="col-md-4">
           <div class="flex-center">
-            <button id = "EXPORT" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!">EXPORT</button>
+            <button id = "EXPORT" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!" disabled="disabled">EXPORT</button>
+            <button id = "EMAIL" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!" disabled="disabled">EMAIL</button>
+            <div id = "EandE" style= "display:block; margin: 0 auto;"></div>
           </div>
         </div>
       </div>
@@ -99,63 +103,65 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
-      <script>
-        var wavesurfer = WaveSurfer.create({ 
-          container: '#addWave',
-          pixelRatio: 1,
-          barWidth: 2,
-          progressColor: "#756330",
-          backend: 'MediaElement',
-          mediaType: 'audio',
-          hideScrollbar: 'true'
-          });
-
-        wavesurfer.load("audio"); //get(audio/:filename)
-        $("#addWave-timeline").css("display","inline");
-        wavesurfer.on('ready', function () {
-          var timeline = Object.create(WaveSurfer.Timeline);
-          timeline.init({
-          wavesurfer: wavesurfer,
-          container: '#addWave-timeline'
-          });
-        });
-
-        $(".form-inline").hide('slow', function(){ $(".form-inline").remove(); });
-        var r= $('<button id ="PLAY" type="button" class="btn btn-info" style=" margin:0 auto;display:block;" onclick="wavesurfer.play()">PLAY</button>'); 
-        $('#addWave').append(r).show(slow);  
-
-      </script>
+      <script src="javascript/scriptOne.js"/>
+      <!--<script src="javascript/script.js"/>-->
     <%}%>
-<!--</div>-->
+
     <footer class="fixed-bottom">Full Stack Solutions</footer>
   </body>
-   
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
-  <script>
-    $("#generate").click(function(e){  
-      $.get("/text", function(data, status){
-        $("textarea").append(data);  
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>  
+
+    <script>
+        $("#generate").click(function(e){
+          $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
+     $.get("/text", function(data, status){
+       // alert('found SCRIPT');
+        console.log("I AM WORKING");
+        //$("textarea").val('');
+        $("textarea").append(data.toString()); 
+        $("#loading").empty();
+        $("#breakdown").prop('disabled',false);
+        $("#EXPORT").prop('disabled',false);
+        $("#EMAIL").prop('disabled',false);
+        $("#EDIT").prop('disabled',false);
+
       });
     });
+
+    
+
+   
 
     $("#EXPORT").click(function(){
       $.get("/pidgin_breakdown", function(data, status){
+
           console.log("Data: " + data + "\nStatus: " + status);
+          $("#EandE").append("<h3 id='exFeedback' style='color:black; font-family: birdHouse;'>EXPORTED</h3>");
+
+          $('#exFeedback').fadeOut('slow',function(){
+            $('#EandE').empty();
+          });
       });
+          
     });
 
     $("#EDIT").click(function(){
-      console.log("heita");
+      $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
       var text = $("#speechtotext").val();
       console.log(text);
       $.post("/update",{output: text},function(data,status){
         console.log("Data: " + data);
+        $("#loading").empty();
+        $("#loading").append("<h3 id='SAVED' style='font-family: birdHouse;color:black;position:absolute; z-index:1;margin:5% 10% 5% 35%;'>SAVED !</h3>");
+        console.log("callback for edit returned");
+        $('#SAVED').fadeOut('slow',function(){
+            $('#loading').empty();
+          });
       });  
     });
-  </script>
-  <script>
+
     var myIndex = 0;
     carousel();
     
@@ -170,7 +176,6 @@
         x[myIndex-1].style.display = "block";  
         setTimeout(carousel, 300);
     }
-        
     </script>
 </html>
 

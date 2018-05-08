@@ -1,6 +1,7 @@
 const express = require('express');
 const connect = require('connect');
 const http = require('http');
+var cors = require('cors');
 var PythonShell = require('python-shell');
 const  session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
@@ -21,6 +22,7 @@ var userFileName;
 var words = new Array();
 var tempWords = new Array();
 var temp;
+var wordTimings;
 
 
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -37,11 +39,18 @@ var soundFile  ='';
 
 const app = express();
 
+var corsOptions = {
+  origin: 'http://127.0.0.1:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+}
+
+
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
+//app.use(cors());
 
  var store = new MongoDBStore(
       {
@@ -112,13 +121,15 @@ app.get('/', (req, res) => {
   console.log("SESSION: " + req.session.fileUploaded);
   console.log("BOOOOLEAN: ",fileUploaded);
 if(req.session.fileUploaded == 1){
- var singleFile = gfs.files.findOne({},{sort: {"uploadDate": -1}},function(err,file){
-      console.log("HEllo:",file.filename);
-      userFileName = file.filename;
+ //var singleFile = gfs.files.findOne({},{sort: {"uploadDate": -1}},function(err,file){
+      //console.log("HEllo:",file.filename);
+      //userFileName = file.filename;
+      //req.session.fileUploaded = 0;
       req.session.fileUploaded = 0;
-      res.render('index', { files: file.filename});
+      res.render('index', { files: userFileName});
 
- });
+
+ //});
 }else{
   res.render('index', { files: false });
 }
@@ -131,13 +142,19 @@ app.post('/upload', function(req, res){
     }
     req.session.fileUploaded = 1;
     console.log("UPLOADED:", req.session.fileUploaded);
+    var singleFile = gfs.files.findOne({},{sort: {"uploadDate": -1}},function(err,file){
+    console.log("HEllo:",file.filename);
+    userFileName = file.filename;
+    console.log("THIS IS THE AUDIO FILE",userFileName);
+  });
     //req.session.fileUploaded = 1;
     res.redirect('/');
     
 });
 });
 
-app.get('/audio', (req, res) => {
+app.get('/audio',cors(corsOptions),(req, res) => {
+  console.log('you hit the audio endpoint');
   gfs.files.findOne({ filename: userFileName}, (err, file) => {
     // Check if file
     console.log("YO MA",userFileName);
@@ -155,51 +172,7 @@ app.get('/audio', (req, res) => {
       soundFile = file.filename;
       console.log(soundFile); //----this is it
       
-        var params = {
-          audio: gfs.createReadStream(soundFile),
-          content_type: 'audio/wav',
-          timestamps: true,
-          word_alternatives_threshold: 0.9,
-          keywords: ['party', 'boys', 'lets'],
-          keywords_threshold: 0.5
-        };
-
-        speech_to_text.recognize(params, function(error, transcript) {
-        if (error){
-          console.log('Error:', error);
-        }
-        else{
-          outPut = "";
-          words = [];
-          for(var i =0; i < transcript.results.length;++i){
-              outPut += transcript.results[i].alternatives[0].transcript;
-          
-            for(var j = 0; j < transcript.results[i].alternatives.length;++j){
-              for (var k = 0; k < transcript.results[i].alternatives[j].timestamps.length; k++){
-                words .push(transcript.results[i].alternatives[j].timestamps[k][0]);
-                req.session.output.push(transcript.results[i].alternatives[j].timestamps[k][0]);
-               
-              }
-            }
-          }
-          //req.session.output = req.session.output.split(" ");
-          var index = req.session.output.indexOf('');
-          if(index > -1) req.session.output.splice(index,1);
-          console.log("TEMP WORDS: ", req.session.output);
-          console.log("OUTPUT:",outPut);
-          console.log("WORDS: ", words);
-          for(item in words){
-            words[item] = words[item].replace("'", "");
-          }
-          var text_translation = JSON.stringify(transcript, null, 2);
-          var data = fs.writeFile('file2', text_translation, 'utf8',function(error){
-            if(error) throw error;
-            console.log('file written');
-          });
-
-         // res.render('index', { outPut : outPut});
-      }
-      });
+        gfs.createReadStream(soundFile);
 
     } else {
       res.status(404).json({
@@ -247,9 +220,72 @@ pyshell.end(function (err) {
 });
 
 app.get('/text',(req, res) =>{
+    var object;
+    var finalObject = new Array();
+    var params = {
+          audio: gfs.createReadStream(soundFile),
+          content_type: 'audio/wav',
+          timestamps: true,
+          word_alternatives_threshold: 0.9,
+          keywords: ['party', 'boys', 'lets'],
+          keywords_threshold: 0.5
+        }
+        speech_to_text.recognize(params, function(error, transcript) {
+        if (error){
+          console.log('Error:', error);
+        }
+        else{
+          words = [];
+          for(var i =0; i < transcript.results.length;++i){
+              outPut += transcript.results[0].alternatives[0].transcript;
+             
+          
+            for(var j = 0; j < transcript.results[i].alternatives.length;++j){
+              for (var k = 0; k < transcript.results[i].alternatives[j].timestamps.length; k++){
+                words.push(transcript.results[i].alternatives[j].timestamps[k][0]);
+                //wordTimings += transcript.results[i].alternatives[j].timestamps;
+              }
+            }
+          }
+
+          for(var i = 0; i <transcript.results.length;++i){
+               for(var j = 0; j < transcript.results[i].alternatives.length;++j){
+                 for (var k = 0; k < transcript.results[i].alternatives[j].timestamps.length; k++){
+                  object = transcript.results[i].alternatives[j].timestamps[k];
+                  finalObject.push(object);
+            }
+          } 
+          }
+          wordTimings = JSON.stringify(finalObject);
+          console.log('WordTIMINGS: ', wordTimings);
+          console.log("OUTPUT:",outPut);
+          console.log("WORDS: ", words);
+          for(item in words){
+            words[item] = words[item].replace("'", "");
+          }
+          var text_translation = JSON.stringify(transcript, null, 2);
+          var data = fs.writeFile('file2', text_translation, 'utf8',function(error){
+            if(error) throw error;
+            console.log('file written');
+          });
+      }
+      res.send(words);
       console.log("YEEEEEESS");
-      res.send(outPut);
+      outPut = "";
       res.status(200);
+      });
+      
+
+    
+
+});
+
+app.get('/wordTimings',(req,res) =>{
+  console.log("Sending timings to client: ", wordTimings);
+  res.send(wordTimings);
+  res.status(200);
+
+
 });
 
 app.post('/update',(req,res)=>{
@@ -257,7 +293,8 @@ app.post('/update',(req,res)=>{
   req.session.output = outPut.split(" ");
 console.log(req.session.output);
   res.status(200);
-})
+  res.redirect('/text');
+});
 
 app.delete('/files/:id', (req, res) => {
   gfs.remove({ _id: req.params.id, root: 'uploads' }, (err, gridStore) => {
@@ -269,6 +306,8 @@ app.delete('/files/:id', (req, res) => {
     conn.dropDatabase();
   });
 });
+
+
 
 app.listen(3000,function(){
     console.log("Working on port 3000");

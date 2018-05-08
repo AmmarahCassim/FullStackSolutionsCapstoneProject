@@ -23,6 +23,17 @@ footer {
 	padding: 5px;
 }
 
+button:disabled,
+button[disabled]{
+  background-color: #444649 !important;
+  color: #666666;
+}
+
+.slides{
+	margin: 0 auto;
+	width: 50%;
+}
+
 #addWave-timeline{
 	display: none;
 	background: rgba(245, 189, 32, .3);
@@ -31,10 +42,18 @@ footer {
 }
 
 #EXPORT{
+	
+	margin:0 auto;
+	display:block;
+	margin-bottom: 3px;
+}
+
+
+#EMAIL{
+	
 	margin:0 auto;
 	display:block;
 }
-
 #EDIT{
 	color: #f5bd20;
 }
@@ -57,10 +76,13 @@ footer {
 	color: #f5bd20;
 	font-size: 200%;
 }
-
+.fixed-bottom{
+	position:fixed;
+}
 #SAVE{
 	color: #f5bd20;
 }
+
 
 #speechtotext{
 	background-color:grey;
@@ -85,9 +107,9 @@ footer {
 	border: none;
 }
 
-.btn-default:hover{
+.btn-info:hover{
 	background-color: black;
-	color:#111111;
+	color: #f5bd20;
 	border: none;
 }
 
@@ -95,6 +117,13 @@ footer {
 	background-color: black;
 	color:#111111;
 	border: none;
+}
+
+region.wavesurfer-region:before {
+	color: black;
+    content: attr(data-region-label);
+    position: absolute;
+    top: 0;
 }
 
 .btn-info{
