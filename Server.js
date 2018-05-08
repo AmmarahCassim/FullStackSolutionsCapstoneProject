@@ -1,6 +1,7 @@
 const express = require('express');
 const connect = require('connect');
 const http = require('http');
+var cors = require('cors');
 var PythonShell = require('python-shell');
 const  session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
