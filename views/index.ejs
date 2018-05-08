@@ -37,18 +37,21 @@
             <div class="flex-center" id="addWave">
               <div id="addWave-timeline"></div>
               <div class="form-inline" id="dynamicRemove">
-                <form id="uploadForm"
-                  enctype="multipart/form-data"
-                  action="/upload"
-                  method="POST">
+                <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
                   <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
                     <label class="btn btn-info btn-file">
                       BROWSE <input id="files" type="file" style="display: none;" name="userPhoto" >
                     </label>
-                    <input type="submit" class="btn btn-info" value="UPLOAD">
+					
+                    <input  onclick="func()" type="submit" class="btn btn-info" value="UPLOAD">
+					<br><p id="add" style="color:black; font-family: birdHouse; font-size: 20;">Browse Your computer for an audio .WAV file to upload
                     <div id="fileName" style='color:black;'></div>
                   </div>
                 </form>
+				<div id="myProgress" align="center" style="position:absolute; ">
+						<center> <div id="myBar" ></div>
+						</center>
+				</div>
               </div>
             </div>
           </div>
@@ -58,16 +61,14 @@
                             <img class="slides" src="images/rest.jpg">
                             <img class="slides" src="images/AI.jpg">
                             <img class="slides" src="images/E.jpg">
-							<img class="slides" src="images/L.jpg">
+                            <img class="slides" src="images/etc.jpg">
+                            <img class="slides" src="images/FV.jpg">
+                            <img class="slides" src="images/L.jpg">
                             <img class="slides" src="images/MBP.jpg">
                             <img class="slides" src="images/O.jpg">
                             <img class="slides" src="images/rest.jpg">
-                            <img class="slides" src="images/etc.jpg">
-                            <img class="slides" src="images/FV.jpg">
                             <img class="slides" src="images/U.jpg">
                             <img class="slides" src="images/WQ.jpg">
-							<img class="slides" src="images/etc.jpg">
-                            <img class="slides" src="images/FV.jpg">
             </div>
           </div>
           <!--BOTTOM LEFT BLOCK-->
@@ -128,27 +129,20 @@
         $("#EXPORT").prop('disabled',false);
         $("#EMAIL").prop('disabled',false);
         $("#EDIT").prop('disabled',false);
-
       });
     });
-
     
-
    
-
     $("#EXPORT").click(function(){
       $.get("/pidgin_breakdown", function(data, status){
-
           console.log("Data: " + data + "\nStatus: " + status);
           $("#EandE").append("<h3 id='exFeedback' style='color:black; font-family: birdHouse;'>EXPORTED</h3>");
-
           $('#exFeedback').fadeOut('slow',function(){
             $('#EandE').empty();
           });
       });
           
     });
-
     $("#EDIT").click(function(){
       $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
       var text = $("#speechtotext").val();
@@ -163,7 +157,6 @@
           });
       });  
     });
-
     var myIndex = 0;
     carousel();
     
@@ -178,6 +171,66 @@
         x[myIndex-1].style.display = "block";  
         setTimeout(carousel, 300);
     }
+		var xLoading = false;
+    
+		function move() 
+		{
+			document.getElementById('myProgress').style.display = "inherit";
+			document.getElementById('myBar').style.display = "inherit";
+			var elem = document.getElementById("myBar");  
+			var width = 0;
+		
+			if (xLoading == false)
+			{
+				var id = setInterval(frame, 10);
+				xLoading = true;
+				function frame() 
+				{
+					if (width >= 100) 
+					{
+					clearInterval(id);
+					} 
+					else 
+					{
+						width+= 0.34; 
+						elem.style.width = width + '%'; 
+					}
+				  }
+				  setTimeout(hide, 4400);
+			}
+		}
+			
+		function hide()
+		{
+			xLoading = false;
+			document.getElementById('myProgress').style.display = "none";
+		}
+		
+		
+	 function func()
+	 {
+		//alert("entering");
+		 if (document.getElementById("uploadForm")) {
+			//alert("We are here");
+			var barMy = document.getElementById("myBar");
+			var klas = document.createAttribute("class");
+			klas.value = "progress-bar progress-bar-striped active"; 
+			var rol = document.createAttribute("role");
+			rol.value = "progressbar";
+			
+			barMy.setAttributeNode(klas);   
+			barMy.setAttributeNode(rol);   
+			//alert("Done must show");
+			move();
+			setTimeout(submitForm, 0000); 
+		}
+	}
+	
+	function submitForm() { 
+	//alert("now firiing");
+		document.getElementById("uploadForm").submit();
+	}
+
+	
     </script>
 </html>
-
