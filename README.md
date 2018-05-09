@@ -19,3 +19,10 @@
 - [ ] allow user to send the .dat to an animator
 - [ ] mobile friendly (responsive)
 
+# Testing Tools
+ ![Travis Logo](https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject/blob/master/images/serveimage.png)
+ ### Travis CI
+ ![Sauce Labs Logo](https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject/blob/master/images/Sauce-Labs_Horiz_Red-Grey_RGB_250x35.png)
+ ### Sauce Labs
+ 
+ [![Sauce Test Status](https://saucelabs.com/buildstatus/AmmarahCassim)](https://saucelabs.com/u/AmmarahCassim)
