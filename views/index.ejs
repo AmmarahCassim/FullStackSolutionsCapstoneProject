@@ -24,8 +24,12 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li class="default"><a onclick="javascript:introJs().setOption('showProgress',true).start();">Start Tour</a></li>
+          <li class="active"><a href="#">About</a></li>
         </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<p class="navbar-text" style="color: #FDB400">Need Help?</p>
+	    	<li><a class="nav-link" onclick="javascript:introJs().setOption('showProgress',true).start();">Start Tour</a></li>
+	    </ul>
       </div>
     </nav>
 
@@ -40,10 +44,10 @@
                 <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
                   <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
                     <label class="btn btn-info btn-file">
-                      BROWSE <input id="files" type="file" style="display: none;" name="userPhoto" >
+                      BROWSE <input accept="audio/.wav" id="files" type="file" style="display: none;" name="userPhoto" required>
                     </label>
 					
-                    <input  onclick="func()" type="submit" class="btn btn-info" value="UPLOAD">
+                    <input  onclick="func()" type="submit" class="btn btn-info" value="UPLOAD AUDIO">
 					<br><p id="add" style="color:black; font-family: birdHouse; font-size: 20;">Browse Your computer for an audio .WAV file to upload
                     <div id="fileName" style='color:black;'></div>
                   </div>
@@ -56,23 +60,23 @@
             </div>
           </div>
           <!--TOP RIGHT BLOCK-->
-              <div class="col-md-4" >
-            <div class="flex-center">
-                            <img class="slides" src="images/rest.jpg">
-                            <img class="slides" src="images/AI.jpg">
-                            <img class="slides" src="images/E.jpg">
-							<img class="slides" src="images/L.jpg">
-                            <img class="slides" src="images/MBP.jpg">
-                            <img class="slides" src="images/O.jpg">
-                            <img class="slides" src="images/rest.jpg">
-                            <img class="slides" src="images/etc.jpg">
-                            <img class="slides" src="images/FV.jpg">
-                            <img class="slides" src="images/U.jpg">
-                            <img class="slides" src="images/WQ.jpg">
-							<img class="slides" src="images/etc.jpg">
-                            <img class="slides" src="images/FV.jpg">
-            </div>
-          </div>
+            <div class="col-md-4" >
+            	<div class="flex-center">
+	                <img class="slides" src="images/rest.jpg">
+	                <img class="slides" src="images/AI.jpg">
+	                <img class="slides" src="images/E.jpg">
+					<img class="slides" src="images/L.jpg">
+	                <img class="slides" src="images/MBP.jpg">
+	                <img class="slides" src="images/O.jpg">
+	                <img class="slides" src="images/rest.jpg">
+	                <img class="slides" src="images/etc.jpg">
+	                <img class="slides" src="images/FV.jpg">
+	                <img class="slides" src="images/U.jpg">
+	                <img class="slides" src="images/WQ.jpg">
+					<img class="slides" src="images/etc.jpg">
+	                <img class="slides" src="images/FV.jpg">
+            	</div>
+          	</div>
           <!--BOTTOM LEFT BLOCK-->
           <div class="col-md-8" >
             <div class ="js-waveform" style="justify-content: flex-start;">
