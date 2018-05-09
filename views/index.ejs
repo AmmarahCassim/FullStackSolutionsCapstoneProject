@@ -40,11 +40,11 @@
                 <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
                   <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
                     <label class="btn btn-info btn-file">
-                      BROWSE <input id="files" type="file" style="display: none;" name="userPhoto" >
+                      Choose File <input id="files" type="file" style="display: none;" name="userPhoto" >
                     </label>
 					
-                    <input  onclick="func()" type="submit" class="btn btn-info" value="UPLOAD">
-					<br><p id="add" style="color:black; font-family: birdHouse; font-size: 20;">Browse Your computer for an audio .WAV file to upload
+                    <input  onclick="func()" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload File">
+					<br><p id="add" style="color:black; font-family: birdHouse; font-size: 20; float:left;"> Audio .WAV file
                     <div id="fileName" style='color:black;'></div>
                   </div>
                 </form>
@@ -77,15 +77,14 @@
           <div class="col-md-8" >
             <div class ="js-waveform" style="justify-content: flex-start;">
               <div class="btn-group" style="margin: 0 auto;margin-top:5px;margin-bottom: 10px;">
-                <button id ="generate" type="button" class="btn btn-info" data-step="2" data-intro="Then, click on generate and the speech to text magic will happen in a flash!">GENERATE</button>
-                <button id ="breakdown" type="button" class="btn btn-info" data-step="3" data-intro="By clicking Breakdown, annotations will be added to the timeline so that you can see exactly where what phonemes are being pronounced." disabled="disabled">BREAKDOWN</button>
+                <button id ="generate" data-toggle="tooltip" data-placement="top" title="Speech To Text" type="button" class="btn btn-info" data-step="2" data-intro="Then, click on generate and the speech to text magic will happen in a flash!">GENERATE</button>
+                <button id ="breakdown"  data-toggle="tooltip" data-placement="top" title="Add time Stamps" type ="button" class="btn btn-info" data-step="3" data-intro="By clicking Breakdown, annotations will be added to the timeline so that you can see exactly where what phonemes are being pronounced." disabled="disabled">BREAKDOWN</button>
               </div>
               <div style="width:80%; height: 80%;margin:0 auto;">
                 <div id="loading"></div>
                 <textarea id = "speechtotext" type="text" class="form-control" placeholder="" wrap="hard" rows="5" style="position: relative;z-index:0;"></textarea>
                 <div class="btn-group" style="float:right;">
-                  <button id = "EDIT" type="button" class="btn btn-default" data-step="4" data-intro="How did that turn out? If you are not happy with what was generated, you're more than welcome to edit the text." disabled="disabled">SAVE</button>
-                  <!--<button id = "SAVE" type="button" class="btn btn-default" data-step="5" data-intro="You can now save what you have edited.">SAVE</button>-->
+                  <button id = "EDIT"  data-toggle="tooltip" data-placement="top" title="Edit and Save Text" type="button" class="btn btn-default" data-step="4" data-intro="How did that turn out? If you are not happy with what was generated, you're more than welcome to edit the text." disabled="disabled">SAVE</button>
                 </div>
               </div>
             </div>
@@ -94,8 +93,8 @@
         <!--BOTTOM RIGHT BLOCK-->
         <div class="col-md-4">
           <div class="flex-center">
-            <button id = "EXPORT" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!" disabled="disabled">EXPORT</button>
-            <button id = "EMAIL" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!" disabled="disabled">EMAIL</button>
+            <button id = "EXPORT" data-toggle="tooltip" data-placement="top" title="Download Dat File" type="button" class="btn btn-info" data-step="6" data-intro="If you're satisfied, you can now export your results to a .dat file which you can then use in any animation software of your choice. GOODLUCK!" disabled="disabled">EXPORT</button>
+            <button id = "EMAIL" data-toggle="tooltip" data-placement="top" title="Email Dat File" type="button" class="btn btn-info" data-step="7" data-intro="You can even email your DAT file to a friend" disabled="disabled">EMAIL</button>
             <div id = "EandE" style= "display:block; margin: 0 auto;"></div>
           </div>
         </div>
@@ -120,11 +119,9 @@
 
     <script>
         $("#generate").click(function(e){
-          $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
-     $.get("/text", function(data, status){
-       // alert('found SCRIPT');
+        $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
+		$.get("/text", function(data, status){
         console.log("I AM WORKING");
-        //$("textarea").val('');
         $("textarea").append(data.toString()); 
         $("#loading").empty();
         $("#breakdown").prop('disabled',false);
