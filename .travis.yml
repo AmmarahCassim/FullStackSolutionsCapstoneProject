@@ -3,10 +3,14 @@ node_js:
   - "stable"
 services:
   - mongodb
-before_script:
-  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+addons:
+  sauce_connect:
+    username: "AmmarahCassim"
+    access_key: "24302255-f2d7-46f5-ac1c-9c90ec0eff11"
 install:
     - npm install
+before_script:
+  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+  - node Server.js &
 script: 
-- node Server.js
-- pkill('node')
+ - ./testfiles/test1.js
