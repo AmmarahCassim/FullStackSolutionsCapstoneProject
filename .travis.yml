@@ -10,6 +10,7 @@ addons:
 install:
     - npm install
 before_script:
+  - chmod +x test1.js
   - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
   - node Server.js &
 script: 
