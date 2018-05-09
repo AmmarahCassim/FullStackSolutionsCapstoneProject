@@ -1,5 +1,5 @@
  beforeEach(function() {
-    if (process.env.SAUCE_USERNAME != undefined) {
+    if (process.env."AmmarahCassim" != undefined) {
       this.browser = new webdriver.Builder()
       .usingServer('http://'+ process.env."AmmarahCassim"+':'+process.env."24302255-f2d7-46f5-ac1c-9c90ec0eff11"+'@ondemand.saucelabs.com:80/wd/hub')
       .withCapabilities({
