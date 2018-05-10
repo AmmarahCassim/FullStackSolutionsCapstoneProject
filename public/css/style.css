@@ -3,10 +3,20 @@
 	font-family: birdHouse;
 	src:url(../fonts/AnotherBirdhouse.ttf);
 }
+
+@font-face{
+	font-family: Roboto;
+	src:url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face{
+	font-family: Roboto_Light;
+	src:url(../fonts/Roboto-Light.ttf);
+}
 /*================================*/
 /*ELEMENTS*/
 body{
-    background-color: black;
+    background-color: #333333;
 }
 
 footer {
@@ -16,11 +26,35 @@ footer {
 	height: 20px;
 	bottom: 0;
 	width: 100%;
+	color: #FDB400;
+	font-style: italic;
+	text-align: center;
 }
 /*================================*/
 /*ID's*/
-#addWave{
-	padding: 5px;
+#about_block{
+	background-color: #1A1A1A;
+	border: hidden 5px #3A797A;
+	border-radius: 5px;
+	box-shadow: 10px 10px 50px black;
+	color: white;
+	/*font-family: birdHouse;*/
+	height: 150px;
+	width: 100%;
+}
+
+#first_row{
+	margin-top: 2%;
+}
+
+#second_row{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+#third_row{
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
 button:disabled,
@@ -34,11 +68,14 @@ button[disabled]{
 	width: 50%;
 }
 
+
 #addWave-timeline{
+	
 	display: none;
-	background: rgba(245, 189, 32, .3);
-	box-shadow: inset 0 0 10px #f5bd20;
+	background: rgba(51, 51, 51, .6);
+	box-shadow: inset 0 0 10px #333333;
 	padding: 5px;
+	top:15px;
 }
 
 #EXPORT{
@@ -47,6 +84,10 @@ button[disabled]{
 	display:block;
 	margin-bottom: 3px;
 }
+.navbar{
+	background-color:#33393F;
+	border:hidden;
+}
 
 
 #EMAIL{
@@ -54,6 +95,7 @@ button[disabled]{
 	margin:0 auto;
 	display:block;
 }
+
 #EDIT{
 	color: #f5bd20;
 }
@@ -69,6 +111,8 @@ button[disabled]{
 #logo{
 	height:45px;
 	margin-top:2px;
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 #pidgy{
@@ -76,13 +120,14 @@ button[disabled]{
 	color: #f5bd20;
 	font-size: 200%;
 }
+
 .fixed-bottom{
 	position:fixed;
 }
+
 #SAVE{
 	color: #f5bd20;
 }
-
 
 #speechtotext{
 	background-color:grey;
@@ -97,7 +142,7 @@ button[disabled]{
 	background-color: #111111;
 	border: none;
 	color: black;
-	font-family: birdHouse;
+	font-family: Roboto_Light;
 	font-size: 150%;
 }
 
@@ -130,7 +175,7 @@ region.wavesurfer-region:before {
 	background-color: #111111;
 	border: none;
 	color: #f5bd20;
-	font-family: birdHouse;
+	font-family: Roboto_Light;
 	font-size: 150%;
 }
 
@@ -155,20 +200,75 @@ region.wavesurfer-region:before {
 	background-color: #505050;
 	color: black;
 }
+.topLEFT{
 
-.flex-center {
 	margin-bottom:5px;
-	background: #383838;
+	position: relative;
+	background: #A7D5D5;
 	border-radius:5px;
 	color: white;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 250px;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
 	/*resize: vertical;*/
-	overflow: auto;
 }
+
+.topRIGHT{
+	margin-bottom:5px;
+	padding:20px;
+	background: #A7D5D5;
+	border-radius:5px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
+}
+
+.bottomLEFT{
+	margin-bottom:5px;
+	background: #3A797A;
+	border-radius:5px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
+}
+.bottomRIGHT{
+	margin-bottom:5px;
+	background: #3A797A;
+	border-radius:5px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
+}
+
+.row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.ABOUT{
+	margin-bottom:5px;
+	background: #1A1A1A;
+	border-radius:5px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 20%;
+	box-shadow: 10px 10px 50px black;
+}
+
 .js-waveform{
 	margin-bottom:5px;
 	background: #383838;
@@ -188,6 +288,17 @@ region.wavesurfer-region:before {
 }
 .js-waveform:hover, .js-waveform:active, .flex-center:hover, .flex-center:active {
 	box-shadow: inset 0 0 10px #f5bd20;
+}
+
+.panel-body{
+	margin-top: 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.panel .row{
+	padding-left: 15px;
+	padding-right: 15px; 
 }
 /*================================*/
 /*ToolTip*/

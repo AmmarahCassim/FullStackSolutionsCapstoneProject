@@ -4,7 +4,7 @@ var wavesurfer = WaveSurfer.create({
           container: '#addWave',
           pixelRatio: 1,
           barWidth: 2,
-          progressColor: "#756330",
+          progressColor: "#333333",
           backend: 'MediaElement',
           mediaType: 'audio',
           hideScrollbar: 'true'
