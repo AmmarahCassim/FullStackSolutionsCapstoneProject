@@ -6,7 +6,7 @@
 /*================================*/
 /*ELEMENTS*/
 body{
-    background-color: black;
+    background-color: #333333;
 }
 
 footer {
@@ -19,10 +19,6 @@ footer {
 }
 /*================================*/
 /*ID's*/
-#addWave{
-	padding: 5px;
-}
-
 button:disabled,
 button[disabled]{
   background-color: #444649 !important;
@@ -34,11 +30,19 @@ button[disabled]{
 	width: 50%;
 }
 
+footer{
+	color: #FDB400;
+	font-style: italic;
+	text-align: center;
+}
+
 #addWave-timeline{
+	
 	display: none;
-	background: rgba(245, 189, 32, .3);
-	box-shadow: inset 0 0 10px #f5bd20;
+	background: rgba(51, 51, 51, .6);
+	box-shadow: inset 0 0 10px #333333;
 	padding: 5px;
+	top:15px;
 }
 
 #EXPORT{
@@ -46,6 +50,10 @@ button[disabled]{
 	margin:0 auto;
 	display:block;
 	margin-bottom: 3px;
+}
+.navbar{
+	background-color:#33393F;
+	border:hidden;
 }
 
 
@@ -155,19 +163,91 @@ region.wavesurfer-region:before {
 	background-color: #505050;
 	color: black;
 }
+.topLEFT{
 
-.flex-center {
 	margin-bottom:5px;
-	background: #383838;
+	position: relative;
+	background: #A7D5D5;
 	border-radius:5px;
 	color: white;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 250px;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
 	/*resize: vertical;*/
-	overflow: auto;
+	
+
+}
+
+.topRIGHT{
+
+	margin-bottom:5px;
+	padding:20px;
+	background: #A7D5D5;
+	border-radius:5px;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
+
+}
+
+.bottomLEFT{
+	margin-bottom:5px;
+	background: #3A797A;
+	border-radius:5px;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
+	
+
+
+}
+.bottomRIGHT{
+	margin-bottom:5px;
+	background: #3A797A;
+	border-radius:5px;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 35%;
+	box-shadow: 10px 10px 50px black;
+	
+
+
+}
+.row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.ABOUT{
+	margin-bottom:5px;
+	background: #1A1A1A;
+	border-radius:5px;
+	color: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 20%;
+	box-shadow: 10px 10px 50px black;
+
+
+}
+#ABOUT{
+	text-align: center;
 }
 .js-waveform{
 	margin-bottom:5px;
