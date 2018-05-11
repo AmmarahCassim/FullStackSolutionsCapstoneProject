@@ -1,4 +1,4 @@
-var assert = require("assert");
+
 var webdriver = require("selenium-webdriver");
 
 describe("testing javascript in the browser", function() {
@@ -25,16 +25,5 @@ describe("testing javascript in the browser", function() {
 
   afterEach(function() {
     return this.browser.quit();
-  });
-
-  it("should handle clicking on a headline", function(done) {
-    var headline = this.browser.findElement(webdriver.By.css('h1'));
-
-    headline.click();
-
-    headline.getText().then(function(txt) {
-      assert.equal(txt, "awesome");
-      done();
-    });
   });
 });
