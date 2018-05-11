@@ -97,7 +97,7 @@ button[disabled]{
 }
 
 #EDIT{
-	color: #f5bd20;
+	color: #f5bd20;	
 }
 
 #inner{
@@ -130,7 +130,7 @@ button[disabled]{
 }
 
 #speechtotext{
-	background-color:grey;
+	background-color:#A7D5D5;
 }
 /*================================*/
 /*CLASSES*/
