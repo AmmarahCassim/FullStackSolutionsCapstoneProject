@@ -1,29 +1,24 @@
+var webdriver = require('selenium-webdriver'),
+    username = "AmmarahCassim",
+    accessKey = "24302255-f2d7-46f5-ac1c-9c90ec0eff11",
+    driver;
 
-var webdriver = require("selenium-webdriver");
+driver = new webdriver.Builder().
+  withCapabilities({
+    'browserName': 'chrome',
+    'platform': 'Windows XP',
+    'version': '43.0',
+    'username': username,
+    'accessKey': accessKey
+  }).
+  usingServer("http://" + username + ":" + accessKey +
+              "@ondemand.saucelabs.com:80/wd/hub").
+  build();
 
-describe("testing javascript in the browser", function() {
-  beforeEach(function() {
-    if (process.env."AmmarahCassim" != undefined) {
-      this.browser = new webdriver.Builder()
-      .usingServer('http://'+ process.env."AmmarahCassim"+':'+process.env."24302255-f2d7-46f5-ac1c-9c90ec0eff11"+'@ondemand.saucelabs.com:80/wd/hub')
-      .withCapabilities({
-        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-        build: process.env.TRAVIS_BUILD_NUMBER,
-        username: process.env."AmmarahCassim",
-        accessKey: process.env."24302255-f2d7-46f5-ac1c-9c90ec0eff11",
-        browserName: "chrome"
-      }).build();
-    } else {
-      this.browser = new webdriver.Builder()
-      .withCapabilities({
-        browserName: "chrome"
-      }).build();
-    }
+driver.get("localhost:3000");
 
-    return this.browser.get("http://localhost:3000/");
-  });
-
-  afterEach(function() {
-    return this.browser.quit();
-  });
+driver.getTitle().then(function (title) {
+    console.log("title is: " + title);
 });
+
+driver.quit();
