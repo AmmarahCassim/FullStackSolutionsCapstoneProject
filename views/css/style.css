@@ -1,0 +1,36 @@
+body,html{
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+}
+
+#body{
+	display: grid;
+	grid-template-rows: 100px auto 120px;
+}
+
+#nav{
+	background-color: red;
+}
+
+
+#main{
+	background-color: green;
+}
+
+#footer{
+	background-color: blue;
+	display: grid;
+	grid-template-columns: auto 50% auto;
+}
+.crumb-container{
+	grid-column-start: 2; 
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	place-items: center;
+}
+.crumb{
+	width: 80px;
+	height: 80px;
+	background-color: purple;
+}
