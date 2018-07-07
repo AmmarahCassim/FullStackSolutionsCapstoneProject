@@ -1,0 +1,357 @@
+@font-face{
+	font-family: Dubai;
+	src: url(/public/fonts/DUBAI-REGULAR.TTF); /*Needs fixing*/
+}
+
+body,html{
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	background-color: #a7d5d5;
+}
+
+#body{
+	display: grid;
+	grid-template-rows: 80px auto 120px;
+}
+
+#nav{
+	background-color: #474545;
+	display: grid;
+	grid-template-columns: minmax(auto, 140px) minmax(auto, 110px) minmax(auto, 110px) auto minmax(auto, 120px) minmax(auto, 120px);
+	place-items: center;
+}
+
+#navlogo img{
+	height: 60px;
+}
+.nav-link{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fdb400;
+	font-size: 1.2em;
+	font-weight: 700;
+}
+.nav-link.home{
+	grid-column-start: 2;
+}
+.nav-link.about{
+	grid-column-start: 3;
+}
+.nav-link.about:active{
+	background-color: #a7d5d5;
+}
+.nav-link.help{
+	grid-column-start: 5;
+	font-weight: 100;
+}
+.nav-link.tour{	
+	grid-column-start: 6;
+	margin-right: 14px;
+}
+
+#main{
+	grid-column-start: 1;
+	grid-row-start: 2;
+	background-image: url('images/PidgeySyncLogo.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#modal-bg{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.3);
+	display: none;
+}
+
+#main-modal{
+	position: absolute;
+	width: 90%;
+	height: 95%;
+	top:5%;
+	left: 5%;
+	border-radius: 25px;
+	background-color: #3a797a;
+	filter: drop-shadow(10px 10px 14px rgba(0,0,0,0.3));
+	display: none;
+	z-index: 100;
+}
+#audio-wave{
+	position: absolute;
+	width: 90%;
+	height: 40%;
+	top: 21%;
+	left: 5%;
+	background-color: black;
+}
+#editText{
+	position: absolute;
+	width: 90%;
+	height: 40%;
+	top: 21%;
+	left: 5%;
+	background-color: #a7d5d5;
+}
+
+#mouthPiece{
+	position: absolute;
+	width: 40%;
+	height: 40%;
+	top: 21%;
+	left: 5%;
+	background-color: #a7d5d5;
+}
+.button{
+	padding: 18px 28px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 20px;
+	color: #a7d5d5;
+}
+
+.generateButton{
+	padding: 24px 60px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 20px;
+	color: #a7d5d5;
+}
+
+.breakDownButton{
+	padding: 24px 60px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 20px;
+	font-size: 2.8em;
+	color: #a7d5d5;
+}
+.saveButton{
+	padding: 24px 60px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 20px;
+	font-size: 2.8em;
+	color: #a7d5d5;
+}
+.Newbutton{
+	padding: 14px 30px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 15px;
+	color: #a7d5d5;
+}
+.newButt{
+	padding: 16.5px 39px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 15px;
+	font-size: 0.8em;
+	color: #a7d5d5;
+}
+#upload-text
+{
+	font-size:24px;
+}
+.button:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+}
+
+.mediaButton{
+	padding: 12px 35px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 20px;
+	color: #a7d5d5;
+}
+.custom-file{
+	position: absolute;
+	top: 40%;
+	left: 25%;
+}
+.custom-file #file {
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.custom-file span{
+    float: left;
+}
+.custom-file span.button {
+	padding: 25px 75px;
+	font-size: 3.0em;
+}
+
+.title{
+	position: absolute;
+	top: 4%;
+	left: 2%;
+	font-family: Arial, Helvetica, sans-serif; /*GOTTA FIX TO DUBAI!*/
+	font-size: 2.8em;
+	color: #a7d5d5;
+}
+
+#footer{
+	grid-column-start: 1;
+	grid-row-start: 3;
+	display: grid;
+	grid-template-columns: auto 50% auto;
+}
+.crumb-container{
+	grid-column-start: 2; 
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	place-items: center;
+}
+.crumb{
+	width: 80px;
+	height: 80px;
+	border-radius: 21px;
+	background-color: #3a797a;
+}
+
+.crumb img{
+	width: 65%;
+	margin: 50% 0 0 50%;
+	transform: translate(-50%, -50%);
+}
+.inactive{
+	filter: grayscale(1);
+}
+
+#upload.active{
+	border: solid 5px #fdb400;
+	z-index: 3;
+}
+#upload.crumb.active img{
+	filter: brightness(90%) sepia(1);
+}
+
+#upload-text{
+	position: absolute;
+	top:65%;
+	left:25%;
+}
+
+#about_popup{
+	display: none;
+	position: relative;
+	grid-column-start: 1;
+	grid-row-start: 2;
+	grid-row-end: 4;
+	background-color: rgba(0,0,0,0.9);
+	z-index: 5;
+}
+
+.about-image{
+	position: absolute;
+	top: 50%;
+	left: 120px;
+	width: calc(30% - 120px);
+	/* max-width: 300px; */
+	transform: translateY(-50%);
+}
+.about-text{
+	position: absolute;
+	top: 50%;
+	right: 120px;
+	width: calc(65% - 120px);
+	transform: translateY(-50%);
+	color: #fdb400;
+	font-size: 2.5em;
+	font-weight: 800;
+}
+
+#NewBrowseDiv{
+	position: absolute;
+	top: 80%;
+	left: 0%;
+	padding: 25px 75px;
+	font-size: 1.6em;
+}
+
+#NewUploadDiv{
+	position: absolute;
+	top: 79%;
+	left: 10%;
+	padding: 30px 75px;
+	font-size: 1.6em;
+}
+
+#generateDiv{
+	position: absolute;
+	top: 82%;
+	left: 37.5%;
+	padding: 25px 75px;
+	font-size: 2.2em;
+}
+
+#mediaControlDiv
+{
+	position: absolute;
+	top: 83%;
+	left: 65%;
+	padding: 30px 85px;
+	font-size: 1.2em;
+}
+#upload-button{
+	position: absolute;
+	top: 40%;
+	right: 25%;
+	padding: 25px 75px;
+	font-size: 3.0em;
+}
+#email-button{
+	position: absolute;
+	top: 40%;
+	right: 28%;
+	padding: 23px 80px;
+	font-size: 3.0em;
+}
+#download-button{
+	position: absolute;
+	top: 40%;
+	left: 25%;
+	padding: 25px 70px;
+	font-size: 3.0em;
+}
+#upload-browse{
+	position: absolute;
+	top: 40%;
+	left: 25%;
+	padding: 25px 75px;
+	font-size: 3.0em;
+}
+
+#breakdown-div{
+	position: absolute;
+	top: 68%;
+	left: 5%;
+	font-size: 1.2em;
+}
+
+
+#save-div{
+	position: absolute;
+	top: 63%;
+	left: 75%;
+	padding: 25px 75px;
+}
+select{
+	position: absolute;
+	top: 25%;
+	left: 75%;
+	padding: 35px 95px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 20px;
+	color: #a7d5d5;
+}
