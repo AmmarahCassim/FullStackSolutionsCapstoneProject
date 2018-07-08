@@ -25,25 +25,31 @@ body,html{
 #navlogo img{
 	height: 60px;
 }
+
 .nav-link{
 	font-family: Arial, Helvetica, sans-serif;
 	color: #fdb400;
 	font-size: 1.2em;
 	font-weight: 700;
 }
+
 .nav-link.home{
 	grid-column-start: 2;
 }
+
 .nav-link.about{
 	grid-column-start: 3;
 }
+
 .nav-link.about:active{
 	background-color: #a7d5d5;
 }
+
 .nav-link.help{
 	grid-column-start: 5;
 	font-weight: 100;
 }
+
 .nav-link.tour{	
 	grid-column-start: 6;
 	margin-right: 14px;
@@ -81,6 +87,7 @@ body,html{
 	display: none;
 	z-index: 100;
 }
+
 #audio-wave{
 	position: absolute;
 	width: 90%;
@@ -89,6 +96,7 @@ body,html{
 	left: 5%;
 	background-color: black;
 }
+
 .button{
 	padding: 14px 28px;
 	border: 5px solid #a7d5d5;
@@ -96,10 +104,12 @@ body,html{
 	border-radius: 20px;
 	color: #a7d5d5;
 }
+
 .button:hover{
 	border-color: #fdb400;
 	color: #fdb400;
 }
+
 #upload-button{
 	position: absolute;
 	top: 40%;
@@ -107,7 +117,6 @@ body,html{
 	padding: 25px 75px;
 	font-size: 2.2em;
 }
-
 
 #upload-browse{
 	position: absolute;
@@ -122,6 +131,7 @@ body,html{
 	top: 40%;
 	left: 25%;
 }
+
 .custom-file #file {
     position: absolute;
     bottom:0;
@@ -130,9 +140,11 @@ body,html{
     height: 100%;
     opacity: 0;
 }
+
 .custom-file span{
     float: left;
 }
+
 .custom-file span.button {
 	padding: 25px 75px;
 	font-size: 2.2em;
@@ -142,9 +154,10 @@ body,html{
 	position: absolute;
 	top: 4%;
 	left: 2%;
-	font-family: Arial, Helvetica, sans-serif; /*GOTTA FIX TO DUBAI!*/
+	font-family: Dubai; /*GOTTA FIX TO DUBAI!*/
 	font-size: 2.3em;
 	color: #a7d5d5;
+	z-index: 100;
 }
 
 #footer{
@@ -153,12 +166,14 @@ body,html{
 	display: grid;
 	grid-template-columns: auto 50% auto;
 }
+
 .crumb-container{
 	grid-column-start: 2; 
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	place-items: center;
 }
+
 .crumb{
 	width: 80px;
 	height: 80px;
@@ -175,11 +190,12 @@ body,html{
 	filter: grayscale(1);
 }
 
-#upload.active{
+#upload-crumb.active{
 	border: solid 5px #fdb400;
 	z-index: 3;
 }
-#upload.crumb.active img{
+
+#upload-crumb.crumb.active img{
 	filter: brightness(90%) sepia(1);
 }
 
@@ -187,6 +203,12 @@ body,html{
 	position: absolute;
 	top:65%;
 	left:25%;
+}
+
+.crumb:hover{	
+	border: solid 5px #fdb400;
+	z-index: 3;
+	filter: brightness(90%) sepia(1);
 }
 
 #about_popup{
@@ -207,6 +229,7 @@ body,html{
 	/* max-width: 300px; */
 	transform: translateY(-50%);
 }
+
 .about-text{
 	position: absolute;
 	top: 50%;
@@ -216,4 +239,41 @@ body,html{
 	color: #fdb400;
 	font-size: 2.5em;
 	font-weight: 800;
+}
+
+
+#upload{
+	display: block;
+}
+
+#waveform{
+	display: none;
+}
+
+#waveform #generate-button
+{
+	position: absolute;
+	width: 35px;
+	height: 21px;
+	bottom: 14px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100;
+	background-color: transparent;
+}
+
+#waveform #upload-button
+{
+	position: absolute;
+	width: 35px;
+	height: 21px;
+	bottom: 5px;
+	left: 10%;
+	transform: translateX(-50%);
+	z-index: 100;
+	background-color: transparent;
+}
+
+#generated{
+	display: none;
 }

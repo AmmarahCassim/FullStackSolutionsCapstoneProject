@@ -11,7 +11,7 @@
   </head>
   <body id="body">
   	<div id="nav">
-      <div id="navlogo"><img src="images/PidgeySync_Icons/upload_LB.png"></div>
+      <div id="navlogo"><img src="images/PidgeyBanner.png"></div>
       <div class="nav-link home">Home</div>      
       <div class="nav-link about">About</div>
 
@@ -21,14 +21,38 @@
   	<div id="main">
       <div id="modal-bg">
       </div>
-      <div id="main-modal"></div>
+      <div id="main-modal">
+      	<div id='upload-title' class='title'>Upload Your Audio</div>
+	        <div class="custom-file">
+	        	<span class="button" style="font-family: Dubai;">Browse</span>
+	      	   <input type="file" id="file" />
+	 	 	</div> 
+	        <button id='upload-button' class='button' style="font-family: Dubai;">Upload</button>
+	        <span id='upload-text' class='text'>Nothing selected</span>
+	    </div>
+      	<div id="waveform">
+      		<div id='upload-title' class='title'>Upload Your Audio</div>
+      		<div id="browse-button" class="custom-file">
+	        	<span class="button" style="font-family: Dubai;">Browse</span>
+	      	   <input type="file" id="file" />
+	 	 	</div>
+      		<button id='upload-button' class='button'>Upload</button>
+      		<button id='generate-button' class='button'>Generate</button>
+      	</div>
+      	<div id="generated">
+      		
+      	</div>
+      	<div id="warnclose">
+      		
+      	</div>
+      </div>
     </div>
   	<div id="footer">
   		<div class="crumb-container">
-	  		<div id="upload" class="crumb"><img src="images/PidgeySync_Icons/upload_LB.png"></div>
-	  		<div id="edit" class="crumb inactive"><img src="images/PidgeySync_Icons/edit_LB.png"></div>
-	  		<div id="preview" class="crumb inactive"><img src="images/PidgeySync_Icons/preview_LB.png"></div>
-	  		<div id="download" class="crumb inactive"><img src="images/PidgeySync_Icons/download_LB.png"></div>
+	  		<div id="upload-crumb" class="crumb"><img src="images/PidgeySync_Icons/upload_LB.png"></div>
+	  		<div id="edit-crumb" class="crumb inactive"><img src="images/PidgeySync_Icons/edit_LB.png"></div>
+	  		<div id="preview-crumb" class="crumb inactive"><img src="images/PidgeySync_Icons/preview_LB.png"></div>
+	  		<div id="download-crumb" class="crumb inactive"><img src="images/PidgeySync_Icons/download_LB.png"></div>
       </div>
 	    <!-- <footer>
 	    	<em>&copy; 2018 Full Stack Solutions</em>
@@ -53,21 +77,15 @@
             $("#main-modal").fadeOut();
         })
 
-        $("#upload").click(function(){
+        $("#upload-crumb").click(function(){
           $("#modal-bg").fadeToggle();
           $("#main-modal").fadeToggle();
           $(this).addClass("active");
-          let modalContent = "<div id='upload-title' class='title'>Upload Your Audio</div>";
-          modalContent += '<div class="custom-file">';
-          modalContent += '<span class="button">Browse</span>';
-          modalContent +='<input type="file" id="file" />';
-          modalContent +='</div>';
-          
-          modalContent += "<button id='upload-button' class='button'>Upload</button>";
-          modalContent += "<span id='upload-text' class='text'>Nothing selected</span>";
-          // modalContent += "<div id='audio-wave'></div>";
-          
-          $("#main-modal").html(modalContent);
+        });
+
+        $("#upload-button").click(function(){
+        	$("#upload-title").hide();
+        	$("#waveform").show();
         });
 
         $("#main-modal").on("click","#upload-browse",function(){
