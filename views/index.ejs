@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>PidgeySync Prototype</title>
+    <title>PidgeySync</title>
       <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
       <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
@@ -11,17 +11,17 @@
   </head>
   <body id="body">
   	<div id="nav">
-      <div id="navlogo" ><img hspace="-20" src="images/PidgeySyncLogo.png"></div>
-	  <!--<div class="navbar-header">
-          <a id="pidgy" class="navbar-brand" href="#">PidgeySync</a>
-       </div>-->
+       <!--<div class ="nav-link zero"id="navlogo"><img src="images/PidgeySyncLogo.png"></div>-->
+      <div class="nav-link first">PidgeySync</div>     
       <div class="nav-link home">Home</div>      
       <div class="nav-link about">About</div>
 
       <div class="nav-link help">Need Help?</div>
       <div class="nav-link tour"><a onclick="javascript:introJs().setOption('showProgress',true).start();">Start Tour</a></div>
 	  
-	   <!--<div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
+	  
+	   <!--Stuff for the tour
+	   <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
 	   <button id ="generate" type="button" class="btn btn-info" data-step="2" data-intro="Then, click on generate and the speech to text magic will happen in a flash!">GENERATE</button>
 	   <button id ="breakdown" type="button" class="btn btn-info" data-step="3" data-intro="By clicking Breakdown, annotations will be added to the timeline so that you can see exactly where what phonemes are being pronounced." disabled="disabled">BREAKDOWN</button>
 	   <button id = "EDIT" type="button" class="btn btn-default" data-step="4" data-intro="How did that turn out? If you are not happy with what was generated, you're more than welcome to edit the text." disabled="disabled">SAVE</button>
@@ -49,16 +49,12 @@
     </div>
     <div id="about_popup">
         <img class="about-image" src="images/PidgeySyncLogo.png">
-        <p class="about-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti fugit harum dicta autem quis!</p>
+        <p class="about-text">PidgeySync is an open source software that automatically syncs a character 
+		dialogue with the appropriate mouth shapes(phonemes) to make the animation look realistic.</p>
     </div>
-	    
-	
-	
-	
-	
+
     <script>
       $(function() {
-
         $(".about").click(function(){
           $("#about_popup").fadeToggle();
         });
@@ -67,38 +63,32 @@
             $("#modal-bg").fadeOut();
             $("#main-modal").fadeOut();
         })
-
+		
         $("#upload").click(function(){
           $("#modal-bg").fadeToggle();
           $("#main-modal").fadeToggle();
-		 
+		  
 		  $("#uploadImage").attr("src","images/uploadY.png");
-		   $("#editImage").attr("src","images/edit_LB.png");
-		   $("#previewImage").attr("src","images/preview_LB.png");
-		   $("#downloadImage").attr("src","images/download_LB.png");
-		//  $("#upload").addClass("active");
+		  $("#editImage").attr("src","images/edit_LB.png");
+		  $("#previewImage").attr("src","images/preview_LB.png");
+		  $("#downloadImage").attr("src","images/download_LB.png");
 
           let modalContent = "<div id='upload-title' class='title'>Upload Your Audio</div>";
           modalContent += '<div id="browse-div" class="custom-file">';
-          modalContent += '<span class="button">Browse</span>';
-          modalContent +='<input type="file" id="file" accept="audio/*"/>';
+          modalContent += '<span class="button" >Browse</span>';
+          modalContent +='<input type="file" id="file" data-toggle="tooltip" title="Browser for Audio File" accept="audio/*"/>';
           modalContent +='</div>';
           
 		  modalContent += '<div id="upload-div" >';
-          modalContent += "<button id='upload-button' class='button'>Upload</button>";
+          modalContent += "<button id='upload-button' data-toggle='tooltip' title='Upload Audio File' class='button'>Upload</button>";
           modalContent += "<span id='upload-text' class='text' ></span>";
 		  modalContent +='</div>';
           
           $("#main-modal").html(modalContent);
         });
-
-        $("#main-modal").on("click","#upload-browse",function(){
-          console.log("clicked browse upload");
-        });
         $("#main-modal").on('change','#file',function(){
             $("#file-data").text(this.value);
         });
-        
         $("#main-modal").on('hover','.custom-file', function(){
           console.log("hovered browse upload");
           $("span.button").css({
@@ -107,115 +97,218 @@
           )
         });
         $("#main-modal").on('leave','.custom-file', function(){
-          console.log("hovered browse upload");
           $("span.button").css({
              "border-color":"",
              "color":""}
           )
-        });
-      
+        });      
         $("#main-modal").on('change', '#file', function() {
             $("#upload-text").append($(this).val());
-        });
-     
+        });     
 		$("#main-modal").on('click', '#upload-button', function(){
-			$('#browse-div').empty();
-			$('#upload-div').empty();
+			$("#main-modal").empty();
 			
 			 let modalContent = "<div id='upload-title' class='title'>Upload Your Audio</div>";
 			  modalContent += "<div id='audio-wave'></div>";
 			  
+			  //FIX HOVER OVER BUTTON
 			  modalContent += '<div id="NewBrowseDiv" class="custom-file">';
-			  modalContent += '<span class="Newbutton">Browse</span>';
-			  modalContent +='<input type="file" id="file" accept="audio/*"/>';
+			  modalContent += '<span class="New">Browse</span>';
+			  modalContent +='<input type="file" data-toggle="tooltip" title="Browse for Audio File" id="file" accept="audio/*"/>';
 			  modalContent +='</div>';
 			  
 			  modalContent += '<div id="NewUploadDiv" >';
-			  modalContent += "<button  class='newButt' >Upload</button>";
+			  modalContent += "<button  class='newButt' data-toggle='tooltip' title='Upload Audio File' >Upload</button>";
 			  modalContent += "<span id='upload-text' class='text' ></span>";
 			  modalContent +='</div>';
-
+		
+			  modalContent += '<div id="loading"></div>';
 			  modalContent += '<div id="generateDiv" >';
-			  modalContent += '<span class="generateButton" >Generate</span>';
+			  modalContent += '<span class="generateButton" data-toggle="tooltip" title="Speech To Text" >Generate</span>';
 			  modalContent +='</div>';
 			  		  
 			  modalContent += '<div id="mediaControlDiv" >';
-			  modalContent += '<span name="play" class="mediaButton" ><img src="images/play.png" align="center" style="width: 40px; height:35px"></span>';
-			  modalContent += '<span name="pause" class="mediaButton" ><img src="images/pause.png" align="center" style="width: 40px; height:35px"></span>';
-			  modalContent += '<span name="stop" class="mediaButton" ><img src="images/stop.png" align="center" style="width: 40px; height:35px"></span>';
+			  modalContent += '<span name="play" class="mediaButton" ><img src="images/play.png" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Play"></span>';
+			  modalContent += '<span name="pause" class="mediaButton " ><img src="images/pause.png" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Pause"></span>';
+			  modalContent += '<span name="stop" class="mediaButton" ><img src="images/stop.png" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Stop"></span>';
 			  modalContent +='</div>';
 	
 			$("#main-modal").html(modalContent);
-		});
-		
+		});		
 		$("#main-modal").on('click', '#generateDiv', function(){
+			$("#loading").append('<img src="images/loader.gif" alt="Smiley face" width="72" height="72" >');		
+			//Get function causing MONGO ERROR: file with id not opened for writing	
+			/*$.get("/text", function(data, status){
+			 console.log("I AM WORKING");
+			$("textarea").append(data.toString()); 
+			$("#loading").empty();
+			});*/
 			$('#edit').removeClass("crumb inactive");		
-			$('#edit').addClass("crumb");		
-		});
+			$('#edit').addClass("crumb");
 
-		$("#edit").on('click', function(){	
-			$("#main-modal").empty();
-			$("#editImage").attr("src","images/editY.png");
-			$("#uploadImage").attr("src","images/upload_LB.png");
+			$("#edit").on('click', function(){	
+				$("#main-modal").empty();
+				$("#editImage").attr("src","images/editY.png");
+				$("#uploadImage").attr("src","images/upload_LB.png");
+				$("#previewImage").attr("src","images/preview_LB.png");
+				$("#downloadImage").attr("src","images/download_LB.png");
+				let modalContent = "<div id='upload-title' class='title'>Edit Generated Text</div>";
+				modalContent += '<textarea id = "speechtotext" type="text" class="form-control" wrap="hard" rows="5" ></textarea>';
+				
+				modalContent += '<div id="loading"></div>';
+				modalContent += '<div id="breakdown-div" >';
+				modalContent += "<button  id='breakdown' class='breakDownButton button' data-toggle='tooltip' title='Add Time Stamps'>Breakdown</button>";
+				modalContent +='</div>';
+			  
+				modalContent += '<div id="save-div" >';
+				modalContent += "<button class='saveButton button' data-toggle='tooltip' title='Save Changes'>Save</button>";
+				modalContent +='</div>';
+				$("#main-modal").html(modalContent);
+				
+				if(document.getElementById("preview").className=="crumb")
+				{
+					$("#previewImage").on('click', function(){				
+					$("#main-modal").empty();
+					$("#previewImage").attr("src","images/previewY.png");
+					$("#editImage").attr("src","images/edit_LB.png");
+					$("#downloadImage").attr("src","images/download_LB.png");
+						
+					
+					let modalContent = "<div id='upload-title' class='title'>Mouth Preview</div>";
+					modalContent += "<div id='mouthPiece'></div>";
+					modalContent += '<select id="selectMouth" data-toggle="tooltip" title="Select Mouth Piece">';
+					
+					//Activing the next 4 lines causes the modalContent data to disappear 
+					/*modelContent += '<option value="Select Mouth">Select Mouth</option>';
+					modelContent += '<option value="Mouth 1">Mouth 1</option>';
+					modelContent += '<option value="Mouth 2">Mouth 2</option>';
+					modelContent += '<option value="Mouth 3">Mouth 3</option>';*/
+
+					modalContent +=	'</select>';
+					modalContent += '<div id="mediaControlDiv" >';
+					modalContent += '<span name="play" class="mediaButton button" ><img src="images/play.png" id="play" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Play"></span>';
+					modalContent += '<span name="pause" class="mediaButton button" ><img src="images/pause.png" id="pause" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Pause"></span>';
+					modalContent += '<span name="stop" class="mediaButton button" ><img src="images/stop.png" id="stop" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Stop"></span>';
+					modalContent +='</div>';	
+					$("#main-modal").html(modalContent);
+					});
+				}
+			});
+			$("#main-modal").on('click', '#speechtotext', function(){	
+				alert("writing");
+				  var text = $("#speechtotext").val();
+				  //Error caused by post  function
+				 /* $.post("/update",{output: text},function(data,status){			
+				  });  */
+				  
+			});
 			
-			let modalContent = "<div id='upload-title' class='title'>Edit Generated Text</div>";
-			modalContent += "<div id='editText'></div>";
+			$("#main-modal").on('click', '#save-div', function(){		
+				$("#loading").append('<img src="loader.gif" alt="Smiley face" width="72" height="72" >');
+				$('#preview').removeClass("crumb inactive");
+				$('#preview').addClass("crumb");
+				  var text = $("#speechtotext").val();
+				 //Error caused by post  function
+				 /* $.post("/update",{output: text},function(data,status){
+					console.log("Data: " + data);
+					$("#loading").empty();
+					$("#loading").append("<h3 id='SAVED' style='font-family: birdHouse;color:black;position:absolute; >SAVED !</h3>");
+					console.log("callback for edit returned");
+					$('#SAVED').fadeOut('slow',function(){
+						$('#loading').empty();
+					  });
+				  });  */
+				  
+				  $("#preview").on('click', function(){	
+					$("#main-modal").empty();
+					$("#previewImage").attr("src","images/previewY.png");
+					$("#editImage").attr("src","images/edit_LB.png");
+					$("#downloadImage").attr("src","images/download_LB.png");
+							
+					let modalContent = "<div id='upload-title' class='title' text-align='center'>Mouth Preview</div>";
+					modalContent += "<div id='mouthPiece'></div>";
+					modalContent += '<select id="selectMouth" data-toggle="tooltip" title="Select Mouth Piece"  >';
+					
+					//Activing the next 4 lines causes the modalContent data to disappear 
+					
+					/*modelContent += '<option value="Select Mouth">Select Mouth</option>';
+					modelContent += '<option value="Mouth 1">Mouth 1</option>';
+					modelContent += '<option value="Mouth 2">Mouth 2</option>';
+					modelContent += '<option value="Mouth 3">Mouth 3</option>';*/
+					
+					modalContent +=	'</select>';
+					modalContent += '<div id="mediaControlDiv" >';
+					modalContent += '<span name="play" class="mediaButton button" ><img src="images/play.png" id="play" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Play"></span>';
+					modalContent += '<span name="pause" class="mediaButton button" ><img src="images/pause.png" id="pause" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Pause"></span>';
+					modalContent += '<span name="stop" class="mediaButton button" ><img src="images/stop.png" id="stop" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Stop"></span>';
+					modalContent +='</div>';	
+					$("#main-modal").html(modalContent);
+					});
 			
-			modalContent += '<div id="breakdown-div" >';
-		    modalContent += "<button  id='breakdown' class='breakDownButton'>Breakdown</button>";
-		    modalContent +='</div>';
-		  
-		    modalContent += '<div id="save-div" >';
-		    modalContent += "<button class='saveButton'>Save</button>";
-		    modalContent +='</div>';
-			$("#main-modal").html(modalContent);
-		});
-		
-		$("#main-modal").on('click', '#breakdown-div', function(){			
-			$("#main-modal").empty();
+			});
+		});	
+		$("#main-modal").on('click', '#breakdown-div', function(){
 			$('#preview').removeClass("crumb inactive");
 			$('#preview').addClass("crumb");
-			$("#previewImage").attr("src","images/previewY.png");
-			$("#editImage").attr("src","images/edit_LB.png");
-				
 			
-		 let modalContent = "<div id='upload-title' class='title'>Mouth Preview</div>";
-			modalContent += "<div id='mouthPiece'></div>";
-			modalContent += '<select id="selectId" >';
-			/*modelContent += '<option value="Select Mouth">Select Mouth</option>';
-			modelContent += '<option value="Mouth 1">Mouth 1</option>';
-			modelContent += '<option value="Mouth 2">Mouth 2</option>';
-			modelContent += '<option value="Mouth 3">Mouth 3</option>';*/
-			modalContent +=	'</select>';
-			modalContent += '<div id="mediaControlDiv" >';
-			modalContent += '<span name="play" class="mediaButton" ><img src="images/play.png" align="center" style="width: 40px; height:35px"></span>';
-			modalContent += '<span name="pause" class="mediaButton" ><img src="images/pause.png" align="center" style="width: 40px; height:35px"></span>';
-			modalContent += '<span name="stop" class="mediaButton" ><img src="images/stop.png" align="center" style="width: 40px; height:35px"></span>';
-			modalContent +='</div>';	
-			$("#main-modal").html(modalContent);
-		});
-		
-		$("#main-modal").on('click', '#selectId', function(){	
+			$("#preview").on('click', function(){	
+				$("#main-modal").empty();
+				$("#previewImage").attr("src","images/previewY.png");
+				$("#editImage").attr("src","images/edit_LB.png");
+						
+				let modalContent = "<div id='upload-title' class='title' text-align='center'>Mouth Preview</div>";
+				modalContent += "<div id='mouthPiece'></div>";
+				modalContent += '<select id="selectMouth" data-toggle="tooltip" title="Select Mouth Piece"  >';
+				
+				//Activing the next 4 lines causes the modalContent data to disappear 		
+				/*modelContent += '<option value="Select Mouth">Select Mouth</option>';
+				modelContent += '<option value="Mouth 1">Mouth 1</option>';
+				modelContent += '<option value="Mouth 2">Mouth 2</option>';
+				modelContent += '<option value="Mouth 3">Mouth 3</option>';*/
+				
+				modalContent +=	'</select>';
+				modalContent += '<div id="mediaControlDiv" >';
+				modalContent += '<span name="play" class="mediaButton button" ><img src="images/play.png" id="play" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Play"></span>';
+				modalContent += '<span name="pause" class="mediaButton button" ><img src="images/pause.png" id="pause" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Pause"></span>';
+				modalContent += '<span name="stop" class="mediaButton button" ><img src="images/stop.png" id="stop" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Stop"></span>';
+				modalContent +='</div>';	
+				$("#main-modal").html(modalContent);
+				});
+		});		
+		$("#main-modal").on('click', '#selectMouth', function(){	
 			$('#download').removeClass("crumb inactive");
 			$('#download').addClass("crumb");
-		});
-		 
-		$("#downloadImage").on('click', function(){	
+			
+			$("#downloadImage").on('click', function(){	
 			$("#downloadImage").attr("src","images/downloadY.png");
+		    $("#editImage").attr("src","images/edit_LB.png");
 		    $("#previewImage").attr("src","images/preview_LB.png");
 			$("#main-modal").empty();
 			let modalContent = "<div id='upload-title' class='title'>Export the DAT file</div>";
+			
 			modalContent += '<div id="download-div" >';
-			modalContent += "<button id='download-button' class='button'>Download</button>";
+			modalContent += "<button id='download-button' class='button' data-toggle='tooltip' title='Download DAT file'>Download</button>";
 			modalContent += "<span id='upload-text' class='text' ></span>";
 			modalContent +='</div>';
-			  
+			modalContent += '<div id="EandE"></div>';
 			modalContent += '<div id="email-div" >';
-			modalContent += "<button id='email-button' class='button'>Email</button>";
+			modalContent += "<button id='email-button' class='button' data-toggle='tooltip' title='Email DAT file'>Email</button>";
 			modalContent += "<span id='upload-text' class='text' ></span>";
 			modalContent +='</div>';
 			  
 			$("#main-modal").html(modalContent);
+			});
+		});		
+		$("#main-modal").on('click', '#download-button', function(){
+			alert("download button clicked");
+			//Error cause by get function
+			/* $.get("/pidgin_breakdown", function(data, status){
+			  console.log("Data: " + data + "\nStatus: " + status);
+			  $("#EandE").append("<h3 id='exFeedback' style='color:black; font-family: birdHouse;'>Download Complete</h3>");
+			  $('#exFeedback').fadeOut('slow',function(){
+				$('#EandE').empty();
+			  });
+			});*/
 		});
     });
     </script>
@@ -235,117 +328,19 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>  
 
     <script>
-        $("#generate").click(function(e){
-        $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
-		    $.get("/text", function(data, status){
-        console.log("I AM WORKING");
-        $("textarea").append(data.toString()); 
-        $("#loading").empty();
-        $("#breakdown").prop('disabled',false);
-        $("#EXPORT").prop('disabled',false);
-        $("#EMAIL").prop('disabled',false);
-        $("#EDIT").prop('disabled',false);
-      });
-    });
-    
-   
-    $("#EXPORT").click(function(){
-      $.get("/pidgin_breakdown", function(data, status){
-          console.log("Data: " + data + "\nStatus: " + status);
-          $("#EandE").append("<h3 id='exFeedback' style='color:black; font-family: birdHouse;'>EXPORTED</h3>");
-          $('#exFeedback').fadeOut('slow',function(){
-            $('#EandE').empty();
-          });
-      });
-          
-    });
-
-
-    $("#EDIT").click(function(){
-      $("#loading").append('<img src="loader.gif" alt="Smiley face" width="42" height="42" style="z-index:1;position:absolute;margin:5% 10% 5% 35%;">');
-      var text = $("#speechtotext").val();
-      console.log(text);
-      $.post("/update",{output: text},function(data,status){
-        console.log("Data: " + data);
-        $("#loading").empty();
-        $("#loading").append("<h3 id='SAVED' style='font-family: birdHouse;color:black;position:absolute; z-index:1;margin:5% 10% 5% 35%;'>SAVED !</h3>");
-        console.log("callback for edit returned");
-        $('#SAVED').fadeOut('slow',function(){
-            $('#loading').empty();
-          });
-      });  
-    });
-
     var myIndex = 0;
     carousel();
     
     function carousel() {
-        var i;
-        var x = document.getElementsByClassName("slides");
-        for (i = 0; i < x.length; i++) {
-           x[i].style.display = "none";  
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 300);
-		}
-		var xLoading = false;
-    
-		function move() 
-		{
-			document.getElementById('myProgress').style.display = "inherit";
-			document.getElementById('myBar').style.display = "inherit";
-			var elem = document.getElementById("myBar");  
-			var width = 0;
-		
-			if (xLoading == false)
-			{
-				var id = setInterval(frame, 10);
-				xLoading = true;
-				function frame() 
-				{
-					if (width >= 100) 
-					{
-					clearInterval(id);
-					} 
-					else 
-					{
-						width+= 0.34; 
-						elem.style.width = width + '%'; 
-					}
-				  }
-				  setTimeout(hide, 4400);
-			}
-		}
-			
-		function hide()
-		{
-			xLoading = false;
-			document.getElementById('myProgress').style.display = "none";
-		}
-		
-		
-	 function func()
-	 {
-		//alert("entering");
-		 if (document.getElementById("uploadForm")) {
-			//alert("We are here");
-			var barMy = document.getElementById("myBar");
-			var klas = document.createAttribute("class");
-			klas.value = "progress-bar progress-bar-striped active"; 
-			var rol = document.createAttribute("role");
-			rol.value = "progressbar";
-			
-			barMy.setAttributeNode(klas);   
-			barMy.setAttributeNode(rol);   
-			//alert("Done must show");
-			move();
-			setTimeout(submitForm, 0000); 
-		}
+	var i;
+	var x = document.getElementsByClassName("slides");
+	for (i = 0; i < x.length; i++) {
+	   x[i].style.display = "none";  
 	}
-	
-
-	
+	myIndex++;
+	if (myIndex > x.length) {myIndex = 1}    
+	x[myIndex-1].style.display = "block";  
+	setTimeout(carousel, 300);
+	}
     </script>
 </html>

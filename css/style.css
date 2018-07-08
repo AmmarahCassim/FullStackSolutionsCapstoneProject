@@ -15,6 +15,14 @@ body,html{
 	grid-template-rows: 80px auto 120px;
 }
 
+#loading{
+	position: absolute;
+	top: 65%;
+	left: 43.5%;
+	padding: 25px 75px;
+	font-size: 4.2em;
+	
+}
 #nav{
 	background-color: #474545;
 	display: grid;
@@ -24,12 +32,21 @@ body,html{
 
 #navlogo img{
 	height: 60px;
+	left: 20px;
 }
 .nav-link{
 	font-family: Arial, Helvetica, sans-serif;
 	color: #fdb400;
 	font-size: 1.2em;
 	font-weight: 700;
+}
+.nav-link.zero{
+	grid-column-start: 0;
+}
+.nav-link.first{
+	grid-column-start: 1;
+	font-weight: 100;
+	font-size:27.5px;
 }
 .nav-link.home{
 	grid-column-start: 2;
@@ -89,7 +106,7 @@ body,html{
 	left: 5%;
 	background-color: black;
 }
-#editText{
+#speechtotext{
 	position: absolute;
 	width: 90%;
 	height: 40%;
@@ -97,7 +114,6 @@ body,html{
 	left: 5%;
 	background-color: #a7d5d5;
 }
-
 #mouthPiece{
 	position: absolute;
 	width: 40%;
@@ -113,7 +129,6 @@ body,html{
 	border-radius: 20px;
 	color: #a7d5d5;
 }
-
 .generateButton{
 	padding: 24px 60px;
 	border: 8px solid #a7d5d5;
@@ -121,7 +136,10 @@ body,html{
 	border-radius: 20px;
 	color: #a7d5d5;
 }
-
+.generateButton:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+}
 .breakDownButton{
 	padding: 24px 60px;
 	border: 8px solid #a7d5d5;
@@ -138,6 +156,17 @@ body,html{
 	font-size: 2.8em;
 	color: #a7d5d5;
 }
+.New{
+	padding: 14px 30px;
+	border: 8px solid #a7d5d5;
+	background-color: transparent;
+	border-radius: 15px;
+	color: #a7d5d5;
+}
+.New:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+}
 .Newbutton{
 	padding: 14px 30px;
 	border: 8px solid #a7d5d5;
@@ -145,6 +174,14 @@ body,html{
 	border-radius: 15px;
 	color: #a7d5d5;
 }
+.Newbutton:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+} 
+.mediaButton:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+} 
 .newButt{
 	padding: 16.5px 39px;
 	border: 8px solid #a7d5d5;
@@ -153,15 +190,17 @@ body,html{
 	font-size: 0.8em;
 	color: #a7d5d5;
 }
-#upload-text
-{
+.newButt:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+}
+#upload-text{
 	font-size:24px;
 }
 .button:hover{
 	border-color: #fdb400;
 	color: #fdb400;
 }
-
 .mediaButton{
 	padding: 12px 35px;
 	border: 8px solid #a7d5d5;
@@ -189,7 +228,6 @@ body,html{
 	padding: 25px 75px;
 	font-size: 3.0em;
 }
-
 .title{
 	position: absolute;
 	top: 4%;
@@ -198,7 +236,6 @@ body,html{
 	font-size: 2.8em;
 	color: #a7d5d5;
 }
-
 #footer{
 	grid-column-start: 1;
 	grid-row-start: 3;
@@ -217,16 +254,14 @@ body,html{
 	border-radius: 21px;
 	background-color: #3a797a;
 }
-
 .crumb img{
-	width: 65%;
+	width: 75%;
 	margin: 50% 0 0 50%;
 	transform: translate(-50%, -50%);
 }
 .inactive{
 	filter: grayscale(1);
 }
-
 #upload.active{
 	border: solid 5px #fdb400;
 	z-index: 3;
@@ -234,13 +269,11 @@ body,html{
 #upload.crumb.active img{
 	filter: brightness(90%) sepia(1);
 }
-
 #upload-text{
 	position: absolute;
 	top:65%;
 	left:25%;
 }
-
 #about_popup{
 	display: none;
 	position: relative;
@@ -250,7 +283,6 @@ body,html{
 	background-color: rgba(0,0,0,0.9);
 	z-index: 5;
 }
-
 .about-image{
 	position: absolute;
 	top: 50%;
@@ -269,7 +301,6 @@ body,html{
 	font-size: 2.5em;
 	font-weight: 800;
 }
-
 #NewBrowseDiv{
 	position: absolute;
 	top: 80%;
@@ -277,7 +308,6 @@ body,html{
 	padding: 25px 75px;
 	font-size: 1.6em;
 }
-
 #NewUploadDiv{
 	position: absolute;
 	top: 79%;
@@ -285,7 +315,6 @@ body,html{
 	padding: 30px 75px;
 	font-size: 1.6em;
 }
-
 #generateDiv{
 	position: absolute;
 	top: 82%;
@@ -293,9 +322,7 @@ body,html{
 	padding: 25px 75px;
 	font-size: 2.2em;
 }
-
-#mediaControlDiv
-{
+#mediaControlDiv{
 	position: absolute;
 	top: 83%;
 	left: 65%;
@@ -330,15 +357,12 @@ body,html{
 	padding: 25px 75px;
 	font-size: 3.0em;
 }
-
 #breakdown-div{
 	position: absolute;
 	top: 68%;
 	left: 5%;
 	font-size: 1.2em;
 }
-
-
 #save-div{
 	position: absolute;
 	top: 63%;
@@ -354,4 +378,15 @@ select{
 	background-color: transparent;
 	border-radius: 20px;
 	color: #a7d5d5;
+}
+select:hover{
+	border-color: #fdb400;
+	color: #fdb400;
+}
+#EandE{
+	position: absolute;
+	top: 80%;
+	right: 22.5%;
+	padding: 23px 80px;
+	font-size: 3.0em;
 }
