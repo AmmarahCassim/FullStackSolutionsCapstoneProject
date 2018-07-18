@@ -39,6 +39,7 @@ alphabet in mind i.e a-z,sh,ch. In summary play just with this 28 sounds to spel
 # from breakdowns.unicode_hammer import latin1_to_ascii as hammer
 from unicode_hammer import latin1_to_ascii as hammer
 import locale, sys, json
+import string
 input_encoding = locale.getdefaultlocale()[1] # standard system encoding??
 # input_encoding = 'cp1252'
 # input_encoding = 'utf-8'
@@ -149,9 +150,12 @@ def main():
     words = []
     wordMapping = {}
     temp = []
+    tempWord = ""
     lines = read_in()
     total_sum_inArray = ""
     words = [item.encode('ascii','ignore') for item in lines]
+    for word in words:
+        word = string.replace(word, "'", "")
     for word in words:
         wordMapping[word] = breakdownWord(unicode(word, input_encoding))
     print wordMapping

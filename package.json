@@ -25,6 +25,7 @@
     "path": "^0.12.7",
     "pkill": "^2.0.0",
     "python-shell": "^0.5.0",
+    "require-all": "^3.0.0",
     "swig": "^1.4.2",
     "watson-developer-cloud": "^3.2.1"
   },

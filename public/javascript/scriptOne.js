@@ -1,5 +1,7 @@
 var words;
-
+var phonemes;
+var index =0;
+var rangeSplitter =0;
 var wavesurfer = WaveSurfer.create({ 
           container: '#addWave',
           pixelRatio: 1,
@@ -43,7 +45,8 @@ var wavesurfer = WaveSurfer.create({
          
         $("#breakdown").click(function(){
         $.get("/wordTimings",function(data, status){
-          words = JSON.parse(data);
+          words = JSON.parse(data[0]);
+          phonemes = data[1];
 
           //for(int i =0; i < words.timestamps[0].length; ++i){
             console.log(words.length);
@@ -53,11 +56,34 @@ var wavesurfer = WaveSurfer.create({
                   start: words[i][1],
                   end: words[i][2],
                   color: 'hsla(42,42%,32%,0.3)',
+                  id: "top",
                   attributes: {
                     label: words[i][0]
                   }
                 });
              // for(var j = 0; j < words[i].length;++j){
+                console.log(words[i][0]);
+
+              
+              console.log(" ");
+            }
+
+            for(var i =0; i < words.length;++i){
+              rangeSplitter = words[i][2] - words[i][1];
+              rangeSplitter = rangeSplitter / words[i][0].length;
+              for(var j  =0; j < words[i][0].length ; ++j){ 
+                wavesurfer.addRegion({
+                  start: words[i][1],
+                  end: words[i][1] += rangeSplitter,
+                  color: 'hsla(42,42%,32%,0.3)',
+                  id: "bottom",
+                  attributes: {
+                    label: phonemes[index][0]
+                  }
+                });
+                ++index;
+             // for(var j = 0; j < words[i].length;++j){
+             }
                 console.log(words[i][0]);
 
               

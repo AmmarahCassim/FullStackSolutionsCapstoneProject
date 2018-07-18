@@ -328,3 +328,15 @@ region.wavesurfer-region:before {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+[data-id="top"]{
+	height:40% !important;
+}
+
+[data-id="bottom"]{
+	height:20% !important;
+	top: 70% !important;
+	background-color: rgba(255, 0, 0, 0.3) !important;
+	font-size: 9px !important;
+
+}

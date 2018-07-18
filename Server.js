@@ -23,6 +23,12 @@ var words = new Array();
 var tempWords = new Array();
 var temp;
 var wordTimings;
+var messageString;
+var phonemeArray;
+var newObject = [];
+var difference;
+var rangeSplit = 0;
+var resposnseArray =[];
 
 
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -187,27 +193,28 @@ app.get('/audio',cors(corsOptions),(req, res) => {
 //app.get("/pidgin_breakdown", callPidgin);
 app.get('/pidgin_breakdown',(req, res) =>{
 //function callPidgin(req, res) {
-console.log("TEMMMMMMPPY: ",req.session.output);
-var PythonShell = require('python-shell');
-var pyshell = new PythonShell('pidgin_breakdown.py');
-//res.redirect('/');
-pyshell.send(JSON.stringify(words));
+// console.log("TEMMMMMMPPY: ",req.session.output);
+// var PythonShell = require('python-shell');
+// var pyshell = new PythonShell('pidgin_breakdown.py');
+// //res.redirect('/');
+// pyshell.send(JSON.stringify(words));
 
-pyshell.on('message', function (message) {
-    console.log(message);
-    fs.writeFile('message.dat', message, function (err) {
+// pyshell.on('message', function (message) {
+//     console.log(message);
+//     messageString = message;
+    fs.writeFile('message.dat', messageString, function (err) {
 
         if (err) throw err;
 
         console.log('It\'s saved! in same location.');
 
     });
-});
+// });
 
-pyshell.end(function (err) {
-    if (err){
-        throw err;
-    };
+// pyshell.end(function (err) {
+//     if (err){
+//         throw err;
+//     };
 
     console.log('finished');
   var file = __dirname + '/message.dat';
@@ -215,7 +222,7 @@ pyshell.end(function (err) {
   console.log("downloaded");
     res.status(200);
 
-});
+//});
 //res.redirect('/');
 });
 
@@ -258,6 +265,7 @@ app.get('/text',(req, res) =>{
           }
           wordTimings = JSON.stringify(finalObject);
           console.log('WordTIMINGS: ', wordTimings);
+          mapping(wordTimings);
           console.log("OUTPUT:",outPut);
           console.log("WORDS: ", words);
           for(item in words){
@@ -282,11 +290,99 @@ app.get('/text',(req, res) =>{
 
 app.get('/wordTimings',(req,res) =>{
   console.log("Sending timings to client: ", wordTimings);
-  res.send(wordTimings);
+  resposnseArray[0] = wordTimings;
+  resposnseArray[1] = newObject;
+  res.send(resposnseArray);
   res.status(200);
 
 
 });
+
+function mapping(times){
+  var tempy;
+  var tempyTimes;
+  var tempMessage;
+  var arrayStuff;
+  var tempJSON;
+  var tempString;
+  console.log("executing mapping");
+  
+
+  //console.log("TEMMMMMMPPY: ",req.session.output);
+  var PythonShell = require('python-shell');
+  var pyshell = new PythonShell('pidgin_breakdown.py');
+  //res.redirect('/');
+  pyshell.send(JSON.stringify(words));
+
+  pyshell.on('message', function (message) {
+      console.log("returned from pyshell");
+      console.log(message);
+      messageString = message;
+      messageString = messageString.replace(/'/g, '"');
+
+
+      });
+
+  pyshell.end(function (err) {
+      if (err){
+          throw err;
+      };
+
+      console.log("times: ", times);
+      tempyTimes = JSON.parse(times);
+      console.log("TEmpyTimes");
+      console.log(tempyTimes);
+      //tempyTimes = tempyTimes.reverse();
+      console.log("TEMPYYYYYYTIMES: ", tempyTimes[0]);
+      var tempObj = {
+      "okay": ["AO0", "K", "AE0", "Y"],
+      "lets": ["L", "EH0", "T", "S"],
+      "party": ["P", "AE0", "R", "T", "Y"],
+      "and": ["AE0", "N", "D"]
+    }
+    //tempObj = JSON.parse(messageString);
+
+    console.log(tempObj);
+  
+      console.log(Object.keys(tempObj)[0].length);
+      for(var i =0; i <Object.keys(tempObj).length;++i){
+     
+        for(var j =0; j < Object.keys(tempObj)[i].length; ++j){
+          difference = tempyTimes[i][2] - tempyTimes[i][1];
+          
+          var tempvalue= tempObj[Object.keys(tempObj)[i]][j];
+          rangeSplit += 0;
+          console.log("Phoneme: ", JSON.stringify(tempObj[Object.keys(tempObj)[i]][j]));
+          newObject.push([tempObj[Object.keys(tempObj)[i]][j], tempyTimes[i][1] += rangeSplit]);
+          rangeSplit = difference/3;
+        }
+
+      }
+    tempJSON = JSON.stringify(tempObj);
+    console.log(tempJSON);
+     for(var i =0; i < newObject.length;++i){
+        tempString += newObject[i][0] + " " + newObject[i][1].toFixed(2) + "\n";
+    }
+      tempString = tempString.trim();
+      fs.writeFile('phonemes.dat', '', function(){console.log('done')});
+      fs.appendFile('phonemes.dat',tempString, function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+      pullimages();
+      });
+      
+
+};
+
+
+function pullimages(){
+  console.log("pulling now");
+
+  var libs = require('require-all')(__dirname + '/mouths');
+  console.log(libs);
+}
+
 
 app.post('/update',(req,res)=>{
   outPut = req.body.output;
