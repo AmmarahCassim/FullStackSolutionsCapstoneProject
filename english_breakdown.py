@@ -100,6 +100,16 @@ def breakdownWord(word, recursive=False):
                 phonemes.append('MBP')
         elif letter in ['p',accented_u]:          # u
                 phonemes.append('MBP')
+        elif letter in ['f',accented_u]:          # u
+                phonemes.append('FV')
+        elif letter in ['v',accented_u]:          # u
+                phonemes.append('FV')
+        elif letter in ['w',accented_u]:          # u
+                phonemes.append('WQ')
+        elif letter in ['q',accented_u]:          # u
+                phonemes.append('WQ')
+        elif letter in ['l',accented_u]:          # u
+                phonemes.append('L')
                  
         elif letter == 'c':
             if len(word) > pos+1 and word[pos+1] == 'h': # ch 

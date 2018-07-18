@@ -30,6 +30,7 @@ var wavesurfer = WaveSurfer.create({
           wavesurfer.playPause();
 
           $('#PLAY').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+
         }
 
 
@@ -96,6 +97,10 @@ var wavesurfer = WaveSurfer.create({
       });
 $(document).ready(function(){
   var mouthValue;
+$("#PLAY").click(function(){
+  console.log("hello");
+
+});
 $(".dropdown-menu>li>a").click(function(){
   mouthValue = $(this).attr("id");
   $.ajax({
@@ -106,12 +111,13 @@ $(".dropdown-menu>li>a").click(function(){
     
     $(".slides").remove();
 }).always(function(msg) {
-     console.log(msg);
+     //console.log(msg);
         $(".topRight").append(msg);
         carousel();  
 });
 });
-$("#PLAY").click(function(){
-
+$("#PLAY").on('click',function(){
+  console.log("playing");
 });
+
 });

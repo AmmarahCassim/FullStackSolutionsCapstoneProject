@@ -203,58 +203,58 @@
 		}
 		var xLoading = false;
     
-		function move() 
-		{
-			document.getElementById('myProgress').style.display = "inherit";
-			document.getElementById('myBar').style.display = "inherit";
-			var elem = document.getElementById("myBar");  
-			var width = 0;
+		// function move() 
+		// {
+		// 	document.getElementById('myProgress').style.display = "inherit";
+		// 	document.getElementById('myBar').style.display = "inherit";
+		// 	var elem = document.getElementById("myBar");  
+		// 	var width = 0;
 		
-			if (xLoading == false)
-			{
-				var id = setInterval(frame, 10);
-				xLoading = true;
-				function frame() 
-				{
-					if (width >= 100) 
-					{
-					clearInterval(id);
-					} 
-					else 
-					{
-						width+= 0.34; 
-						elem.style.width = width + '%'; 
-					}
-				  }
-				  setTimeout(hide, 4400);
-			}
-		}
+		// 	if (xLoading == false)
+		// 	{
+		// 		var id = setInterval(frame, 10);
+		// 		xLoading = true;
+		// 		function frame() 
+		// 		{
+		// 			if (width >= 100) 
+		// 			{
+		// 			clearInterval(id);
+		// 			} 
+		// 			else 
+		// 			{
+		// 				width+= 0.34; 
+		// 				elem.style.width = width + '%'; 
+		// 			}
+		// 		  }
+		// 		  setTimeout(hide, 4400);
+		// 	}
+		// }
 			
-		function hide()
-		{
-			xLoading = false;
-			document.getElementById('myProgress').style.display = "none";
-		}
+		// function hide()
+		// {
+		// 	xLoading = false;
+		// 	document.getElementById('myProgress').style.display = "none";
+		// }
 		
 		
-	 function func()
-	 {
-		//alert("entering");
-		 if (document.getElementById("uploadForm")) {
-			//alert("We are here");
-			var barMy = document.getElementById("myBar");
-			var klas = document.createAttribute("class");
-			klas.value = "progress-bar progress-bar-striped active"; 
-			var rol = document.createAttribute("role");
-			rol.value = "progressbar";
+	//  function func()
+	//  {
+	// 	//alert("entering");
+	// 	 if (document.getElementById("uploadForm")) {
+	// 		//alert("We are here");
+	// 		var barMy = document.getElementById("myBar");
+	// 		var klas = document.createAttribute("class");
+	// 		klas.value = "progress-bar progress-bar-striped active"; 
+	// 		var rol = document.createAttribute("role");
+	// 		rol.value = "progressbar";
 			
-			barMy.setAttributeNode(klas);   
-			barMy.setAttributeNode(rol);   
-			//alert("Done must show");
-			move();
-			setTimeout(submitForm, 0000); 
-		}
-	}
+	// 		barMy.setAttributeNode(klas);   
+	// 		barMy.setAttributeNode(rol);   
+	// 		//alert("Done must show");
+	// 		move();
+	// 		setTimeout(submitForm, 0000); 
+	// 	}
+	// }
 	
 
 	

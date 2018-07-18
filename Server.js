@@ -314,7 +314,7 @@ function mapping(times){
 
   //console.log("TEMMMMMMPPY: ",req.session.output);
   var PythonShell = require('python-shell');
-  var pyshell = new PythonShell('pidgin_breakdown.py');
+  var pyshell = new PythonShell('english_breakdown.py');
   //res.redirect('/');
   pyshell.send(JSON.stringify(words));
 
@@ -338,13 +338,13 @@ function mapping(times){
       console.log(tempyTimes);
       //tempyTimes = tempyTimes.reverse();
       console.log("TEMPYYYYYYTIMES: ", tempyTimes[0]);
-      var tempObj = {
-      "okay": ["AO0", "K", "AE0", "Y"],
-      "lets": ["L", "EH0", "T", "S"],
-      "party": ["P", "AE0", "R", "T", "Y"],
-      "and": ["AE0", "N", "D"]
-    }
-    //tempObj = JSON.parse(messageString);
+    //   var tempObj = {
+    //   "okay": ["AO0", "K", "AE0", "Y"],
+    //   "lets": ["L", "EH0", "T", "S"],
+    //   "party": ["P", "AE0", "R", "T", "Y"],
+    //   "and": ["AE0", "N", "D"]
+    // }
+    tempObj = JSON.parse(messageString);
 
     console.log(tempObj);
   
