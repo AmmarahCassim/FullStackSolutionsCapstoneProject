@@ -398,8 +398,9 @@ function pullimages(query){
 app.get('/load_images', (req,res)=>{
   pullimages(req.query.mouth);
   res.writeHead(200, {"Content-Type" : "text/html"});
-        for (i = 1; i < fileNames.length; i++) {
-            res.write("<img class='slides' id='" + req.query.mouth + "' src='http://127.0.0.1:3000/" + req.query.mouth + "/" + fileNames[i] + "' />");
+        res.write("<img class='slides' id='" + req.query.mouth + "' src='http://127.0.0.1:3000/" + req.query.mouth + "/" + fileNames[2] + "' />");
+        for (i = 2; i < fileNames.length; i++) {
+            res.write("<img class='slides' style='display:none;' id='" + req.query.mouth + "' src='http://127.0.0.1:3000/" + req.query.mouth + "/" + fileNames[i] + "' />");
         }
   res.end();
 

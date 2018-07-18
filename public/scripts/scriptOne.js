@@ -27,6 +27,7 @@ var wavesurfer = WaveSurfer.create({
         function playSound(){
           
           //wavesurfer.setPlaybackRate(0.5);
+          alert("PLAYING");
           wavesurfer.playPause();
 
           $('#PLAY').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
