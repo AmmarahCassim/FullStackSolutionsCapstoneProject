@@ -148,6 +148,7 @@ def read_in():
 
 def main():
     words = []
+    newWords = []
     wordMapping = {}
     temp = []
     tempWord = ""
@@ -155,8 +156,9 @@ def main():
     total_sum_inArray = ""
     words = [item.encode('ascii','ignore') for item in lines]
     for word in words:
-        word = string.replace(word, "'", "")
-    for word in words:
+        #word = string.replace(word, "'", "")
+        newWords.append(string.replace(word, "'", ""))
+    for word in newWords:
         wordMapping[word] = breakdownWord(unicode(word, input_encoding))
     print wordMapping
 

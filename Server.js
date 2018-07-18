@@ -15,6 +15,7 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
+var nStatic = require('node-static');
 var watson = require('watson-developer-cloud');
 var outPut = "";
 var fileUploaded = 0;
@@ -29,6 +30,7 @@ var newObject = [];
 var difference;
 var rangeSplit = 0;
 var resposnseArray =[];
+var fileNames = [];
 
 
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -39,6 +41,8 @@ var speech_to_text = new SpeechToTextV1 ({
     "username": "44237460-ece1-477e-8912-f6552e8495b0",
     "password": "TNmOa7lGouuS"
 });
+
+var fileServer = new nStatic.Server('./public');
 
 var soundFile  ='';
 
@@ -369,20 +373,37 @@ function mapping(times){
       if (err) throw err;
       console.log('Saved!');
     });
-      pullimages();
+      //pullimages();
       });
       
 
 };
 
 
-function pullimages(){
+function pullimages(query){
   console.log("pulling now");
 
-  var libs = require('require-all')(__dirname + '/mouths');
-  console.log(libs);
-}
+  // var libs = require('require-all')(__dirname + '/mouths');
+  // console.log("pulled from directory:");
+  fileNames = [];
+  var directory = "/public/";
+  directory += query;
+  console.log("PULL IMAGES: ");
+  fs.readdirSync(__dirname + directory).forEach(file => {
+  console.log(file);
+  fileNames.push(file);
+  });
 
+}
+app.get('/load_images', (req,res)=>{
+  pullimages(req.query.mouth);
+  res.writeHead(200, {"Content-Type" : "text/html"});
+        for (i = 1; i < fileNames.length; i++) {
+            res.write("<img class='slides' id='" + req.query.mouth + "' src='http://127.0.0.1:3000/" + req.query.mouth + "/" + fileNames[i] + "' />");
+        }
+  res.end();
+
+});
 
 app.post('/update',(req,res)=>{
   outPut = req.body.output;
@@ -406,5 +427,6 @@ app.delete('/files/:id', (req, res) => {
 
 
 app.listen(3000,function(){
+    //fileServer.serve(req, res);
     console.log("Working on port 3000");
 });

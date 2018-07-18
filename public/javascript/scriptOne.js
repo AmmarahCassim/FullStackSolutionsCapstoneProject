@@ -94,3 +94,21 @@ var wavesurfer = WaveSurfer.create({
           //alert("data: " + words);
         });
       });
+$(document).ready(function(){
+  var mouthValue;
+$(".dropdown-menu>li>a").click(function(){
+  mouthValue = $(this).attr("id");
+  $.ajax({
+    method: "GET",
+    url:"/load_images",
+    data: {mouth: mouthValue}
+  }).done(function(){
+    
+    $(".slides").remove();
+}).always(function(msg) {
+     console.log(msg);
+        $(".topRight").append(msg);
+        carousel();  
+});
+});
+});

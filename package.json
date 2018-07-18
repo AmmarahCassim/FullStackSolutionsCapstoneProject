@@ -20,6 +20,7 @@
     "mongoose": "^5.0.11",
     "multer": "1.1.0",
     "multer-gridfs-storage": "^3.0.0",
+    "node-static": "^0.7.10",
     "node-uuid": "^1.4.8",
     "npm": "^6.0.1",
     "path": "^0.12.7",

@@ -340,3 +340,9 @@ region.wavesurfer-region:before {
 	font-size: 9px !important;
 
 }
+.dropdown{
+	position: absolute;
+	margin: 0 auto;
+	top: 1%;
+	left: 25%;
+}

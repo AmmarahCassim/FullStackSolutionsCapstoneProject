@@ -1,4 +1,5 @@
-$("#generate").click(function(e){  
+    $("#generate").click(function(e){  
+      console.log("generating");
       $.get("/text", function(data, status){
        // alert('found SCRIPT');
         console.log("I AM WORKING");
@@ -11,6 +12,9 @@ $("#generate").click(function(e){
         alert("callback bitches");
       })
     });
+
+
+    
 
     $("#EXPORT").click(function(){
       $.get("/pidgin_breakdown", function(data, status){
