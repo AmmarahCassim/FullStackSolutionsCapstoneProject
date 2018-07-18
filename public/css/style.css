@@ -336,7 +336,7 @@ region.wavesurfer-region:before {
 [data-id="bottom"]{
 	height:20% !important;
 	top: 70% !important;
-	background-color: rgba(255, 0, 0, 0.3) !important;
+	background-color: rgba(255, 0, 0, 0.4) !important;
 	font-size: 9px !important;
 
 }
