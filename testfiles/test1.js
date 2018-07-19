@@ -9,7 +9,8 @@ driver = new webdriver.Builder().
     'platform': 'Windows XP',
     'version': '43.0',
     'username': username,
-    'accessKey': accessKey
+    'accessKey': accessKey,
+    'public': true
   }).
   usingServer("http://" + username + ":" + accessKey +
               "@ondemand.saucelabs.com:80/wd/hub").
