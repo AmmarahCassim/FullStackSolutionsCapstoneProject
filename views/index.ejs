@@ -113,12 +113,12 @@
 			  
 			  //FIX HOVER OVER BUTTON
 			  modalContent += '<div id="NewBrowseDiv" class="custom-file">';
-			  modalContent += '<span class="New">Browse</span>';
+			  modalContent += '<span class="button">Browse</span>';
 			  modalContent +='<input type="file" data-toggle="tooltip" title="Browse for Audio File" id="file" accept="audio/*"/>';
 			  modalContent +='</div>';
 			  
 			  modalContent += '<div id="NewUploadDiv" >';
-			  modalContent += "<button  class='newButt' data-toggle='tooltip' title='Upload Audio File' >Upload</button>";
+			  modalContent += "<button  class='button' data-toggle='tooltip' title='Upload Audio File' >Upload</button>";
 			  modalContent += "<span id='upload-text' class='text' ></span>";
 			  modalContent +='</div>';
 		
@@ -179,13 +179,13 @@
 					modalContent += '<select id="selectMouth" data-toggle="tooltip" title="Select Mouth Piece">';
 					
 					//Activing the next 4 lines causes the modalContent data to disappear 
-					/*modelContent += '<option value="Select Mouth">Select Mouth</option>';
-					modelContent += '<option value="Mouth 1">Mouth 1</option>';
-					modelContent += '<option value="Mouth 2">Mouth 2</option>';
-					modelContent += '<option value="Mouth 3">Mouth 3</option>';*/
+					modalContent += '<option value="Select Mouth">Select Mouth</option>';
+					modalContent += '<option value="Mouth 1">Mouth 1</option>';
+					modalContent += '<option value="Mouth 2">Mouth 2</option>';
+					modalContent += '<option value="Mouth 3">Mouth 3</option>';
 
 					modalContent +=	'</select>';
-					modalContent += '<div id="mediaControlDiv" >';
+					modalContent += '<div id="mediaControlDivPreview" >';
 					modalContent += '<span name="play" class="mediaButton button" ><img src="images/play.png" id="play" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Play"></span>';
 					modalContent += '<span name="pause" class="mediaButton button" ><img src="images/pause.png" id="pause" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Pause"></span>';
 					modalContent += '<span name="stop" class="mediaButton button" ><img src="images/stop.png" id="stop" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Stop"></span>';
@@ -231,13 +231,13 @@
 					
 					//Activing the next 4 lines causes the modalContent data to disappear 
 					
-					/*modelContent += '<option value="Select Mouth">Select Mouth</option>';
-					modelContent += '<option value="Mouth 1">Mouth 1</option>';
-					modelContent += '<option value="Mouth 2">Mouth 2</option>';
-					modelContent += '<option value="Mouth 3">Mouth 3</option>';*/
+					modalContent += '<option value="Select Mouth">Select Mouth</option>';
+					modalContent += '<option value="Mouth 1">Mouth 1</option>';
+					modalContent += '<option value="Mouth 2">Mouth 2</option>';
+					modalContent += '<option value="Mouth 3">Mouth 3</option>';
 					
 					modalContent +=	'</select>';
-					modalContent += '<div id="mediaControlDiv" >';
+					modalContent += '<div id="mediaControlDivPreview" >';
 					modalContent += '<span name="play" class="mediaButton button" ><img src="images/play.png" id="play" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Play"></span>';
 					modalContent += '<span name="pause" class="mediaButton button" ><img src="images/pause.png" id="pause" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Pause"></span>';
 					modalContent += '<span name="stop" class="mediaButton button" ><img src="images/stop.png" id="stop" align="center" style="width: 40px; height:35px" data-toggle="tooltip" title="Stop"></span>';
