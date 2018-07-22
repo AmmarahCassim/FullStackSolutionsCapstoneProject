@@ -1,6 +1,34 @@
 $(document).ready(function(){
   console.log("hello");
+  var sliderBool = true;
   $(".dragndrop").remove();
+
+  $(".export").click(function(){
+      var n = $(".edit").outerWidth();
+      console.log("you clicked me speech length: ",n);
+      //n += $(this).width();
+      if(sliderBool){
+      $(".edit").empty();
+      $(this).animate({
+        left:-n
+      },500,function(){
+
+        $(".export>h2").text("EDIT");
+        sliderBool = false;
+      });
+    }else{
+      $(".edit").empty();
+      $(this).animate({
+        left:"-8%"
+      },500,function(){
+
+        $(".export>h2").text("EXPORT");
+        $(".edit").append("<button type='button' class='btn btn-primary'>SPEECH TO TEXT</button>");
+        sliderBool = true;
+      });
+
+    }
+    });
 
 var wavesurfer = WaveSurfer.create({ 
           container: '#addWave',
