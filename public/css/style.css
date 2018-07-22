@@ -64,9 +64,12 @@ timeline{
 	box-shadow: 6px 8px 30px #888888;
 }
 .export{
-	height:30vh;
+	height: 30vh;
 	background-color: #617D8A;
 	box-shadow: 6px 8px 30px #888888;
+	position: relative;
+	z-index: 10;
+	left: -8%;
 
 }
 .export>h2{
