@@ -4,6 +4,7 @@ $(document).ready(function(){
   var sliderBool = true;
   $(".dragndrop").remove();
 
+
   $(".export").click(function(){
       var n = $(".edit").outerWidth();
       console.log("you clicked me speech length: ",n);
@@ -60,11 +61,15 @@ var wavesurfer = WaveSurfer.create({
           wavesurfer.playPause();
 
         }
-        var r= $('<button id ="PLAY" type="button" class="btn btn-info" value ="PLAY"style=" position: absolute; bottom: 10px; right: 21px;" onclick="playSound()">play</span></button>'); 
-        $('#addWave').append(r);
+        var r= $('<button id ="PLAY" type="button" class="btn btn-info" value ="PLAY"style=" position: absolute; bottom:0;right:0;margin-bottom:20px;margin-right:12px;" onclick="playSound()">play</span></button>'); 
+        $('.timeline').append(r);
 
         $("#PLAY").on("click",function(){
           console.log("play");
           playSound();
+        });
+
+        $.get("templates/form.html", function(data){
+            $(".timeline").append(data);
         });
 });
