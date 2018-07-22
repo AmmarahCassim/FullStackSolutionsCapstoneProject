@@ -1,3 +1,4 @@
+/*---------------------FONTS---------------------------------*/
 @font-face{
 	font-family: birdHouse;
 	src:url(../fonts/AnotherBirdhouse.ttf);
@@ -12,6 +13,10 @@
 	font-family: Roboto_Light;
 	src:url(../fonts/Roboto-Light.ttf);
 }
+/*---------------------ELEMENTS----------------------------*/
+body{
+	background-color: #EFEFEF;
+}
 /*---------------------------NAVBAR --------------------------*/
 .navbar{
 	background-color: #617D8A;
@@ -22,7 +27,7 @@
 	font-size: 40px;
 	color: black;
 }
-/*----------------------------------------waveform-----------------*/
+/*---------------------------waveform-------------------------*/
 
 wave{
 	top:90px;
