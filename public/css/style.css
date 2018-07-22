@@ -27,6 +27,21 @@ body{
 	font-size: 40px;
 	color: black;
 }
+
+.navbar-inverse{
+	padding: 2px;
+}
+
+.navbar-inverse .container-fluid{
+	padding: 0px;
+}
+
+
+
+.pidgy{
+	padding: 2px;
+}
+
 /*---------------------------waveform-------------------------*/
 
 wave{
@@ -99,3 +114,6 @@ timeline{
 	margin-bottom: 0px !important;
 }
 
+.addWave {
+	background-color: #617D8A;
+}
