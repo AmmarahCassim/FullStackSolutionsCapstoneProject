@@ -12,53 +12,41 @@
 
 	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="style.css">
 
 
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
-      <!-- <a href="#" class="navbar-left"><img src="images/PidgeySyncLogo.png" id="logo" width="50px"></a> -->
+      <a href="#" class="navbar-left"><img src="images/PidgeySyncLogo.png" id="logo" width="50px"></a>
       <div class="container-fluid">
         <div class="navbar-header">
           <a id="pidgy" class="navbar-brand" href="#">PidgeySync</a>
         </div>
-        <!-- <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li class="default"><a href="#ABOUT">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <p class="navbar-text" style="color: #FDB400">Need Help?</p>
           <li><a onclick="javascript:introJs().setOption('showProgress',true).start();">Start Tour</a></li>
-        </ul> -->
+        </ul>
       </div>
     </nav>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-10 offset-md-1 timeline" id="addWave">
-				<div id="addWave-timeline"></div>
-				<div class="dragndrop" >
+			<div class="col-md-10 offset-md-1 timeline">
+				<div class="dragndrop" id="addWave">
 					
 					<div>
-						
+						<form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST" accepts="audio/wav">
 						<p>Drag and drop Wav file here</p>
 						<p>or</p>
-						<form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST" accepts="audio/wav">
-		                  <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
-		                    <label class="btn btn-info btn-file">
-		                      Choose Audio File <input id="files" type="file" style="display: none;" name="userPhoto" required>
-		                    </label>
-							
-		                    <input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload Audio File">
-							
-		                    <div id="fileName" style='color:black;'></div>
-		                  </div>
-		                </form>
-						
+						<button type="button" class="btn btn-primary">UPLOAD</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -74,19 +62,12 @@
 	</div>
 
 
-	   <% if(files) {%>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src ="dist/wavesurfer.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
-      <script src="javascript/scriptOne.js"></script>
-    <%}%>
-      
-    
-      <!--<script src="javascript/script.js"/>-->
-    
+      <script src="javascript/scriptOne.js"/>
 </body>
-		
-      
 </html>
