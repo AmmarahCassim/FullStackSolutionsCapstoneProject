@@ -51,6 +51,7 @@ wave{
 timeline{
 	top:90px;
 }
+/*------------------------------------*/
 .dragndrop{
 	display: flex;
 	align-items: center;
@@ -59,6 +60,7 @@ timeline{
 	border-style: dashed;
 	border-radius: 30px;
 	height:100%;
+	padding: 0px;
 }
 .dragndrop>div{
 	width:60%;
