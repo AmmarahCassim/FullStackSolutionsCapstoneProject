@@ -139,8 +139,10 @@ app.get('/audio',(req, res) => {
       });
     }
 
-    // Check if image
-    if (file.contentType === 'audio/x-wav' || file.contentType === 'audio/mpeg') {
+    // Check if audio
+    if (file.contentType === 'audio/x-wav' ||  file.contentType === 'audio/wav') {
+    //if(true){
+      console.log(file.contentType);
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
       

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   console.log("hello");
   var sliderBool = true;
   $(".dragndrop").remove();
