@@ -16,15 +16,27 @@
 /*---------------------ELEMENTS----------------------------*/
 body{
 	background-color: #EFEFEF;
+	/*background-image: url(/images/PidgeyNavLogo.png);
+	background-position: center;
+	background-repeat: no-repeat;*/
+	
 }
 /*---------------------------NAVBAR --------------------------*/
-.navbar{
+.navbar {
 	background-color: #617D8A;
-
 }
+
+.navbar-nav a {
+	color: #EFEFEF;
+}
+
 .navbar-brand{
 	font-family: birdHouse;
 	font-size: 40px;
+	color: black;
+}
+
+.navbar-brand:hover{
 	color: black;
 }
 
@@ -36,10 +48,12 @@ body{
 	padding: 0px;
 }
 
-
-
 .pidgy{
 	padding: 2px;
+}
+
+.start-tour:hover{
+	cursor: pointer;
 }
 
 /*---------------------------waveform-------------------------*/
@@ -48,6 +62,7 @@ wave{
 	top:90px;
 
 }
+
 timeline{
 	top:90px;
 }
@@ -80,6 +95,7 @@ timeline{
 	height:30vh;
 	box-shadow: 6px 8px 30px #888888;
 }
+
 .export{
 	height: 30vh;
 	background-color: #617D8A;
@@ -87,8 +103,8 @@ timeline{
 	position: relative;
 	z-index: 10;
 	left: -8%;
-
 }
+
 .export>h2{
 	    position: relative;
 	    top:35%;
