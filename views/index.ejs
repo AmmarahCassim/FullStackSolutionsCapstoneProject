@@ -9,7 +9,7 @@
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
@@ -71,6 +71,7 @@
 					            <label class="btn btn-info btn-file">
 					            	Choose Audio File <input id="files" type="file" style="display: none;" name="userPhoto" required>
 					            </label>
+								
 								<input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload Audio File">
 								<div id="fileName" style='color:black;'></div>
 					            </div>
@@ -79,7 +80,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" id="second_row">
+		<div class="row" id="second_row"style="display:none;" >
 			<div class="col-md-10 offset-md-1 edit">
 				<button type="button" class="btn btn-primary">SPEECH TO TEXT</button>
 			</div>
@@ -100,9 +101,13 @@
       <script src="javascript/script.js"/>
     <%}%>
       
-	
-    
       <!---->
+	  <script>
+			$("#files").click(function(){
+				$("#addWave").animate({height:"50vh"});
+				$("#second_row").attr("style","initial");
+			});
+	  </script>
     
 </body>
 		
