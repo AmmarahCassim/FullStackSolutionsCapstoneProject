@@ -10,7 +10,7 @@
       .done(function(){
         
         $("textarea").append(data); 
-        alert("callback bitches");
+        alert("callback bi***es");
       })
     });
 

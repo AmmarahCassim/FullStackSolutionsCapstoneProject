@@ -22,20 +22,24 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<nav class="navbar navbar-expand-md">
+	<nav class="navbar navbar-expand-md stroke">
 		<a class="navbar-brand" href="#"><!-- <img class ="navlogo" src="images/PidgeySyncLogo.png"> -->PidgeySync</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-				<a class="nav-item nav-link" href="#">About</a>
-			</div>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">About</a> 
+				</li>
+			</ul>
 			<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 				<ul class="navbar-nav ml-auto">
 		            <li class="nav-item">
-		                <a class="nav-item nav-link" onclick="javascript:introJs().setOption('showProgress',true).start();" title="Start Tour" id= "start-tour" style="cursor: pointer;"><i class="far fa-question-circle fa-2x"></i></a>
+		                <a class="nav-link" style="color: #efefef;" onclick="javascript:introJs().setOption('showProgress',true).start();" title="Start Tour" id= "start-tour"><i class="far fa-question-circle fa-2x"></i></a>
 		            </li>
 		        </ul>
 			</div>
@@ -59,7 +63,7 @@
       </div>
     </nav> -->
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row" id="first_row">
 			<div class="col-md-10 offset-md-1 timeline" id="addWave">
 				<div id="addWave-timeline"></div>
 				<div class="dragndrop">
@@ -67,20 +71,19 @@
 						<p>Drag and drop Wav file here</p>
 						<p>or</p>
 						<form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST" accepts="audio/wav">
-				            <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
-					            <label class="btn btn-info btn-file">
-					            	Choose Audio File <input id="files" type="file" style="display: none;" name="userPhoto" required>
-					            </label>
-								
+				      <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
+					      <label class="btn btn-info btn-file">
+					        Choose Audio File <input id="files" type="file" style="display: none;" name="userPhoto" required>
+					      </label>
 								<input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload Audio File">
 								<div id="fileName" style='color:black;'></div>
-					            </div>
-			            </form>
+					    </div>
+			      </form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row" id="second_row"style="display:none;" >
+		<div class="row" id="second_row" style="display:none;" >
 			<div class="col-md-10 offset-md-1 edit">
 				<button type="button" class="btn btn-primary">SPEECH TO TEXT</button>
 			</div>
@@ -101,7 +104,6 @@
       <script src="javascript/script.js"/>
     <%}%>
       
-      <!---->
 
     
 </body>

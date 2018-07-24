@@ -30,7 +30,7 @@ var wavesurfer = WaveSurfer.create({
           alert("PLAYING");
           wavesurfer.playPause();
 
-          $('#PLAY').find('span').toggleClass('glyphicon-play').toggleClass('glyphicon-pause');
+          $('#play_btn').find('span').toggleClass('fas fa-play').toggleClass('glyphicon-pause');
 
         }
 
@@ -41,7 +41,7 @@ var wavesurfer = WaveSurfer.create({
                             'bottom': '0px',
                              'left' : '21px'
         });
-        var r= $('<button id ="PLAY" type="button" class="btn btn-info" value ="PLAY"style=" position: absolute; bottom: 10px; right: 21px;" onclick="playSound()"><span class="glyphicon glyphicon-play"></span></button>'); 
+        var r= $('<button id ="play_btn" type="button" class="btn btn-info" value ="what" style=" position: absolute; bottom: 10px; right: 21px;" onclick="playSound()">fucking play</button>'); 
         $('#addWave').append(r);
 
          
@@ -98,7 +98,7 @@ var wavesurfer = WaveSurfer.create({
       });
 $(document).ready(function(){
   var mouthValue;
-$("#PLAY").click(function(){
+$("#play_btn").click(function(){
   console.log("hello");
 
 });
@@ -117,7 +117,7 @@ $(".dropdown-menu>li>a").click(function(){
         carousel();  
 });
 });
-$("#PLAY").on('click',function(){
+$("#play_btn").on('click',function(){
   console.log("playing");
 });
 

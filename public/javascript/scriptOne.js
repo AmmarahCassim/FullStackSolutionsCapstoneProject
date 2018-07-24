@@ -4,7 +4,11 @@ $(document).ready(function(){
   var sliderBool = true;
   $(".dragndrop").remove();
 
-
+ // $("#files").click(function(){
+		$("#addWave").animate({height:"45vh"});
+		$("#second_row").attr("style","initial");
+//	});
+			
   $(".export").click(function(){
       var n = $(".edit").outerWidth();
       console.log("you clicked me speech length: ",n);
@@ -30,7 +34,13 @@ $(document).ready(function(){
       });
 
     }
-    });
+  });
+  
+  // $(".btn-file").click(function(){
+  //   alert("fuuu");
+  //   $("#Submitter").css("display","none");
+  // });
+
 
 var wavesurfer = WaveSurfer.create({ 
           container: '#addWave',
@@ -57,16 +67,33 @@ var wavesurfer = WaveSurfer.create({
         wavesurfer.load("audio");
 
         function playSound(){
-    
           wavesurfer.playPause();
-
         }
-        var r= $('<button id ="PLAY" type="button" class="btn btn-info" value ="PLAY"style=" position: absolute; bottom:0;right:0;margin-bottom:20px;margin-right:12px;" onclick="playSound()">play</span></button>'); 
+
+        function pauseSound(){
+          wavesurfer.pause();
+        }
+
+        function stopSound(){
+          wavesurfer.stop();
+        }
+
+        var r= $('<button id ="PLAY" type="button" class="btn btn-info" value ="Play" onclick="playSound()"><i class="fas fa-play"></i></button><button id ="PAUSE" type="button" class="btn btn-info" value ="Pause" onclick="pauseSound()"><i class="fas fa-pause"></i></button><button id ="STOP" type="button" class="btn btn-info" value ="Pause" onclick="stopSound()"><i class="fas fa-stop"></i></button>'); 
         $('.timeline').append(r);
 
         $("#PLAY").on("click",function(){
           console.log("play");
           playSound();
+        });
+
+        $("#PAUSE").on("click",function(){
+          console.log("pause");
+          pauseSound();
+        });
+
+        $("#STOP").on("click",function(){
+          console.log("pause");
+          stopSound();
         });
 
         $.get("templates/form.html", function(data){

@@ -52,43 +52,96 @@ body{
 	padding: 2px;
 }
 
-.start-tour:hover{
+.nav-item .nav-link, .start-tour:hover{
 	cursor: pointer;
+	color:#EFEFEF;
+}
+
+.nav-link:hover{
+	color: black;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  /*text-transform: uppercase;*/
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+/* stroke */
+nav.stroke ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
 }
 
 /*---------------------------waveform-------------------------*/
 
 wave{
 	top:90px;
-
 }
 
 timeline{
 	top:90px;
 }
+
 /*------------------------------------*/
 .dragndrop{
 	display: flex;
 	align-items: center;
-	border:1px solid black;
+	border:1px solid gray;
 	padding:50px;
 	border-style: dashed;
 	border-radius: 30px;
 	height:100%;
 	padding: 0px;
 }
+
 .dragndrop>div{
 	width:60%;
 	text-align: center;
 	margin: 0 auto;
 }
+
 .timeline{
 	margin-top: 30px;
 	margin-bottom:20px;
 	box-shadow: 6px 8px 30px #888888;
 	padding:20px;
-	height:50vh;
+	height:80vh;
 }
+
 .edit{
 	line-height: 260px;
 	text-align: center;
@@ -116,22 +169,50 @@ timeline{
     -o-transform:      rotate(90deg);
 
 }
+
 .fa-caret-left:before {
     content: "\f0d9";
     margin-top: 110px;
     position: absolute;
 }
+
 .btn{
 	background-color: #617D8A !important;
 	border: none !important;
 }
+/*-----MEDIA BUTTONS-----*/
+#PLAY{
+	position: absolute; 
+	bottom:0;
+	right:0;
+	margin-bottom:20px;
+	margin-right:120px;
+}
+
+#PAUSE{
+	position: absolute; 
+	bottom:0;
+	right:0;
+	margin-bottom:20px;
+	margin-right:70px;
+}
+
+#STOP{
+	position: absolute; 
+	bottom:0;
+	right:0;
+	margin-bottom:20px;
+	margin-right:20px;
+}
+/*------------------------------------*/
+
+
 #uploadForm>button{
 	background-color: #478DFB !important;
 }
 .form-group>label{
 	margin-bottom: 0px !important;
 }
-
 .addWave {
 	background-color: #617D8A;
 }
