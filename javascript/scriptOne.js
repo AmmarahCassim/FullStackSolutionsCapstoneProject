@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 
  // $("#files").click(function(){
-		$("#addWave").animate({height:"50vh"});
+		$("#addWave").animate({height:"45vh"});
 		$("#second_row").attr("style","initial");
 //	});
 			
