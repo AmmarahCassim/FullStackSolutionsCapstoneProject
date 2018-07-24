@@ -1,5 +1,79 @@
 $(document).ready(function(){
 
+  //--------Upload Button Validation
+  // $('input:file').change(
+  //     function(){
+  //         if ($(this).val()) {
+  //             //$('input:submit').attr('disabled',false);
+  //             // or, as has been pointed out elsewhere:
+  //              $('input:submit').re 
+  //         } 
+  //     }
+  //     );
+  //   });
+
+  //--------Audio Form Validation:
+  // var input = document.querySelector('input');
+  // var preview = document.querySelector('.preview');
+
+  // input.style.opacity = 0;
+  // input.addEventListener('change', updateAudio);
+
+  // function updateAudio(){
+  //   while(preview.firstChild){
+  //     preview.removeChild(preview.firstChild);
+  //   }
+  //   alert("testes");
+  //   var curFiles = input.files;
+  //   if(curFiles.length === 0){
+  //     var para = document.createElement('p');
+  //     para.textContent = "No file selected for upload.";
+  //     preview.appendChild(para);
+  //   } 
+  //   else{
+  //     var list = document.createElement('ol');
+  //     preview.appendChild(list);
+  //     for(var i = 0; i < curFiles.length; i++){
+  //       var listItem = document.createElement('li');
+  //       var para = document.createElement('p');
+  //       if(validFileType(curFiles[i])){
+  //         para.textContent = 'File name: ' + curFiles[i].name + ' (' + returnFileSize(curFiles[i].size) + ').';
+  //         listItem.appendChild(para);
+  //       }
+  //       else{
+  //         para.textContent = 'File name ' + curFiles[i].name + ': Not a valid file type! File must be a .WAV';
+  //         listItem.appendChild(para);  
+  //       }
+
+  //       listItem.appendChild(para);
+  //     }
+  //   }
+  // }
+
+  // var fileTypes = ['audio/wav'];
+
+  // function validFileType(file_){
+  //   for(var i=0; i < fileTypes.length; i++){
+  //     if(file_.type === fileTypes[i]){
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
+
+  // function returnFileSize(number){
+  //   if(number < 1024){
+  //     return number + 'bytes';
+  //   }
+  //   else if( number >= 1024 && number < 1048576){
+  //     return(number/1024).toFixed(1) + 'KB';
+  //   }
+  //   else if(number >= 1048576){
+  //     return(number/1048576).toFixed(1) + 'MB';
+  //   }
+  // }
+  //------------------------------
+
   console.log("hello");
   var sliderBool = true;
   $(".dragndrop").remove();
@@ -41,6 +115,10 @@ $(document).ready(function(){
   //   $("#Submitter").css("display","none");
   // });
 
+  // $(".about").click(function(){
+  //   alert("Mase");
+  //   $("#about_popUp").fadeToggle();
+  // });
 
 var wavesurfer = WaveSurfer.create({ 
           container: '#addWave',

@@ -33,7 +33,7 @@
 					<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">About</a> 
+					<a class="nav-link about" href="#" id="about">About</a> 
 				</li>
 			</ul>
 			<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -72,11 +72,13 @@
 						<p>or</p>
 						<form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST" accepts="audio/wav">
 				      <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
-					      <label class="btn btn-info btn-file">
-					        Choose Audio File <input id="files" type="file" style="display: none;" name="userPhoto" required>
+					      <label class="btn btn-info btn-file btnChoose">
+					        Choose Audio File <input id="files" type="file" style="display: none;" accept="audio/wav" required>
 					      </label>
 								<input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload Audio File">
-								<div id="fileName" style='color:black;'></div>
+								<div class="preview" id="fileName" style='color:black;'>
+									<p></p>
+								</div>
 					    </div>
 			      </form>
 					</div>
@@ -92,7 +94,9 @@
 			</div>
 		</div>
 	</div>
-
+	<div id="about_popUp">
+		<p>This is the about page</p>
+	</div>
 
 	  <% if(files) {%>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

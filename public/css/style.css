@@ -21,6 +21,10 @@ body{
 	background-repeat: no-repeat;*/
 	
 }
+
+input:invalid{
+	border-color: red;
+}
 /*---------------------------NAVBAR --------------------------*/
 .navbar {
 	background-color: #617D8A;
@@ -204,8 +208,13 @@ timeline{
 	margin-bottom:20px;
 	margin-right:20px;
 }
-/*------------------------------------*/
-
+/*-------------------------*/
+#about_popUp{
+	display: none;
+	position: relative;
+	background-color: rgba(0,0,0,0.9);
+	z-index: 5;
+}
 
 #uploadForm>button{
 	background-color: #478DFB !important;
