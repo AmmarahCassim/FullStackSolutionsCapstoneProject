@@ -1,4 +1,20 @@
 $(document).ready(function(){
+var words;
+var phonemes;
+var index =0;
+var mouthValue;
+var myIndex = 0;
+var timeouter;
+var i;
+var y;
+var x;
+var flag= true;
+var rangeSplitter =0;
+var text = '" ';
+
+
+
+
 
   console.log("hello");
   var sliderBool = true;
@@ -10,7 +26,9 @@ $(document).ready(function(){
 //	});
 
   
-  
+  $(".dropdown").on("click",function(){
+    $(".topRIGHT>img").css("opacity,0,2");
+  });
 			
   $(".export").click(function(){
       var n = $(".edit").outerWidth();
@@ -35,13 +53,18 @@ $(document).ready(function(){
       },500,function(){
 
         $(".export>h2").text("EXPORT");
-        $(".edit").append("<button type='button' class='btn btn-primary'>SPEECH TO TEXT</button>");
-        $(".edit").css("line-height","190px");
+        $.get("templates/edit.html", function(data){
+            $(".edit").html(data);
+            $(".edit").css("line-height","normal");
+            $(".leftEdit>p").text(text);
+        });
         sliderBool = true;
       });
 
     }
   });
+
+
   
 
 var wavesurfer = WaveSurfer.create({ 
@@ -101,4 +124,148 @@ var wavesurfer = WaveSurfer.create({
         $.get("templates/form.html", function(data){
             $(".timeline").append(data);
         });
+
+
+  $("#generate").click(function(e){  
+      console.log("generating");
+      $(".edit").empty();
+      $(".edit").append("<img src='../NewGIF.gif' alt='loading icon' width='50px'></img>");
+      $.get("/text", function(data, status){      
+        console.log("I AM WORKING");
+        
+      })
+      .done(function(data){
+        $(".edit").empty();
+        text += data;
+        
+        //$(".edit").append(data); 
+
+        $.get("templates/edit.html", function(data){
+            $(".edit").empty();
+            $(".edit").append(data);
+            //$(".editContent>p").text(data);
+            $(".edit").css("line-height","normal");
+        })
+        .done(function(){
+          text += ' "';
+          text = text.replace(/,/g," ");
+          console.log("WHAT IS THE TEXT VARIABLE");
+          console.log(typeof text);
+          $(".leftEdit>p").text(text);
+          $(".export").removeClass("disabledElement");
+          setTimeout(addPhonemes,500);
+          //addPhonemes();
+        });
+      });
+    });
+
+function addPhonemes(){
+  console.log("adding phonemes");
+  $.get("/wordTimings",function(data, status){
+          words = JSON.parse(data[0]);
+          phonemes = data[1];
+          console.log(phonemes);
+          console.log(words);
+
+          //for(int i =0; i < words.timestamps[0].length; ++i){
+            console.log(words.length);
+            for(var i =0; i < words.length;++i){
+
+                wavesurfer.addRegion({
+                  start: words[i][1],
+                  end: words[i][2],
+                  color: 'hsla(42,42%,32%,0.3)',
+                  id: "top",
+                  attributes: {
+                    label: words[i][0]
+                  }
+                });
+             // for(var j = 0; j < words[i].length;++j){
+                console.log(words[i][0]);
+
+              
+              console.log(" ");
+            }
+
+            for(var i =0; i < words.length;++i){
+              rangeSplitter = words[i][2] - words[i][1];
+              rangeSplitter = rangeSplitter / words[i][0].length;
+              for(var j  =0; j < words[i][0].length ; ++j){ 
+                wavesurfer.addRegion({
+                  start: words[i][1],
+                  end: words[i][1] += rangeSplitter,
+                  color: 'hsla(42,42%,32%,0.3)',
+                  id: "bottom",
+                  attributes: {
+                    label: phonemes[index][0]
+                  }
+                });
+                ++index;
+             // for(var j = 0; j < words[i].length;++j){
+             }
+                console.log(words[i][0]);
+
+              
+              console.log(" ");
+            }
+      
+
+          //alert("data: " + words);
+        });
+  }
+
+  $("#PLAY").on('click',function(){
+    console.log("heya");
+    //var clicks = $(this).data('clicks');
+    if (flag) {
+    
+     timeouter = setInterval(carousel, 300);
+     flag = false;
+    } else {
+     clearTimeout(timeouter);
+     flag = true;
+  }
+  //$(this).data("clicks", !clicks);
+    
+  });  
+    
+    function carousel() {
+        x = document.getElementsByClassName("slides");
+        for (i = 0; i < x.length; i++) {
+           //x[i].style.display = "none"; 
+           x[i].classList.add('active'); 
+        }
+        y = document.getElementsByClassName("active");
+        for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none"; 
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "inline";  
+        //setInterval(carousel, 300);
+    }
+
+
+$(document).on("click",".dropdown-menu>li>a",function(){
+  console.log("clicked dropdown link");
+  mouthValue = $(this).attr("id");
+  $.ajax({
+    method: "GET",
+    url:"/load_images",
+    data: {mouth: mouthValue}
+  }).done(function(msg){
+    console.log(msg);
+    $(".slides").remove();
+    $("#mouths").append(msg);
+  });
 });
+
+/*------------------------------------------------DRAG AND DROP -----------------------------------*/
+
+ 
+
+
+    
+});
+
+

@@ -1,11 +1,10 @@
 <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST" accepts="audio/wav" style="position:absolute;bottom:0;">
-		                  <div class="form-group" data-step="1" data-intro="Hello, I will be guiding you through on how to generate you first automatic lip sync. First you have to upload a .wav file of your choice." data-tooltipclass='forLastStep'>
+		                  <div class="form-group" data-tooltipclass='forLastStep'>
 		                    <label class="btn btn-info btn-file">
 		                      Choose Audio File <input id="files" type="file" style="display: none;" name="userPhoto" required>
 		                    </label>
 							
-		                    <input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload Audio File">
-							
-		                    <div id="fileName" style='color:black;'></div>
+		                    <input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File" type="submit" class="btn btn-info" value="Upload Audio File" disabled>	
+		                    <div id="file-upload-filename"></div>	     
 		                  </div>
-		                </form>
+		              </form>

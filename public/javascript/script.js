@@ -1,37 +1,90 @@
-    $(document).ready(function(){
+$(document).ready(function(){
+var $form = $('.dragndrop');
+var isAdvancedUpload = function() {
+  var div = document.createElement('div');
+  return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
+}();
+
+if (isAdvancedUpload) {
+  console.log(isAdvancedUpload);
+
+
+ var droppedFiles = false;
+
+  $form.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+    console.log("dragging");
+    e.preventDefault();
+    e.stopPropagation();
+  })
+  .on('dragover dragenter', function() {
+    $form.addClass('is-dragover');
+  })
+  .on('dragleave dragend drop', function() {
+    $form.removeClass('is-dragover');
+  })
+  .on('drop', function(e) {
+    droppedFiles = e.originalEvent.dataTransfer.files;
+    $("#file-upload-filename").text(droppedFiles[0]["name"]);
+    console.log(droppedFiles[0]["name"]);
+    
+    handleFileUpload(droppedFiles);
+
+  });
+
+}
+
+
+function handleFileUpload(files)
+{
+          
+        sendFileToServer(files[0]);
+ 
+}
+
+function sendFileToServer(formData){
+
+  $.ajax({
+    url: '/upload',
+    type: 'POST',
+    data: formData,
+    dataType: 'json',
+    cache: false,
+    contentType: false,
+    processData: false,
+    complete: function() {
+      console.log("uploading")
+    },
+    success: function() {
+      console.log("cat");
+    },
+    error: function() {
+      // Log the error, show an alert, whatever works for you
+    }
+  });
+}
+
+
+  var filename;
       console.log("hello from script");
-       $('input[type="file"]').change(function(e){
+       $(document).on("change",'input[type="file"]',function(e){
     console.log("changed");
       var fileName = e.target.files[0].name;
       $("#file-upload-filename").text(fileName);
       $("#Submitter").removeAttr("disabled");
   });
-      
-    $("#generate").click(function(e){  
-      console.log("generating");
-      $.get("/text", function(data, status){
-       // alert('found SCRIPT');
-        console.log("I AM WORKING");
-        $("textarea").append(data); 
-
-      })
-      .done(function(){
-        
-        $("textarea").append(data); 
-        alert("callback bi***es");
-      })
-    });
-
-   
-
-
-    
-
-    $("#EXPORT").click(function(){
-      $.get("/pidgin_breakdown", function(data, status){
-          console.log("Data: " + data + "\nStatus: " + status);
-      });
-    });
+  
+    $(document).on('click','.EXPORT',function(e) {
+      filename = $("#filename").val();
+        console.log("exporting file now");
+        $.ajax({
+          method: "POST",
+          url:"/pidgin_breakdown",
+          data: {file: filename}
+        }).done(function(){
+          
+          console.log("file has been exported");
+        }); 
+  });
 
     $("#EDIT").click(function(){
       console.log("heita");
@@ -41,6 +94,9 @@
         console.log("Data: " + data);
       });  
     });
+    
+
+  
 
     
 });

@@ -1,0 +1,82 @@
+{
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.11,
+          "alternatives": [
+            {
+              "confidence": 0.9957,
+              "word": "okay"
+            }
+          ],
+          "end_time": 0.64
+        }
+      ],
+      "keywords_result": {},
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "okay",
+              0.11,
+              0.64
+            ]
+          ],
+          "confidence": 0.994,
+          "transcript": "okay "
+        }
+      ],
+      "final": true
+    },
+    {
+      "word_alternatives": [
+        {
+          "start_time": 2.65,
+          "alternatives": [
+            {
+              "confidence": 0.9657,
+              "word": "party"
+            }
+          ],
+          "end_time": 3.03
+        }
+      ],
+      "keywords_result": {
+        "party": [
+          {
+            "normalized_text": "party",
+            "start_time": 2.65,
+            "confidence": 0.966,
+            "end_time": 3.03
+          }
+        ]
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "let's",
+              2.41,
+              2.65
+            ],
+            [
+              "party",
+              2.65,
+              3.03
+            ],
+            [
+              "and",
+              3.06,
+              3.38
+            ]
+          ],
+          "confidence": 0.846,
+          "transcript": "let's party and "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
+}

@@ -39,6 +39,11 @@ input:invalid{
 	font-size: 40px;
 	color: black;
 }
+.navbar-brand>img{
+	width: 47px;
+    padding: 2px;
+    margin-right: 13px;
+}
 
 .navbar-brand:hover{
 	color: black;
@@ -56,10 +61,7 @@ input:invalid{
 	padding: 2px;
 }
 
-.nav-item .nav-link, .start-tour:hover{
-	cursor: pointer;
-	color:#EFEFEF;
-}
+
 
 .nav-link:hover{
 	color: black;
@@ -113,11 +115,39 @@ nav.stroke ul li a:hover:after {
 /*---------------------------waveform-------------------------*/
 
 wave{
-	top:90px;
+	top:40px;
 }
 
 timeline{
-	top:90px;
+	top:40px;
+}
+
+region.wavesurfer-region:before {
+	color: white;
+    content: attr(data-region-label);
+    position: absolute;
+    font-weight: lighter;
+    top: 0;
+}
+region{
+	margin-top: 5px;
+	font-weight: lighter;
+	background-color:#617D8A !important;
+	opacity:0.7;
+	/*box-shadow: 0px 0px 4px 2px #888;*/
+	padding-left: 10px;
+}
+[data-id="top"]{
+	height:40% !important;
+}
+
+[data-id="bottom"]{
+	height:20% !important;
+	top: 70% !important;
+	background-color: black !important;
+	opacity:0.5 !important;
+	font-size: 9px !important;
+
 }
 
 /*------------------------------------*/
@@ -225,3 +255,96 @@ timeline{
 .addWave {
 	background-color: #617D8A;
 }
+.leftEdit{
+	float: left;
+    width: 50%;
+    margin-left: 7%;
+    font-size: 14px;
+    margin-top: 4%;
+    color: grey;
+    font-weight: lighter;
+}
+.leftEdit>p{
+	text-align: left;
+	font-style: italic;
+}
+.leftEdit>button{
+	float:left;
+	border-radius: 0px;
+	font-weight: lighter;
+	font-style: italic;
+}
+#mouths>img{
+	width:120px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.dropdown>button{
+	background-color: transparent !important;
+    border: none !important;
+    color: grey !important;
+    font-weight: lighter;
+}
+.dropdown>button:active{
+	color:grey;
+}
+.dropdown>ul{
+	
+	border:none !important;
+	color: grey;
+	text-align: center;
+	border-radius: 0px;
+	box-shadow: 6px 8px 30px #888888;
+}
+.disabledElement{
+	pointer-events: none;
+    opacity: 0.7;
+}
+/*---------------------_MODAL STYLING ----------------------- */
+.modal-dialog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+}
+.modal-header{
+	border-bottom: none !important;
+}
+.modal-header>h1{
+	font-weight: lighter;
+}
+.modal-content{
+	border-radius: 0px !important;
+}
+.modal-body{
+	text-align: center;
+}
+.modal-body>p{
+	font-style: italic;
+}
+/*--------------------------EXPORT FORM STYLING--------------------*/
+
+#exportForm{
+	position: relative;
+	top:30%;
+}
+.exportContent>input{
+	display: inline;
+	width:70%;
+}
+.exportContent>label{
+	display: inline
+}
+.exportContent>button{
+	float:right;
+}
+/*----------------------TOUR STYLING ----------------------------*/
+.introjs-helperNumberLayer {
+	background: none !important;
+	background-color:#617D8A !important;
+}
+.introjs-progressbar {
+    background-color:#617D8A !important;
+}
+.introjs-tooltip {
+	border-radius:0px !important;
