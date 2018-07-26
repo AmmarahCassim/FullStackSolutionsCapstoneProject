@@ -1,54 +1,14 @@
 {
   "results": [
     {
-      "word_alternatives": [
-        {
-          "start_time": 0.11,
-          "alternatives": [
-            {
-              "confidence": 0.9957,
-              "word": "okay"
-            }
-          ],
-          "end_time": 0.64
-        }
-      ],
-      "keywords_result": {},
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "okay",
-              0.11,
-              0.64
-            ]
-          ],
-          "confidence": 0.994,
-          "transcript": "okay "
-        }
-      ],
-      "final": true
-    },
-    {
-      "word_alternatives": [
-        {
-          "start_time": 2.65,
-          "alternatives": [
-            {
-              "confidence": 0.9657,
-              "word": "party"
-            }
-          ],
-          "end_time": 3.03
-        }
-      ],
+      "word_alternatives": [],
       "keywords_result": {
-        "party": [
+        "boys": [
           {
-            "normalized_text": "party",
-            "start_time": 2.65,
-            "confidence": 0.966,
-            "end_time": 3.03
+            "normalized_text": "boys",
+            "start_time": 0.48,
+            "confidence": 0.775,
+            "end_time": 0.95
           }
         ]
       },
@@ -56,23 +16,43 @@
         {
           "timestamps": [
             [
-              "let's",
-              2.41,
-              2.65
+              "all",
+              0.14,
+              0.26
             ],
             [
-              "party",
-              2.65,
-              3.03
+              "right",
+              0.26,
+              0.48
             ],
             [
-              "and",
-              3.06,
-              3.38
+              "boys",
+              0.48,
+              0.95
+            ],
+            [
+              "prepare",
+              1.12,
+              1.5
+            ],
+            [
+              "to",
+              1.5,
+              1.59
+            ],
+            [
+              "be",
+              1.59,
+              1.72
+            ],
+            [
+              "dazzled",
+              1.72,
+              2.3
             ]
           ],
-          "confidence": 0.846,
-          "transcript": "let's party and "
+          "confidence": 0.713,
+          "transcript": "all right boys prepare to be dazzled "
         }
       ],
       "final": true

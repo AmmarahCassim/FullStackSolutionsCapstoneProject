@@ -78,7 +78,7 @@ var wavesurfer = WaveSurfer.create({
           });
 
         wavesurfer.load("audio");
-        wavesurfer.load("audio");  //get(audio/:filename)
+        //wavesurfer.load("audio");  //get(audio/:filename)
         $("#addWave-timeline").css("display","inline");
         wavesurfer.on('ready', function () {
 
