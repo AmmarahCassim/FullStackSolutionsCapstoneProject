@@ -52,7 +52,11 @@ function sendFileToServer(formData){
     contentType: false,
     processData: false,
     complete: function() {
-      console.log("uploading")
+      console.log("uploading");
+      //if the file has uploaded successfully we can turn off required
+        $("#files").prop('required', false);
+      //This then makes the upload file available for us to use.
+        $("#Submitter").prop('disabled', false);
     },
     success: function() {
       console.log("cat");
