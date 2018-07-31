@@ -1,0 +1,350 @@
+/*---------------------FONTS---------------------------------*/
+@font-face{
+	font-family: birdHouse;
+	src:url(../fonts/AnotherBirdhouse.ttf);
+}
+
+@font-face{
+	font-family: Roboto;
+	src:url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face{
+	font-family: Roboto_Light;
+	src:url(../fonts/Roboto-Light.ttf);
+}
+/*---------------------ELEMENTS----------------------------*/
+body{
+	background-color: #EFEFEF;
+	/*background-image: url(/images/PidgeyNavLogo.png);
+	background-position: center;
+	background-repeat: no-repeat;*/
+	
+}
+
+input:invalid{
+	border-color: red;
+}
+/*---------------------------NAVBAR --------------------------*/
+.navbar {
+	background-color: #617D8A;
+}
+
+.navbar-nav a {
+	color: #EFEFEF;
+}
+
+.navbar-brand{
+	font-family: birdHouse;
+	font-size: 40px;
+	color: black;
+}
+.navbar-brand>img{
+	width: 47px;
+    padding: 2px;
+    margin-right: 13px;
+}
+
+.navbar-brand:hover{
+	color: black;
+}
+
+.navbar-inverse{
+	padding: 2px;
+}
+
+.navbar-inverse .container-fluid{
+	padding: 0px;
+}
+
+.pidgy{
+	padding: 2px;
+}
+
+
+
+.nav-link:hover{
+	color: black;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  /*text-transform: uppercase;*/
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+/* stroke */
+nav.stroke ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+/*---------------------------waveform-------------------------*/
+
+wave{
+	top:40px;
+}
+
+timeline{
+	top:40px;
+}
+
+region.wavesurfer-region:before {
+	color: white;
+    content: attr(data-region-label);
+    position: absolute;
+    font-weight: lighter;
+    top: 0;
+}
+region{
+	margin-top: 5px;
+	font-weight: lighter;
+	background-color:#617D8A !important;
+	opacity:0.7;
+	/*box-shadow: 0px 0px 4px 2px #888;*/
+	padding-left: 10px;
+}
+[data-id="top"]{
+	height:40% !important;
+}
+
+[data-id="bottom"]{
+	height:20% !important;
+	top: 70% !important;
+	background-color: black !important;
+	opacity:0.5 !important;
+	font-size: 9px !important;
+
+}
+
+/*------------------------------------*/
+.dragndrop{
+	display: flex;
+	align-items: center;
+	border:1px solid gray;
+	padding:50px;
+	border-style: dashed;
+	border-radius: 30px;
+	height:100%;
+	padding: 0px;
+}
+
+.dragndrop>div{
+	width:60%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.timeline{
+	margin-top: 30px;
+	margin-bottom:20px;
+	box-shadow: 6px 8px 30px #888888;
+	padding:20px;
+	height:80vh;
+}
+
+.edit{
+	line-height: 190px;
+	text-align: center;
+	height:30vh;
+	box-shadow: 6px 8px 30px #888888;
+}
+
+.export{
+	height: 30vh;
+	background-color: #617D8A;
+	box-shadow: 6px 8px 30px #888888;
+	position: relative;
+	z-index: 10;
+	left: -8%;
+}
+
+.export>h2{
+	    position: relative;
+	    top:35%;
+	    font-weight: lighter;
+    
+    -webkit-transform: rotate(90deg); 
+    -moz-transform:    rotate(90deg); 
+    -ms-transform:     rotate(90deg); 
+    -o-transform:      rotate(90deg);
+
+}
+
+.fa-caret-left:before {
+    content: "\f0d9";
+    margin-top: 110px;
+    position: absolute;
+}
+
+.btn{
+	background-color: #617D8A !important;
+	border: none !important;
+}
+/*-----MEDIA BUTTONS-----*/
+#PLAY{
+	position: absolute; 
+	bottom:0;
+	right:0;
+	margin-bottom:20px;
+	margin-right:120px;
+}
+
+#PAUSE{
+	position: absolute; 
+	bottom:0;
+	right:0;
+	margin-bottom:20px;
+	margin-right:70px;
+}
+
+#STOP{
+	position: absolute; 
+	bottom:0;
+	right:0;
+	margin-bottom:20px;
+	margin-right:20px;
+}
+/*-------------------------*/
+#about_popUp{
+	display: none;
+	position: relative;
+	background-color: rgba(0,0,0,0.9);
+	z-index: 5;
+}
+
+#uploadForm>button{
+	background-color: #478DFB !important;
+}
+.form-group>label{
+	margin-bottom: 0px !important;
+}
+.addWave {
+	background-color: #617D8A;
+}
+.leftEdit{
+	float: left;
+    width: 50%;
+    margin-left: 7%;
+    font-size: 14px;
+    margin-top: 4%;
+    color: grey;
+    font-weight: lighter;
+}
+.leftEdit>p{
+	text-align: left;
+	font-style: italic;
+}
+.leftEdit>button{
+	float:left;
+	border-radius: 0px;
+	font-weight: lighter;
+	font-style: italic;
+}
+#mouths>img{
+	width:120px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.dropdown>button{
+	background-color: transparent !important;
+    border: none !important;
+    color: grey !important;
+    font-weight: lighter;
+}
+.dropdown>button:active{
+	color:grey;
+}
+.dropdown>ul{
+	
+	border:none !important;
+	color: grey;
+	text-align: center;
+	border-radius: 0px;
+	box-shadow: 6px 8px 30px #888888;
+}
+.disabledElement{
+	pointer-events: none;
+    opacity: 0.7;
+}
+/*---------------------_MODAL STYLING ----------------------- */
+.modal-dialog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+}
+.modal-header{
+	border-bottom: none !important;
+}
+.modal-header>h1{
+	font-weight: lighter;
+}
+.modal-content{
+	border-radius: 0px !important;
+}
+.modal-body{
+	text-align: center;
+}
+.modal-body>p{
+	font-style: italic;
+}
+/*--------------------------EXPORT FORM STYLING--------------------*/
+
+#exportForm{
+	position: relative;
+	top:30%;
+}
+.exportContent>input{
+	display: inline;
+	width:70%;
+}
+.exportContent>label{
+	display: inline
+}
+.exportContent>button{
+	float:right;
+}
+/*----------------------TOUR STYLING ----------------------------*/
+.introjs-helperNumberLayer {
+	background: none !important;
+	background-color:#617D8A !important;
+}
+.introjs-progressbar {
+    background-color:#617D8A !important;
+}
+.introjs-tooltip {
+	border-radius:0px !important;
