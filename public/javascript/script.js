@@ -21,13 +21,43 @@ $(document).on("change",'input[type="file"]',function(e){
   });
 
 console.log("dropzone config loading");
-Dropzone.options.uploadForm = {
-  paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 2, // MB
+// Dropzone.options.uploadForm = {
+//   paramName: "file", // The name that will be used to transfer the file
+//   maxFilesize: 2, // MB
+//   init:function(){
+//   	console.log("dropzone is initialized");
+//   	this.on("dragover", function() { 
+//       console.log("dragging"); 
+//     });
+//     this.on("dragstart", function() { 
+//       console.log("dragging"); 
+//     });
+//     this.on("dragenter", function() { 
+//       console.log("dragging"); 
+//     });
+//     this.on("drop",function(){
+//       console.log("dropped file");
+//           $("#Submitter").removeAttr("disabled");
+//     });
+//     this.on("addedfile",function(){
+//       console.log("added file");
+//           $("#Submitter").removeAttr("disabled");
+//     });
+
+//   }
+// };
+
+new Dropzone(document.body,{
+
+  url:"/upload",
+  previewsContainer: "#file-upload-filename",
+  clickable:false,
   init:function(){
-  	console.log("dropzone is initialized");
-  	this.on("dragover", function() { 
+   console.log("dropzone is initialized");
+   this.on("dragover", function() { 
       console.log("dragging"); 
+      $('.dragndrop').css("background-color","#c4c4c4");
+      $('.timeline').css("background-color","#c4c4c4");
     });
     this.on("dragstart", function() { 
       console.log("dragging"); 
@@ -35,17 +65,27 @@ Dropzone.options.uploadForm = {
     this.on("dragenter", function() { 
       console.log("dragging"); 
     });
+    this.on("dragleave", function() { 
+      console.log("leaving drag are");
+      $('.dragndrop').css("background-color","#EFEFEF");
+      $('.timeline').css("background-color","#EFEFEF"); 
+    });
     this.on("drop",function(){
       console.log("dropped file");
           $("#Submitter").removeAttr("disabled");
     });
     this.on("addedfile",function(){
       console.log("added file");
-          $("#Submitter").removeAttr("disabled");
+          $("#uploadForm").submit();
+
     });
 
   }
-};
+
+
+});
+
+
 
   var filename;
       console.log("hello from script");
