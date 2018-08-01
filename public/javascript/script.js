@@ -1,17 +1,3 @@
-// console.log("dropzone config loading");
-// Dropzone.options.uploadForm = {
-//   paramName: "file", // The name that will be used to transfer the file
-//   maxFilesize: 2, // MB
-//   init:function(){
-//   	console.log("dropzone is initialized");
-//   	this.on("dragover", function() { console.log("dragging"); });
-//   	this.on("dragstart", function() { console.log("dragging"); });
-//   	this.on("dragenter", function() { console.log("dragging"); });
-//   	this.on("dragleave", function() { console.log("dragging"); });
-//   }
-// };
-
-
 $(document).ready(function(){
 $(document).on("change",'input[type="file"]',function(e){
     console.log("changed");
@@ -21,31 +7,6 @@ $(document).on("change",'input[type="file"]',function(e){
   });
 
 console.log("dropzone config loading");
-// Dropzone.options.uploadForm = {
-//   paramName: "file", // The name that will be used to transfer the file
-//   maxFilesize: 2, // MB
-//   init:function(){
-//   	console.log("dropzone is initialized");
-//   	this.on("dragover", function() { 
-//       console.log("dragging"); 
-//     });
-//     this.on("dragstart", function() { 
-//       console.log("dragging"); 
-//     });
-//     this.on("dragenter", function() { 
-//       console.log("dragging"); 
-//     });
-//     this.on("drop",function(){
-//       console.log("dropped file");
-//           $("#Submitter").removeAttr("disabled");
-//     });
-//     this.on("addedfile",function(){
-//       console.log("added file");
-//           $("#Submitter").removeAttr("disabled");
-//     });
-
-//   }
-// };
 
 new Dropzone(document.body,{
 
@@ -73,6 +34,8 @@ new Dropzone(document.body,{
     this.on("drop",function(){
       console.log("dropped file");
           $("#Submitter").removeAttr("disabled");
+          $(".edit").empty();
+          $(".edit").html('<button type="button" class="btn btn-primary" id="generate" data-step="1" data-intro="lets see what your sound file contains" data-tooltipclass="forLastStep">SPEECH TO TEXT</button>');
     });
     this.on("addedfile",function(){
       console.log("added file");
