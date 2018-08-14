@@ -301,12 +301,39 @@ region{
     opacity: 0.7;
 }
 /*---------------------_MODAL STYLING ----------------------- */
-.modal-dialog {
+/*.modal-dialog {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) !important;
+}*/
+iframe{
+	width: 100%;
 }
+.modal-body{
+	padding: 0px;
+}
+
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+/*
 .modal-header{
 	border-bottom: none !important;
 }
@@ -321,7 +348,7 @@ region{
 }
 .modal-body>p{
 	font-style: italic;
-}
+}*/
 /*--------------------------EXPORT FORM STYLING--------------------*/
 
 #exportForm{

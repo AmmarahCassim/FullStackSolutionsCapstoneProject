@@ -80,6 +80,23 @@ new Dropzone(document.body,{
         console.log("Data: " + data);
       });  
     });
+
+
+    var url = $(".modal-body>iframe").attr('src');
+    
+    /* Assign empty url value to the iframe src attribute when
+    modal hide, which stop the video playing */
+    $("#myModal").on('hide.bs.modal', function(){
+      console.log("hide modal");
+      console.log(url);
+      $(".modal-body>iframe").attr('src', '');
+    });
+    
+    /* Assign the initially stored url back to the iframe src
+    attribute when modal is displayed again */
+    $("#myModal").on('show.bs.modal', function(){
+        $(".modal-body>iframe").attr('src', url);
+    });
     
 
   
