@@ -64,7 +64,7 @@ new Dropzone(document.body,{
         console.log("exporting file now");
         $.ajax({
           method: "POST",
-          url:"/pidgin_breakdown",
+          url:"/pidginbreakdown",
           data: {file: filename}
         }).done(function(){
           

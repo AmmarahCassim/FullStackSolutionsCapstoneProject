@@ -25,8 +25,7 @@ var text = '" ';
   
   $(".dropdown").on("click",function(){
     $(".topRIGHT>img").css("opacity,0,2");
-  });
-			
+  });	
   $(".export").click(function(){
       var n = $(".edit").outerWidth();
       console.log("you clicked me speech length: ",n);
@@ -155,7 +154,7 @@ var wavesurfer = WaveSurfer.create({
         });
       });
     });
-
+/* this whill be called once speech to text returns its data*/
 function addPhonemes(){
   console.log("adding phonemes");
   $.get("/wordTimings",function(data, status){
@@ -167,7 +166,7 @@ function addPhonemes(){
           //for(int i =0; i < words.timestamps[0].length; ++i){
             console.log(words.length);
             for(var i =0; i < words.length;++i){
-
+            // this is the blue region which contains the words from the sound file
                 wavesurfer.addRegion({
                   start: words[i][1],
                   end: words[i][2],
@@ -183,7 +182,7 @@ function addPhonemes(){
               
               console.log(" ");
             }
-
+       // this is the black region at the bottom. with the phonemes
             for(var i =0; i < words.length;++i){
               rangeSplitter = words[i][2] - words[i][1];
               rangeSplitter = rangeSplitter / words[i][0].length;
@@ -210,12 +209,13 @@ function addPhonemes(){
           //alert("data: " + words);
         });
   }
-
+/* when the user clicks play the carousel starts to spin*/
   $("#PLAY").on('click',function(){
     console.log("heya");
     //var clicks = $(this).data('clicks');
     if (flag) {
-    
+    /** calls carousel function*/
+    //we use setinterval to control the speed at which the image changes
      timeouter = setInterval(carousel, 300);
      flag = false;
     } else {

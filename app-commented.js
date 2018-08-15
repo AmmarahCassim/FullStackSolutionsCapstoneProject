@@ -26,8 +26,9 @@ var difference;
 var rangeSplit = 0;
 var resposnseArray =[];
 var fileNames = [];
+/*-------------speech to text api--------------*/
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
-//speech to text
+/*--------------config for speech to text(watson bluemix)-------------------*/
 var speech_to_text = new SpeechToTextV1 ({
   version: 'v1',
   "url": "https://stream.watsonplatform.net/speech-to-text/api",
@@ -40,6 +41,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+/*-----sets the template engine to ejs(could also be pug etc)-----------*/
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
@@ -53,13 +55,13 @@ const conn = mongoose.createConnection(mongoURI);
 let gfs;
 
 
-
+/*------------- setting up file storage ----------------- */
 conn.once('open', () => {
   // Init stream
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection('fs');
 });
-//const storage = require('multer-gridfs-storage');
+/*------------- storage config ----------------- */
 const storage = new GridFsStorage({
   url:mongoURI,
   file: (req, file) => {
@@ -67,31 +69,28 @@ const storage = new GridFsStorage({
     return 'file_' + Date.now();
   }
 });
-
+/*------------- multer is middleware that takes in form data and processes it ----------------- */
 const upload = multer({ storage });
-
+/*---------------------stores the file in the db-----------*/
 storage.on('file', function (file) {
   console.log('The file has been created',file['filename']);
   fname = file['filename'];
 });
 
-// @route GET /
-// @desc Loads form
+/*-----------------render index.js--------------------*/
 app.get('/', (req, res) => {
 res.render('index', { files: false });
 });
 
-// @route POST /upload
-// @desc  Uploads file to DB
+/*-----endpoint is hit when the user uploads a file--------------------*/
 app.post('/upload', upload.single('file'), (req, res) => {
   // res.json({ file: req.file });
   res.render('index',{files:true});
 });
 
 
-
+/*-----endpoint for retrieving the uploaded sound file--------------------*/
 app.get('/audio',(req, res) => {
-  console.log('you hit the audio endpoint');
   gfs.files.findOne({ filename: fname}, (err, file) => {
     // Check if file
     //console.log("YO MA",userFileName);
@@ -122,10 +121,12 @@ app.get('/audio',(req, res) => {
   });
 });
 
-
+/*-----------------this endpoint is hit when you generate speech to text-----------*/
 app.get('/text',(req, res) =>{
     var object;
     var finalObject = new Array();
+    /*---------------------------*/
+app.get('/text',(req, res) =>{
     var params = {
           audio: gfs.createReadStream(soundFile),
           content_type: 'audio/wav',
@@ -264,11 +265,13 @@ function mapping(times){
       
 
 };
-//this pulls certain phoneme images depending on the phoneme set you have 
-//selected on the front end
+
+
 function pullimages(query){
   console.log("pulling now");
 
+  // var libs = require('require-all')(__dirname + '/mouths');
+  // console.log("pulled from directory:");
   fileNames = [];
   var directory = "/public/";
   directory += query;
@@ -279,7 +282,6 @@ function pullimages(query){
   });
 
 }
-//amend the html carousel to display the new images
 app.get('/load_images', (req,res)=>{
   pullimages(req.query.mouth);
   res.writeHead(200, {"Content-Type" : "text/html"});
@@ -291,8 +293,7 @@ app.get('/load_images', (req,res)=>{
 
 });
 
-app.get('/pidginbreakdown',(req, res) =>{
-  console.log("downloading file")
+app.post('/pidgin_breakdown',(req, res) =>{
   var filename;
   filename = req.body.file;
     fs.writeFile('message.dat', 'messageString', function (err) {
