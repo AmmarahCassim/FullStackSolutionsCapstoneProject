@@ -252,7 +252,7 @@ function mapping(times){
     console.log(tempJSON);
      for(var i =0; i < newObject.length;++i){
         tempString += newObject[i][0] + " " + newObject[i][1].toFixed(2) + "\n";
-    }
+    }//check what's happening here
       tempString = tempString.trim();
       fs.writeFile('phonemes.dat', '', function(){console.log('done')});
       fs.appendFile('phonemes.dat',tempString, function (err) {
@@ -296,9 +296,8 @@ app.get('/pidginbreakdown',(req, res) =>{
   var filename;
   filename = req.body.file;
     fs.writeFile('message.dat', 'messageString', function (err) {
-
-        if (err) throw err;
-
+      if (err) throw err;
+else
         console.log('It\'s saved! in same location.');
 
     });
