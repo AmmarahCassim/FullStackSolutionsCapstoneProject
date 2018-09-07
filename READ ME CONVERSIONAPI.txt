@@ -1,0 +1,10 @@
+READ ME FOR CONVERSION API
+
+-download postman
+-Have your mongo running
+-put convertAPI.js in the same directory as app.js
+-instead of "nodemon app.js", type "nodemon convertAPI.js"
+-SET this as your GET path in postman  http://localhost:5000/test
+-Click SEND 
+-note this code is one that in the tutorial video,
+ converting between image format
