@@ -1,58 +1,90 @@
 {
   "results": [
     {
-      "word_alternatives": [],
-      "keywords_result": {
-        "boys": [
-          {
-            "normalized_text": "boys",
-            "start_time": 0.48,
-            "confidence": 0.775,
-            "end_time": 0.95
-          }
-        ]
-      },
+      "word_alternatives": [
+        {
+          "start_time": 0.25,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "are"
+            }
+          ],
+          "end_time": 0.44
+        },
+        {
+          "start_time": 0.44,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "you"
+            }
+          ],
+          "end_time": 0.55
+        },
+        {
+          "start_time": 0.55,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "feeling"
+            }
+          ],
+          "end_time": 1.1
+        },
+        {
+          "start_time": 1.22,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "lucky"
+            }
+          ],
+          "end_time": 1.86
+        },
+        {
+          "start_time": 1.96,
+          "alternatives": [
+            {
+              "confidence": 0.999,
+              "word": "punk"
+            }
+          ],
+          "end_time": 2.55
+        }
+      ],
+      "keywords_result": {},
       "alternatives": [
         {
           "timestamps": [
             [
-              "all",
-              0.14,
-              0.26
+              "are",
+              0.25,
+              0.44
             ],
             [
-              "right",
-              0.26,
-              0.48
+              "you",
+              0.44,
+              0.55
             ],
             [
-              "boys",
-              0.48,
-              0.95
+              "feeling",
+              0.55,
+              1.1
             ],
             [
-              "prepare",
-              1.12,
-              1.5
+              "lucky",
+              1.22,
+              1.86
             ],
             [
-              "to",
-              1.5,
-              1.59
-            ],
-            [
-              "be",
-              1.59,
-              1.72
-            ],
-            [
-              "dazzled",
-              1.72,
-              2.3
+              "punk",
+              1.96,
+              2.55
             ]
           ],
-          "confidence": 0.713,
-          "transcript": "all right boys prepare to be dazzled "
+          "confidence": 0.999,
+          "transcript": "are you feeling lucky punk "
         }
       ],
       "final": true

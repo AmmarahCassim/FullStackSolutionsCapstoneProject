@@ -257,6 +257,21 @@ $(document).on("click",".dropdown-menu>li>a",function(){
   });
 });
 
+$(document).on('click','.EXPORT',function(e) {
+        filename = $("#filename").val();
+       // alert("exporting file now")
+        console.log("exporting file now",filename);
+        // $.ajax({
+        //   method: "POST",
+        //   url:"/pidginbreakdown",
+        //   data: {file: filename}
+        // }).done(function(){
+          
+        //   console.log("file has been exported");
+        // }); 
+        window.open('/pidginbreakdown?filename='+filename);
+  });
+
 /*------------------------------------------------DRAG AND DROP -----------------------------------*/
 
  

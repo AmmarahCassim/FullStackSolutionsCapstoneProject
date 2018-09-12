@@ -59,18 +59,19 @@ new Dropzone(document.body,{
       //$("#Submitter").removeAttr("disabled");
   });
   
-    $(document).on('click','.EXPORT',function(e) {
-      filename = $("#filename").val();
-        console.log("exporting file now");
-        $.ajax({
-          method: "POST",
-          url:"/pidginbreakdown",
-          data: {file: filename}
-        }).done(function(){
+  //   $(document).on('click','.EXPORT',function(e) {
+  //     //filename = $("#filename").val();
+  //       alert("exporting file now")
+  //       console.log("exporting file now");
+  //       // $.ajax({
+  //       //   method: "POST",
+  //       //   url:"/pidginbreakdown",
+  //       //   data: {file: filename}
+  //       // }).done(function(){
           
-          console.log("file has been exported");
-        }); 
-  });
+  //       //   console.log("file has been exported");
+  //       // }); 
+  // });
 
     $("#EDIT").click(function(){
       console.log("heita");

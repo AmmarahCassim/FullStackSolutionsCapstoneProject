@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+var mime = require('mime');
 const mongoose = require('mongoose');
 const multer = require('multer');
 var PythonShell = require('python-shell');
@@ -293,20 +294,59 @@ app.get('/load_images', (req,res)=>{
 
 app.get('/pidginbreakdown',(req, res) =>{
   console.log("downloading file")
-  var filename;
-  filename = req.body.file;
+
+  var filename = req.query.filename;
+  console.log("THE FILE NAME ISSSSS:",filename);
     fs.writeFile('message.dat', 'messageString', function (err) {
       if (err) throw err;
-else
+      else{
         console.log('It\'s saved! in same location.');
-
+      }
     });
     console.log('finished');
     filename += ".dat";
-  var file = __dirname + '/'+ filename;
-  res.download(file);
-  console.log("downloaded");
-    res.status(200);
+    var file = __dirname + '/'+ 'download.dat';
+    var location = __dirname + '/' + 'phonemes.dat';
+    res.set("Content-Disposition", "attachment;filename=somefile.dat");
+    res.set("Content-Type", "application/octet-stream");
+    res.download(location,filename, function(err){
+  if (err) {
+    console.log("failed",err);
+  } else {
+    console.log("download was successful");
+    console.log("downloaded",file);
+    //res.status(200);
+  }
+});
+
+
+
+// var file = __dirname + '/message.dat';
+
+//   var filename = path.basename(file);
+//   //var mimetype = mime.lookup(file);
+
+//   res.set('Content-disposition', 'attachment; filename= hello.dat');
+//   res.set("Content-Type", "application/octet-stream");
+//   //res.set("Content-Disposition", "attachment;filename=somefile.ext");
+//   //res.setHeader('Content-type', mimetype);
+
+//   var filestream = fs.createReadStream(file);
+//   filestream.pipe(res)
+    // var filename = path.basename(file);
+    // var mimetype = mime.lookup(file);
+
+    // res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    // res.setHeader('Content-type', mimetype);
+
+    // var filestream = fs.createReadStream(file);
+    // filestream.pipe(res);
+    
+
+
+  //var file = __dirname + '/upload-folder/dramaticpenguin.MOV';
+
+  
 });
 
 app.get('/wordTimings',(req,res) =>{
