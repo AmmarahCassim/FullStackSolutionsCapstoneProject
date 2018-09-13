@@ -10,6 +10,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 var watson = require('watson-developer-cloud');
+const ffmpeg = require('fluent-ffmpeg');
 var fname;
 var outPut = "";
 var fileUploaded = 0;
@@ -102,8 +103,11 @@ app.get('/audio',(req, res) => {
       });
     }
 
+    var type_string = file.contentType;
+    var substring = 'audio';
+
     // Check if audio
-    if (file.contentType === 'audio/x-wav' ||  file.contentType === 'audio/wav') {
+    if (type_string === 'audio/x-wav' ||  type_string  === 'audio/wav') {
     //if(true){
       console.log(file.contentType);
       const readstream = gfs.createReadStream(file.filename);
@@ -113,6 +117,33 @@ app.get('/audio',(req, res) => {
       console.log(soundFile); //----this is it
       
         gfs.createReadStream(soundFile);
+
+    } else if (type_string.indexOf(substring !== -1)) {
+
+      soundFile = file.filename + "new";
+      console.log(soundFile);
+      console.log(file.filename);
+      var outStream = gfs.createWriteStream( soundFile);
+      ffmpeg(gfs.createReadStream(file.filename))
+      .toFormat('wav')
+      .on('error', (err) => {
+      console.log('An error occurred: ' + err.message);
+      })
+      .on('progress', (progress) => {
+      console.log('Processing: ' + progress.targetSize + ' KB converted');
+      })
+      .on('end', () => {
+      console.log('Processing finished !');    
+      })
+      .pipe(outStream, { end: true });//path where you want to save your file
+
+      outStream.on('close', () => {
+        console.log('Written');
+         const readstream = gfs.createReadStream(file.filename);
+            readstream.pipe(res);
+            
+              gfs.createReadStream(file.filename);
+      });
 
     } else {
       res.status(404).json({

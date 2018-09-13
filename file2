@@ -3,21 +3,21 @@
     {
       "word_alternatives": [
         {
+          "start_time": 0.07,
+          "alternatives": [
+            {
+              "confidence": 0.9786,
+              "word": "in"
+            }
+          ],
+          "end_time": 0.25
+        },
+        {
           "start_time": 0.25,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "are"
-            }
-          ],
-          "end_time": 0.44
-        },
-        {
-          "start_time": 0.44,
-          "alternatives": [
-            {
-              "confidence": 1,
-              "word": "you"
+              "confidence": 0.9787,
+              "word": "this"
             }
           ],
           "end_time": 0.55
@@ -26,31 +26,71 @@
           "start_time": 0.55,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "feeling"
+              "confidence": 0.9786,
+              "word": "house"
             }
           ],
-          "end_time": 1.1
+          "end_time": 0.9
         },
         {
-          "start_time": 1.22,
+          "start_time": 0.9,
+          "alternatives": [
+            {
+              "confidence": 0.9786,
+              "word": "we"
+            }
+          ],
+          "end_time": 1.11
+        },
+        {
+          "start_time": 1.11,
+          "alternatives": [
+            {
+              "confidence": 0.983,
+              "word": "obey"
+            }
+          ],
+          "end_time": 1.62
+        },
+        {
+          "start_time": 1.62,
+          "alternatives": [
+            {
+              "confidence": 0.9965,
+              "word": "the"
+            }
+          ],
+          "end_time": 1.75
+        },
+        {
+          "start_time": 1.75,
           "alternatives": [
             {
               "confidence": 1,
-              "word": "lucky"
+              "word": "laws"
             }
           ],
-          "end_time": 1.86
+          "end_time": 2.19
         },
         {
-          "start_time": 1.96,
+          "start_time": 2.19,
           "alternatives": [
             {
-              "confidence": 0.999,
-              "word": "punk"
+              "confidence": 1,
+              "word": "of"
             }
           ],
-          "end_time": 2.55
+          "end_time": 2.32
+        },
+        {
+          "start_time": 2.32,
+          "alternatives": [
+            {
+              "confidence": 0.945,
+              "word": "thermodynamics"
+            }
+          ],
+          "end_time": 3.33
         }
       ],
       "keywords_result": {},
@@ -58,33 +98,53 @@
         {
           "timestamps": [
             [
-              "are",
-              0.25,
-              0.44
+              "in",
+              0.07,
+              0.25
             ],
             [
-              "you",
-              0.44,
+              "this",
+              0.25,
               0.55
             ],
             [
-              "feeling",
+              "house",
               0.55,
-              1.1
+              0.9
             ],
             [
-              "lucky",
-              1.22,
-              1.86
+              "we",
+              0.9,
+              1.11
             ],
             [
-              "punk",
-              1.96,
-              2.55
+              "obey",
+              1.11,
+              1.62
+            ],
+            [
+              "the",
+              1.62,
+              1.75
+            ],
+            [
+              "laws",
+              1.75,
+              2.19
+            ],
+            [
+              "of",
+              2.19,
+              2.32
+            ],
+            [
+              "thermodynamics",
+              2.32,
+              3.33
             ]
           ],
-          "confidence": 0.999,
-          "transcript": "are you feeling lucky punk "
+          "confidence": 0.94,
+          "transcript": "in this house we obey the laws of thermodynamics "
         }
       ],
       "final": true
