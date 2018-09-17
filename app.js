@@ -89,8 +89,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
   res.render('index',{files:true});
 });
 
-
-
 app.get('/audio',(req, res) => {
   console.log('you hit the audio endpoint');
   gfs.files.findOne({ filename: fname}, (err, file) => {

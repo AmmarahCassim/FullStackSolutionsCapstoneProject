@@ -214,6 +214,20 @@ region{
 	background-color: #617D8A !important;
 	border: none !important;
 }
+/*THIS IS FOR MY MIC BUSINESS*/
+#recordButton {position: relative;
+	left: 5px;
+	top: 50px;
+	height: 50px;}
+#formats{position: relative;
+	top: 60px;
+}
+#recordings{position: relative;
+	top: 70px;}
+#stopButton {position:relative;
+	height: 50px;
+	top: 50px;
+	opacity: 0.1;}
 /*-----MEDIA BUTTONS-----*/
 #PLAY{
 	position: absolute; 
