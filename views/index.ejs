@@ -78,25 +78,21 @@
             <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
               <div class="form-group" data-tooltipclass='forLastStep'>
                 <label class="btn btn-info btn-file btnChoose">
-                    Choose Audio File <input id="file" type="file" name ="file" style="display: none;">
+                    Choose Audio File <input id="file" data-toggle="tooltip" data-placement="top" title="Choose Audio File" type="file" name ="file" style="display: none;">
                 </label>
 
-                <input id="Submitter" type="submit" class="btn btn-info" value="Submit" disabled>
-                <div id="controls">
-
-                  <img id="recordButton" src="images/mic.png" onclick="startRecording()">
-                  <!--<button id="recordButton" onclick="startRecording();">Record</button>-->
-                  <!--<button id="pauseButton" disabled>Pause</button>-->
-                  <img id="stopButton" src="images/micCancel.png" style="opacity: 5%">
-                  <!--<button id="stopButton" disabled onclick="stopRecording()">Stop</button>-->
-                </div>
-                <div id="formats">Format: start recording to see sample rate</div>
-                <div id="recordings"><h4>Recording</h4>
-                  <ol id="recordingsList"></ol>
-                </div>
-
+                <input id="Submitter" data-toggle="tooltip" data-placement="top" title="Upload Audio File"  type="submit" class="btn btn-info" value="Submit" disabled>   
               </div>
               <div id="file-upload-filename"></div>
+             <div id="controls">
+
+              <img id="recordButton" src="images/mic.png" onclick="startRecording()">
+              <img id="stopButton" src="images/micCancel.png" style="opacity: 5%">
+            </div>
+            <div id="formats">Format: start recording to see sample rate</div>
+            <div id="recordings"><h4>Recordings</h4>
+              <ol id="recordingsList"></ol>
+            </div>
             </form>
           </div>
         </div>
@@ -128,7 +124,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
-      <script src="javascript/scriptOne.js"></script>      
+      <script src="javascript/scriptOne.js"></script>
     <%}%>
   <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
   <!--THIS IS NEEDED TO BE CALLED FOR THE MIC OPTIONS-->
