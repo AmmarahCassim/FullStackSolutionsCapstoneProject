@@ -3,54 +3,74 @@
     {
       "word_alternatives": [
         {
-          "start_time": 0.78,
+          "start_time": 0.33,
           "alternatives": [
             {
               "confidence": 1,
-              "word": "one"
+              "word": "you"
             }
           ],
-          "end_time": 1.06
+          "end_time": 1.09
         },
         {
-          "start_time": 1.58,
+          "start_time": 1.28,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "two"
+              "confidence": 0.9644,
+              "word": "are"
+            }
+          ],
+          "end_time": 1.76
+        },
+        {
+          "start_time": 1.88,
+          "alternatives": [
+            {
+              "confidence": 0.9595,
+              "word": "the"
             }
           ],
           "end_time": 2.02
         },
         {
-          "start_time": 2.34,
+          "start_time": 2.02,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "three"
+              "confidence": 0.9595,
+              "word": "light"
             }
           ],
-          "end_time": 2.86
+          "end_time": 2.49
         },
         {
-          "start_time": 3.14,
+          "start_time": 2.53,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "four"
+              "confidence": 0.9595,
+              "word": "of"
             }
           ],
-          "end_time": 3.57
+          "end_time": 2.75
         },
         {
-          "start_time": 3.86,
+          "start_time": 2.75,
           "alternatives": [
             {
-              "confidence": 0.9699,
-              "word": "five"
+              "confidence": 0.9996,
+              "word": "my"
             }
           ],
-          "end_time": 4.15
+          "end_time": 3.03
+        },
+        {
+          "start_time": 3.15,
+          "alternatives": [
+            {
+              "confidence": 0.9934,
+              "word": "life"
+            }
+          ],
+          "end_time": 3.45
         }
       ],
       "keywords_result": {},
@@ -58,141 +78,43 @@
         {
           "timestamps": [
             [
-              "one",
-              0.78,
-              1.06
+              "you",
+              0.33,
+              1.09
             ],
             [
-              "two",
-              1.58,
+              "are",
+              1.28,
+              1.76
+            ],
+            [
+              "the",
+              1.88,
               2.02
             ],
             [
-              "three",
-              2.34,
-              2.86
+              "light",
+              2.02,
+              2.49
             ],
             [
-              "four",
-              3.14,
-              3.57
+              "of",
+              2.53,
+              2.75
             ],
             [
-              "five",
-              3.86,
-              4.15
+              "my",
+              2.75,
+              3.03
+            ],
+            [
+              "life",
+              3.15,
+              3.45
             ]
           ],
-          "confidence": 0.999,
-          "transcript": "one two three four five "
-        }
-      ],
-      "final": true
-    },
-    {
-      "word_alternatives": [
-        {
-          "start_time": 8.81,
-          "alternatives": [
-            {
-              "confidence": 0.9288,
-              "word": "one"
-            }
-          ],
-          "end_time": 9.31
-        }
-      ],
-      "keywords_result": {},
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "that",
-              6.24,
-              6.47
-            ],
-            [
-              "to",
-              6.47,
-              6.59
-            ],
-            [
-              "me",
-              6.88,
-              7.24
-            ],
-            [
-              "counting",
-              7.27,
-              7.77
-            ],
-            [
-              "from",
-              8.18,
-              8.53
-            ],
-            [
-              "one",
-              8.81,
-              9.31
-            ],
-            [
-              "to",
-              9.71,
-              10.08
-            ]
-          ],
-          "confidence": 0.78,
-          "transcript": "that to me counting from one to "
-        }
-      ],
-      "final": true
-    },
-    {
-      "word_alternatives": [
-        {
-          "start_time": 11.32,
-          "alternatives": [
-            {
-              "confidence": 0.9905,
-              "word": "because"
-            }
-          ],
-          "end_time": 11.82
-        }
-      ],
-      "keywords_result": {},
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "because",
-              11.32,
-              11.82
-            ],
-            [
-              "that",
-              11.82,
-              12.04
-            ],
-            [
-              "wants",
-              12.04,
-              12.33
-            ],
-            [
-              "to",
-              12.33,
-              12.48
-            ],
-            [
-              "come",
-              12.48,
-              12.76
-            ]
-          ],
-          "confidence": 0.715,
-          "transcript": "because that wants to come "
+          "confidence": 0.941,
+          "transcript": "you are the light of my life "
         }
       ],
       "final": true

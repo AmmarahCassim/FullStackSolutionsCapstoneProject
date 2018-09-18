@@ -21,8 +21,12 @@
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
+  <!--This is used for the modal-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!---->
    <script src="javascript/dropzone.js"></script>
   <script src="javascript/script.js"></script>
+
 
 
 </head>
@@ -52,7 +56,7 @@
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-      
+
         <!-- Modal Header -->
         <!-- <div class="modal-header text-center">
           <h1 style="font-family: birdHouse">ABOUT</h1>
@@ -82,21 +86,20 @@
                 </label>
 
                 <input id="Submitter" type="submit" class="btn btn-info" value="Submit" disabled>
-                <div id="controls">
 
-                  <img id="recordButton" src="images/mic.png" onclick="startRecording()">
-                  <!--<button id="recordButton" onclick="startRecording();">Record</button>-->
-                  <!--<button id="pauseButton" disabled>Pause</button>-->
-                  <img id="stopButton" src="images/micCancel.png" style="opacity: 5%">
-                  <!--<button id="stopButton" disabled onclick="stopRecording()">Stop</button>-->
-                </div>
-                <div id="formats">Format: start recording to see sample rate</div>
-                <div id="recordings"><h4>Recording</h4>
-                  <ol id="recordingsList"></ol>
-                </div>
 
               </div>
               <div id="file-upload-filename"></div>
+              <div id="controls">
+
+                <img id="recordButton" class="notRec" src="images/mic.png" onclick="startRecording()">
+                <img id="stopButton" src="images/micCancel.png" style="opacity: 5%" onclick="stopRecording()">
+                <!--<button id="stopButton" disabled onclick="stopRecording()">Stop</button>-->
+              </div>
+              <div id="formats">Format: start recording to see sample rate</div>
+              <div id="recordings"><h4>Recording</h4>
+                <ol id="recordingsList"></ol>
+              </div>
             </form>
           </div>
         </div>
@@ -133,6 +136,9 @@
   <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
   <!--THIS IS NEEDED TO BE CALLED FOR THE MIC OPTIONS-->
   <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+
+
+
 </body>
 
     

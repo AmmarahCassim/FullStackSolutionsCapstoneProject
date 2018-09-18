@@ -98,9 +98,10 @@ new Dropzone(document.body,{
     $("#myModal").on('show.bs.modal', function(){
         $(".modal-body>iframe").attr('src', url);
     });
+
 });
 
-//THIS IS WHERE I ADD THE MIC///////
+//------------------THIS IS WHERE I ADD THE MIC---------------------//
 
 //webkitURL is deprecated but nevertheless
 URL = window.URL || window.webkitURL;
@@ -124,7 +125,9 @@ var audioContext //audio context to help us record
 var value=0;
 function startRecording() {
     console.log("recordButton clicked");
-
+    //these two getElementID change the class names for the animations to take place
+    document.getElementById('recordButton').classList.remove("notRec");
+    document.getElementById('recordButton').classList.add("Rec");
     /*
         Simple constraints object, for more advanced audio features see
         https://addpipe.com/blog/audio-constraints-getusermedia/
@@ -189,52 +192,36 @@ function startRecording() {
     });
 }
 
-// function pauseRecording(){
-//     console.log("pauseButton clicked rec.recording=",rec.recording );
-//     if (rec.recording){
-//         //pause
-//         rec.stop();
-//         pauseButton.innerHTML="Resume";
-//     }else{
-//         //resume
-//         rec.record()
-//         pauseButton.innerHTML="Pause";
-//
-//     }
-// }
-window.onload=function()
-{
-    document.getElementById('stopButton').onclick = function () {
-        if (value == 100) {
-            console.log("stopButton clicked");
+function stopRecording () {
+    document.getElementById('recordButton').classList.remove("Rec");
+    document.getElementById('recordButton').classList.add("notRec");
+    if (value == 100) {
+        console.log("stopButton clicked");
 
-            //disable the stop button, enable the record too allow for new recordings
-            //document.getElementById("stopButton").disabled = true;
-            document.getElementById("stopButton").style.opacity = '0.1';
-            // document.getElementById("recordButton").disabled = false;
-            document.getElementById("recordButton").style.background = 'none';
-            //pauseButton.disabled = true;
+        //disable the stop button, enable the record too allow for new recordings
+        //document.getElementById("stopButton").disabled = true;
+        document.getElementById("stopButton").style.opacity = '0.1';
+        // document.getElementById("recordButton").disabled = false;
+        document.getElementById("recordButton").style.background = 'none';
+        //pauseButton.disabled = true;
 
-            //reset button just in case the recording is stopped while paused
-            //pauseButton.innerHTML="Pause";
+        //reset button just in case the recording is stopped while paused
+        //pauseButton.innerHTML="Pause";
 
-            //tell the recorder to stop the recording
-            rec.stop();
+        //tell the recorder to stop the recording
+        rec.stop();
 
-            //stop microphone access
-            gumStream.getAudioTracks()[0].stop();
+        //stop microphone access
+        gumStream.getAudioTracks()[0].stop();
 
-            //create the wav blob and pass it on to createDownloadLink
-            rec.exportWAV(createDownloadLink);
-            value=1;
-        }
-        else {
-            alert("Wont work");
-        }
-        return false;
-
-
+        //create the wav blob and pass it on to createDownloadLink
+        rec.exportWAV(createDownloadLink);
+        value = 1;
     }
+    else {
+        alert("Wont work");
+    }
+    return false;
 }
 
 function createDownloadLink(blob) {
@@ -253,8 +240,10 @@ function createDownloadLink(blob) {
 
     //save to disk link
     link.href = url;
+    link.className="btn btn-primary";
     link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
     link.innerHTML = "Save to disk";
+
 
     //add the new audio element to li
     li.appendChild(au);
@@ -269,10 +258,7 @@ function createDownloadLink(blob) {
     var upload = document.createElement('BUTTON');
     upload.type="submit";
     upload.innerHTML = "Upload";
-    upload.style.color='white';
-    upload.id="uploadRecorded";
-    upload.style.backgroundColor="#617D8A";
-    upload.style.border="none";
+    upload.className="btn btn-primary";
     upload.addEventListener("click", function(event){
         var xhr=new XMLHttpRequest();
         xhr.onload=function(e) {
@@ -294,4 +280,12 @@ function createDownloadLink(blob) {
     document.getElementById("Submitter").disabled=false;
     //add the li element to the ol
     recordingsList.appendChild(li); //this adds it to the list
+
 }
+
+
+
+
+
+
+

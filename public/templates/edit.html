@@ -3,6 +3,10 @@
 		<div class="leftEdit">
 		<p>"L"</p>
 		<button class="btn btn-primary" type="button">Save</button>
+            <div>
+            <!--<button type="button" class="btn btn-primary" id="signLanguage">TEXT TO SIGN LANGUAGE</button>-->
+                <button id="sign" onclick="document.getElementById('signModal').style.display='block';document.getElementById('postSigns').innerHTML='';" class="btn btn-primary SIGN">Text to Sign Language</button>
+            </div>
 		</div>
 		<div class="topRIGHT">
 			<div class="dropdown">
@@ -25,11 +29,28 @@
               <img class="slides" style="display:none;" src="../images/etc.jpg">
               <img class="slides" style="display:none;" src="../images/FV.jpg">
               <img class="slides" style="display:none;" src="../images/U.jpg">
-              <img class="slides" style="display:none;" src="../images/WQ.jpg">	      
+              <img class="slides" style="display:none;" src="../images/WQ.jpg">
 			  <img class="slides" style="display:none;" src="../images/etc.jpg">
               <img class="slides" src="../images/FV.jpg">
             </div>
-                
-
 	</div>
+
+</div>
+    <!--This is for then modal for the sign language-->
+    <div class="w3-container "  >
+        <div id="signModal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4">
+                <header class="w3-container w3-blue-grey">
+    <span onclick="document.getElementById('signModal').style.display='none'"
+          class="w3-button w3-display-topright">&times;</span>
+                    <h2>Sign Language</h2>
+                </header>
+
+                <div style="width: 100%; padding: 0px; margin: 0px; height: 250px; overflow: auto;" class="w3-container" id="postSigns">
+                    <!--This is where i use the inner HTML to post the signs-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------------MODAL ENDS HERE---------->
 </div>
