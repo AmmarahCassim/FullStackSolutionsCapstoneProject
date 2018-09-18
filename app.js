@@ -260,6 +260,15 @@ function mapping(times){
       console.log('Saved!');
     });
       //pullimages();
+      //this is to replac the , in the txt file
+      words=words.toString().replace(/,/g, ' ');
+
+      fs.writeFile('phonemes.txt', '', function(){console.log('done file')});
+      fs.appendFile('phonemes.txt',words, function (err) {
+          if (err) throw err;
+          console.log('Saved! text file');
+      });
+      //pullimages();
       });
       
 
@@ -318,6 +327,35 @@ app.get('/pidginbreakdown',(req, res) =>{
   }
 });
 
+});
+
+app.get('/lyricbreakdown',(req, res) =>{
+    console.log("downloading lyric file")
+
+    var filename = req.query.filename;
+    console.log("THE FILE NAME ISSSSS:",filename);
+    fs.writeFile('message.txt', 'messageString', function (err) {
+        if (err) throw err;
+        else{
+            console.log('It\'s saved! in same location.');
+        }
+    });
+    console.log('finished');
+    filename += ".txt";
+    var file = __dirname + '/'+ 'download.txt';
+    var location = __dirname + '/' + 'phonemes.txt';
+    res.set("Content-Disposition", "attachment;filename=somefile.txt");
+    res.set("Content-Type", "application/octet-stream");
+    res.download(location,filename, function(err){
+        if (err) {
+            console.log("failed",err);
+        } else {
+            console.log("download was successful");
+            console.log("downloaded",file);
+            //res.status(200);
+        }
+    });
+
 
 
 // var file = __dirname + '/message.dat';
@@ -340,12 +378,12 @@ app.get('/pidginbreakdown',(req, res) =>{
 
     // var filestream = fs.createReadStream(file);
     // filestream.pipe(res);
-    
 
 
-  //var file = __dirname + '/upload-folder/dramaticpenguin.MOV';
 
-  
+    //var file = __dirname + '/upload-folder/dramaticpenguin.MOV';
+
+
 });
 
 app.get('/wordTimings',(req,res) =>{

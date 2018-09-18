@@ -82,9 +82,8 @@
             <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="POST">
               <div class="form-group" data-tooltipclass='forLastStep'>
                 <label class="btn btn-info btn-file btnChoose">
-                    Choose Audio File <input id="file" type="file" name ="file" style="display: none;">
+                    Choose Audio File <input id="file" data-toggle="tooltip" data-placement="top" title="Choose Audio File" type="file" name ="file" style="display: none;">
                 </label>
-
                 <input id="Submitter" type="submit" class="btn btn-info" value="Submit" disabled>
 
 
@@ -131,7 +130,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.timeline.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/plugin/wavesurfer.regions.min.js"></script>
-      <script src="javascript/scriptOne.js"></script>      
+      <script src="javascript/scriptOne.js"></script>
     <%}%>
   <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
   <!--THIS IS NEEDED TO BE CALLED FOR THE MIC OPTIONS-->
