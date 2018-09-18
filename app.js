@@ -14,6 +14,7 @@ var fname;
 var outPut = "";
 var fileUploaded = 0;
 var userFileName;
+
 var words = new Array();
 var tempWords = new Array();
 var temp;
@@ -395,6 +396,8 @@ app.get('/wordTimings',(req,res) =>{
 
 
 });
+
+
 
 const port = 5000;
 
