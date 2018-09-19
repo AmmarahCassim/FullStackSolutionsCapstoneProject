@@ -46,7 +46,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // Mongo URI
-const mongoURI = 'mongodb://localhost/myDB';
+const mongoURI = 'mongodb://user:dbuser1@ds263172.mlab.com:63172/pdgydb';
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
