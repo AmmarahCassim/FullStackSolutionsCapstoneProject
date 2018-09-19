@@ -3,74 +3,14 @@
     {
       "word_alternatives": [
         {
-          "start_time": 0.33,
+          "start_time": 0.14,
           "alternatives": [
             {
-              "confidence": 1,
-              "word": "you"
+              "confidence": 0.9852,
+              "word": "hello"
             }
           ],
-          "end_time": 1.09
-        },
-        {
-          "start_time": 1.28,
-          "alternatives": [
-            {
-              "confidence": 0.9644,
-              "word": "are"
-            }
-          ],
-          "end_time": 1.76
-        },
-        {
-          "start_time": 1.88,
-          "alternatives": [
-            {
-              "confidence": 0.9595,
-              "word": "the"
-            }
-          ],
-          "end_time": 2.02
-        },
-        {
-          "start_time": 2.02,
-          "alternatives": [
-            {
-              "confidence": 0.9595,
-              "word": "light"
-            }
-          ],
-          "end_time": 2.49
-        },
-        {
-          "start_time": 2.53,
-          "alternatives": [
-            {
-              "confidence": 0.9595,
-              "word": "of"
-            }
-          ],
-          "end_time": 2.75
-        },
-        {
-          "start_time": 2.75,
-          "alternatives": [
-            {
-              "confidence": 0.9996,
-              "word": "my"
-            }
-          ],
-          "end_time": 3.03
-        },
-        {
-          "start_time": 3.15,
-          "alternatives": [
-            {
-              "confidence": 0.9934,
-              "word": "life"
-            }
-          ],
-          "end_time": 3.45
+          "end_time": 0.78
         }
       ],
       "keywords_result": {},
@@ -78,43 +18,33 @@
         {
           "timestamps": [
             [
-              "you",
-              0.33,
-              1.09
+              "hello",
+              0.14,
+              0.78
+            ],
+            [
+              "how",
+              1.05,
+              1.14
             ],
             [
               "are",
-              1.28,
-              1.76
+              1.14,
+              1.26
             ],
             [
-              "the",
-              1.88,
-              2.02
+              "you",
+              1.26,
+              1.6
             ],
             [
-              "light",
-              2.02,
-              2.49
-            ],
-            [
-              "of",
-              2.53,
-              2.75
-            ],
-            [
-              "my",
-              2.75,
-              3.03
-            ],
-            [
-              "life",
-              3.15,
-              3.45
+              "by",
+              2,
+              2.66
             ]
           ],
-          "confidence": 0.941,
-          "transcript": "you are the light of my life "
+          "confidence": 0.818,
+          "transcript": "hello how are you by "
         }
       ],
       "final": true
