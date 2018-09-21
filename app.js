@@ -102,6 +102,9 @@ app.get('/audio',(req, res) => {
       });
     }
 
+     var type_string = file.contentType;
+    var substring = 'audio';
+
     // Check if audio
     if (file.contentType === 'audio/x-wav' ||  file.contentType === 'audio/wav') {
     //if(true){
