@@ -7,7 +7,7 @@
   * you need to have a local mongo db running
   * you need to be connected to the internet so that all the cdns can be downloaded
   * you need to have python installed on your system
-  * nodemon Server.js
+  * nodemon app.js
 
 # Testing Tools
  ![Travis Logo](https://github.com/AmmarahCassim/FullStackSolutionsCapstoneProject/blob/master/images/serveimage.png)
