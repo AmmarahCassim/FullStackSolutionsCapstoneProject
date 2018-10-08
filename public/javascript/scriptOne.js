@@ -90,7 +90,7 @@ $(document).ready(function(){
     wavesurfer.load("audio");
 
     function playSound(){
-        wavesurfer.playPause();
+        wavesurfer.play();
     }
 
     function pauseSound(){
@@ -227,6 +227,21 @@ $(document).ready(function(){
             flag = true;
         }
         //$(this).data("clicks", !clicks);
+
+    });
+    $("#PAUSE").on('click',function(){
+        console.log("stopping carousel");
+        //var clicks = $(this).data('clicks');
+            clearTimeout(timeouter);
+            flag = true;
+
+    });
+
+    $("#STOP").on('click',function(){
+        console.log("stopping carousel");
+        //var clicks = $(this).data('clicks');
+        clearTimeout(timeouter);
+        flag = true;
 
     });
 

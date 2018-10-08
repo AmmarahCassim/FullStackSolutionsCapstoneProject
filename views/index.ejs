@@ -41,6 +41,7 @@
       <li class="nav-item">
         <a class="nav-link about" href="#" id="about" data-toggle="modal" data-target="#myModal">About</a>
       </li>
+      <!--<li class="nav-item "><a href="" class="nav-link about" data-toggle="w3-modal" data-target="#signModal">TEXT TO SIGN LANGUAGE</a></li>-->
     </ul>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
@@ -89,17 +90,23 @@
 
             </div>
             <div id="file-upload-filename"></div>
-            <div id="controls">
-
-              <img id="recordButton" class="notRec" src="images/mic.png" onclick="startRecording()">
-              <img id="stopButton" src="images/micCancel.png" style="opacity: 5%" onclick="stopRecording()">
-              <!--<button id="stopButton" disabled onclick="stopRecording()">Stop</button>-->
+<!--//this is the new mic -->
+            <div class="container">
+              <div id="record"><h4>Microphone</h4></div>
+              <input type="checkbox" id="btn" onclick="handleTheFunctions(this);"/>
+              <label for="btn"></label>
+              <div class="time">
+                <div class="h_m"></div>
+                <div class="s_ms"></div>
+              </div>
             </div>
-            <div id="formats">Format: start recording to see sample rate</div>
-            <div id="recordings"><h4>Recording</h4>
-              <ol id="recordingsList"></ol>
+
+            <div id="formats" style="display: none">Format: start recording to see sample rate</div>
+            <div id="recordings" ><h4 id="header" style="display: none">Microphone</h4>
+              <ol id="recordingsList"><li style="display:none">replaceme</li></ol>
             </div>
           </form>
+
         </div>
       </div>
     </div>

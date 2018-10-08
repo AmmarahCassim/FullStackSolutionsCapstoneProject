@@ -122,106 +122,111 @@ var audioContext //audio context to help us record
 // recordButton.addEventListener("click", startRecording);
 // stopButton.addEventListener("click", stopRecording);
 // pauseButton.addEventListener("click", pauseRecording);
-var value=0;
-function startRecording() {
-    console.log("recordButton clicked");
-    //these two getElementID change the class names for the animations to take place
-    document.getElementById('recordButton').classList.remove("notRec");
-    document.getElementById('recordButton').classList.add("Rec");
-    /*
-        Simple constraints object, for more advanced audio features see
-        https://addpipe.com/blog/audio-constraints-getusermedia/
-    */
+function handleTheFunctions(clicked) {
 
-    var constraints = { audio: true, video:false }
+    if(clicked.checked) {
+        // function startRecording() {
+             console.log("recordButton clicked");
+            //these two getElementID change the class names for the animations to take place
+            // document.getElementById('recordButton').classList.remove("notRec");
+            // document.getElementById('recordButton').classList.add("Rec");
+            /*
+                Simple constraints object, for more advanced audio features see
+                https://addpipe.com/blog/audio-constraints-getusermedia/
+            */
 
-    /*
-       Disable the record button until we get a success or fail from getUserMedia()
-   */
+            var constraints = {audio: true, video: false}
 
-    document.getElementById("recordButton").style.background='red';
-    document.getElementById("recordButton").style.borderRadius='50px';
+            /*
+               Disable the record button until we get a success or fail from getUserMedia()
+           */
 
-    document.getElementById("stopButton").style.opacity = '100';
-    value=100;
-    // pauseButton.disabled = false
+            // document.getElementById("recordButton").style.background = 'red';
+            // document.getElementById("recordButton").style.borderRadius = '50px';
+            //
+            // document.getElementById("stopButton").style.opacity = '100';
+            // value = 100;
+            // pauseButton.disabled = false
 
-    /*
-        We're using the standard promise based getUserMedia()
-        https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-    */
+            /*
+                We're using the standard promise based getUserMedia()
+                https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+            */
 
-    navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-        console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+            navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
+                console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
 
-        /*
-            create an audio context after getUserMedia is called
-            sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
-            the sampleRate defaults to the one set in your OS for your playback device
+                /*
+                    create an audio context after getUserMedia is called
+                    sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
+                    the sampleRate defaults to the one set in your OS for your playback device
 
-        */
-        audioContext = new AudioContext();
+                */
+                audioContext = new AudioContext();
 
-        //update the format
-        document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
+                //update the format
+                // document.getElementById("formats").innerHTML = "Format: 1 channel pcm @ " + audioContext.sampleRate / 1000 + "kHz"
 
-        /*  assign to gumStream for later use  */
-        gumStream = stream;
+                /*  assign to gumStream for later use  */
+                gumStream = stream;
 
-        /* use the stream */
-        input = audioContext.createMediaStreamSource(stream);
+                /* use the stream */
+                input = audioContext.createMediaStreamSource(stream);
 
-        /*
-            Create the Recorder object and configure to record mono sound (1 channel)
-            Recording 2 channels  will double the file size
-        */
-        rec = new Recorder(input,{numChannels:1})
+                /*
+                    Create the Recorder object and configure to record mono sound (1 channel)
+                    Recording 2 channels  will double the file size
+                */
+                rec = new Recorder(input, {numChannels: 1})
 
-        //start the recording process
-        rec.record()
+                //start the recording process
+                rec.record()
 
-        console.log("Recording started");
+                console.log("Recording started");
 
-    }).catch(function(err) {
-        //enable the record button if getUserMedia() fails
-        //document.getElementById("recordButton").disabled = false;
-        document.getElementById("recordButton").style.background='none';
-        //document.getElementById("stopButton").disabled = true;
-        document.getElementById("stopButton").style.opacity = '0.1';
-        value=0;
-    });
-}
+            }).catch(function (err) {
+                //enable the record button if getUserMedia() fails
+                //document.getElementById("recordButton").disabled = false;
+                // document.getElementById("recordButton").style.background = 'none';
+                // document.getElementById("stopButton").disabled = true;
+                // document.getElementById("stopButton").style.opacity = '0.1';
+                // value = 0;
+            });
+        //}
+    }else {
 
-function stopRecording () {
-    document.getElementById('recordButton').classList.remove("Rec");
-    document.getElementById('recordButton').classList.add("notRec");
-    if (value == 100) {
-        console.log("stopButton clicked");
+       // function stopRecording() {
+           // document.getElementById('recordButton').classList.remove("Rec");
+           //  document.getElementById('recordButton').classList.add("notRec");
+           //  if (value == 100) {
+                console.log("stopButton clicked");
 
-        //disable the stop button, enable the record too allow for new recordings
-        //document.getElementById("stopButton").disabled = true;
-        document.getElementById("stopButton").style.opacity = '0.1';
-        // document.getElementById("recordButton").disabled = false;
-        document.getElementById("recordButton").style.background = 'none';
-        //pauseButton.disabled = true;
+                //disable the stop button, enable the record too allow for new recordings
+                //document.getElementById("stopButton").disabled = true;
+                // document.getElementById("stopButton").style.opacity = '0.1';
+                // document.getElementById("recordButton").disabled = false;
+                // document.getElementById("recordButton").style.background = 'none';
+                //pauseButton.disabled = true;
 
-        //reset button just in case the recording is stopped while paused
-        //pauseButton.innerHTML="Pause";
+                //reset button just in case the recording is stopped while paused
+                //pauseButton.innerHTML="Pause";
 
-        //tell the recorder to stop the recording
-        rec.stop();
+                //tell the recorder to stop the recording
+                rec.stop();
 
-        //stop microphone access
-        gumStream.getAudioTracks()[0].stop();
+                //stop microphone access
+                gumStream.getAudioTracks()[0].stop();
 
-        //create the wav blob and pass it on to createDownloadLink
-        rec.exportWAV(createDownloadLink);
-        value = 1;
+                //create the wav blob and pass it on to createDownloadLink
+                rec.exportWAV(createDownloadLink);
+                // value = 1;
+            // /}
+            // else {
+                // alert("Wont work");
+            // }
+            return false;
+        //}
     }
-    else {
-        alert("Wont work");
-    }
-    return false;
 }
 
 function createDownloadLink(blob) {
@@ -230,6 +235,9 @@ function createDownloadLink(blob) {
     var au = document.createElement('audio');
     var li = document.createElement('li');
     var link = document.createElement('a');
+
+    au.style="position: relative; top: 25px; ";
+
 
     //name of .wav file to use during upload and download (without extendion)
     var filename ="Recorded";
@@ -249,7 +257,7 @@ function createDownloadLink(blob) {
     li.appendChild(au);
 
     //add the filename to the li
-    li.appendChild(document.createTextNode(filename+".wav "))
+    //li.appendChild(document.createTextNode(filename+".wav "))
 
     //add the save to disk link to li
     li.appendChild(link);
@@ -279,7 +287,9 @@ function createDownloadLink(blob) {
     li.appendChild(upload)//add the upload link to li
     document.getElementById("Submitter").disabled=false;
     //add the li element to the ol
-    recordingsList.appendChild(li); //this adds it to the list
+    var item=document.getElementById("recordingsList").childNodes[0];
+    item.style="display: initial";
+    item.replaceChild(li ,item.childNodes[0]);
 
 }
 
