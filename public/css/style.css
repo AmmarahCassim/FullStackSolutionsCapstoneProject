@@ -162,6 +162,11 @@ region{
 	padding: 0px;
 }
 
+.dragndropcontent{
+	position: relative;
+	top: 15px;
+}
+
 .dragndrop>div{
 	width:60%;
 	text-align: center;
@@ -204,6 +209,9 @@ region{
     -ms-transform:     rotate(90deg); 
     -o-transform:      rotate(90deg);
 
+}
+.export:hover{
+	color: white;
 }
 
 .fa-caret-left:before {
@@ -315,6 +323,31 @@ region{
 .disabledElement{
 	pointer-events: none;
     opacity: 0.7;
+}
+
+#generate{
+	-webkit-animation: glowing 1500ms infinite;
+  	-moz-animation: glowing 1500ms infinite;
+  	-o-animation: glowing 1500ms infinite;
+  	animation: glowing 1500ms infinite;
+}
+
+@-moz-keyframes glowing {
+	0% { background-color: #617D8A; -moz-box-shadow: 0 0 3px #617D8A; }
+	50% { background-color: #00F; -moz-box-shadow: 0 0 40px #00F; }
+	100% { background-color: #617D8A; -moz-box-shadow: 0 0 3px #617D8A; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #617D8A; box-shadow: 0 0 3px #617D8A; }
+  50% { background-color: #00F; box-shadow: 0 0 40px #00F; }
+  100% { background-color: #617D8A; box-shadow: 0 0 3px #617D8A; }
+}
+
+@keyframes glowing {
+  0% { background-color: #617D8A; box-shadow: 0 0 3px #617D8A; }
+  50% { background-color: #00F; box-shadow: 0 0 40px #00F; }
+  100% { background-color: #617D8A; box-shadow: 0 0 3px #617D8A; }
 }
 /*---------------------_MODAL STYLING ----------------------- */
 /*.modal-dialog {
@@ -2745,35 +2778,38 @@ iframe{
 	position: absolute;
 	left: 50%;
 	top: 30%;
-	width: 160px;
+	width: 200px;
 	height: 80px;
 	margin: -85px -85px;
 }
 .container #btn {
 	display: none;
 }
+#record{
+	left: 10%;
+}
 #btn + label:before { /*the line around the circle*/
 	position: absolute;
-	left: 60%;
+	left: 55%;
 	top: 50%;
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	margin: -30px -40px;
 	content: "";
 	/*-webkit-transform: translate(6px, 6px);*/
 	/*-ms-transform: translate(6px, 6px);*/
 	/*transform: translate(6px, 6px);*/
 	border-radius: 50%;
-	border: 6px solid black;
+	border: 4px solid gray;
 	cursor: pointer;
 }
 #btn + label:after { /*this is for the circle*/
 	position: absolute;
-	left: 50%;
+	left: 55%;
 	top: 50%;
-	width: 40px;
-	height: 40px;
-	margin: -26px -20px;
+	width: 25px;
+	height: 25px;
+	margin: -24px -34px;
 	content: "";
 	-webkit-transform: translate(6px, 6px);
 	-ms-transform: translate(6px, 6px);
@@ -2792,9 +2828,9 @@ iframe{
 	-o-animation: stop 0.5s infinite cubic-bezier(0.1, -0.1, 0.1, 0.1);
 	animation: stop 0.5s infinite cubic-bezier(0.1, -0.1, 0.1, 0.1);
 
-	-webkit-transform: translate(6.5px, 1px) scale(0.5, 0.5);
-	-ms-transform: translate(6.5px, 1px) scale(0.5, 0.5);
-	transform: translate(6.5px, 1px) scale(0.5, 0.5);
+	-webkit-transform: translate(-5px, -5px) scale(0.4, 0.4);
+	-ms-transform: translate(-5px, -5px) scale(0.4, 0.4);
+	transform: translate(-5px, -5px) scale(0.4, 0.4);
 
 
 
@@ -2861,20 +2897,20 @@ iframe{
 .container .time .h_m:after {
 	float: right;
 	top: -14px;
-	right: 15px;
+	right: 25px;
 	position: relative;
 	content: "00";
 }
 .container .time .h_m:before {
 	float: right;
 	top: -14px;
-	right: 15px;
+	right: 25px;
 	position: relative;
 	content: ":00";
 }
 .container .time .s_ms:before {
 	float: left;
-	right: 15px;
+	right: 25px;
 	top: -14px;
 	position: relative;
 	content: ":00";
@@ -2882,7 +2918,7 @@ iframe{
 .container .time .s_ms:after {
 	float: left;
 	top: -14px;
-	right: 15px;
+	right: 25px;
 	position: relative;
 	content: ":00";
 }

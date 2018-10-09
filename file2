@@ -1,41 +1,4 @@
 {
-  "results": [
-    {
-      "word_alternatives": [],
-      "keywords_result": {},
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "one",
-              0.99,
-              1.2
-            ]
-          ],
-          "confidence": 0.545,
-          "transcript": "one "
-        }
-      ],
-      "final": true
-    },
-    {
-      "word_alternatives": [],
-      "keywords_result": {},
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "three",
-              2.1,
-              2.33
-            ]
-          ],
-          "confidence": 0.657,
-          "transcript": "three "
-        }
-      ],
-      "final": true
-    }
-  ],
+  "results": [],
   "result_index": 0
 }
