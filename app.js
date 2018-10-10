@@ -82,6 +82,7 @@ storage.on('file', function (file) {
 // @desc Loads form
 app.get('/', (req, res) => {
     res.render('index', { files: false });
+    
 });
 
 // @route POST /upload

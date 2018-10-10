@@ -63,8 +63,6 @@ $(document).ready(function(){
     });
 
 
-
-
     var wavesurfer = WaveSurfer.create({
         container: '#addWave',
         pixelRatio: 1,
@@ -104,6 +102,7 @@ $(document).ready(function(){
     var r= $('<button id ="PLAY" type="button" class="btn btn-info" value ="Play" onclick="playSound()"><i class="fas fa-play"></i></button><button id ="PAUSE" type="button" class="btn btn-info" value ="Pause" onclick="pauseSound()"><i class="fas fa-pause"></i></button><button id ="STOP" type="button" class="btn btn-info" value ="Pause" onclick="stopSound()"><i class="fas fa-stop"></i></button>');
     $('.timeline').append(r);
 
+
     $("#PLAY").on("click",function(){
         console.log("play");
         playSound();
@@ -119,9 +118,11 @@ $(document).ready(function(){
         stopSound();
     });
 
-    $.get("templates/form.html", function(data){
-        $(".timeline").append(data);
-    });
+    // $.get("templates/form.html", function(data){
+    //     $(".timeline").append(data);
+    // }).done(function(){
+    //     $("uploadForm").hide();
+    // });
 
 
     $("#generate").click(function(e){
