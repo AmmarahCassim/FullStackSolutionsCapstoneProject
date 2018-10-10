@@ -135,6 +135,8 @@ var wavesurfer = WaveSurfer.create({
       .done(function(data){ //here is where the text variable begins being used!!!!!!!!!!
         $(".edit").empty();
         text += data;
+        console.log("here i am",text);
+        var textArray = text.split(',');
         
         //$(".edit").append(data); 
 
@@ -149,13 +151,32 @@ var wavesurfer = WaveSurfer.create({
           text = text.replace(/,/g," ");
           console.log("WHAT IS THE TEXT VARIABLE");
           console.log(text);
-          $(".leftEdit>p").text(text);
+          for(int i =0; i < textArray.length; ++i){
+            $("#textArray").append("<p>"+ textArray[i] + "</p>");
+          }
+          //$(".leftEdit>p").text(textArray);
           $(".export").removeClass("disabledElement");
           setTimeout(addPhonemes,500);
           //addPhonemes();
         });
       });
     });
+
+  $(document).on("click",".leftEdit>button",function(){
+    console.log("hey");
+    var editedText = $(".leftEdit>p").text();
+    console.log(editedText);
+    $.ajax({
+    method: "GET",
+    url:"/update",
+    data: {text: editedText}
+  }).done(function(msg){
+    console.log("text has been updated");
+  });
+
+
+  });
+
 
 /* this will be called once speech to text returns its data*/
 function addPhonemes(){

@@ -121,8 +121,11 @@ app.get('/audio',(req, res) => {
 
   });
 });
+// this route gets the updated text
+app.get('/update',(req,res) =>{
+  console.log("hellllo");
 
-
+});
 app.get('/text',(req, res) =>{
     var object;
     var finalObject = new Array();

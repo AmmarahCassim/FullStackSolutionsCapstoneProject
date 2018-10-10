@@ -72,9 +72,9 @@ new Dropzone(document.body,{
   //       //   console.log("file has been exported");
   //       // }); 
   // });
-
+//THIS IS THE BLOCK FOR EDITING, so it just gets the current value and sends it to the server
     $("#EDIT").click(function(){
-      console.log("heita");
+      console.log("hello");
       var text = $("#speechtotext").val();
       console.log(text);
       $.post("/update",{output: text},function(data,status){

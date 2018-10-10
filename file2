@@ -3,74 +3,54 @@
     {
       "word_alternatives": [
         {
-          "start_time": 0.33,
+          "start_time": 0.25,
+          "alternatives": [
+            {
+              "confidence": 1,
+              "word": "are"
+            }
+          ],
+          "end_time": 0.44
+        },
+        {
+          "start_time": 0.44,
           "alternatives": [
             {
               "confidence": 1,
               "word": "you"
             }
           ],
-          "end_time": 1.09
+          "end_time": 0.55
         },
         {
-          "start_time": 1.28,
+          "start_time": 0.55,
           "alternatives": [
             {
-              "confidence": 0.9644,
-              "word": "are"
+              "confidence": 1,
+              "word": "feeling"
             }
           ],
-          "end_time": 1.76
+          "end_time": 1.1
         },
         {
-          "start_time": 1.88,
+          "start_time": 1.22,
           "alternatives": [
             {
-              "confidence": 0.9595,
-              "word": "the"
+              "confidence": 1,
+              "word": "lucky"
             }
           ],
-          "end_time": 2.02
+          "end_time": 1.86
         },
         {
-          "start_time": 2.02,
+          "start_time": 1.96,
           "alternatives": [
             {
-              "confidence": 0.9595,
-              "word": "light"
+              "confidence": 0.999,
+              "word": "punk"
             }
           ],
-          "end_time": 2.49
-        },
-        {
-          "start_time": 2.53,
-          "alternatives": [
-            {
-              "confidence": 0.9595,
-              "word": "of"
-            }
-          ],
-          "end_time": 2.75
-        },
-        {
-          "start_time": 2.75,
-          "alternatives": [
-            {
-              "confidence": 0.9996,
-              "word": "my"
-            }
-          ],
-          "end_time": 3.03
-        },
-        {
-          "start_time": 3.15,
-          "alternatives": [
-            {
-              "confidence": 0.9934,
-              "word": "life"
-            }
-          ],
-          "end_time": 3.45
+          "end_time": 2.55
         }
       ],
       "keywords_result": {},
@@ -78,43 +58,33 @@
         {
           "timestamps": [
             [
-              "you",
-              0.33,
-              1.09
-            ],
-            [
               "are",
-              1.28,
-              1.76
+              0.25,
+              0.44
             ],
             [
-              "the",
-              1.88,
-              2.02
+              "you",
+              0.44,
+              0.55
             ],
             [
-              "light",
-              2.02,
-              2.49
+              "feeling",
+              0.55,
+              1.1
             ],
             [
-              "of",
-              2.53,
-              2.75
+              "lucky",
+              1.22,
+              1.86
             ],
             [
-              "my",
-              2.75,
-              3.03
-            ],
-            [
-              "life",
-              3.15,
-              3.45
+              "punk",
+              1.96,
+              2.55
             ]
           ],
-          "confidence": 0.941,
-          "transcript": "you are the light of my life "
+          "confidence": 0.999,
+          "transcript": "are you feeling lucky punk "
         }
       ],
       "final": true
